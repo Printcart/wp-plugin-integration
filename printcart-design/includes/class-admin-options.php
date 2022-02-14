@@ -64,7 +64,7 @@ if( !class_exists('PRINTCARTDESIGN') ){
             }
         }
         public function printcart_add_admin_menu() {
-            add_submenu_page( "options-general.php", "Printcart Settings", "Printcart Settings", "manage_options", 'princart-design', array( $this ,'printcart_settings' ));
+            add_submenu_page( "options-general.php", "Printcart Settings", "Printcart Settings", "manage_options", 'printcart-design', array( $this ,'printcart_settings' ));
         }
         public function printcart_settings() {
             $access_token = get_option('printcart_access_token');
