@@ -170,9 +170,8 @@ if( !class_exists('PRINTCARTDESIGN') ){
                 $product_id = $product->get_id();
             }
             $client = new \GuzzleHttp\Client();
-            // try {
-                // $response = $client->request('GET', $this->api_url.$product_id, $this->config);
-                $response = $client->request('GET', $this->api_url.'/173', $this->headers); // test
+            try {
+                $response = $client->request('GET', $this->api_url.'/'.$product_id, $this->config);
                 $data = json_decode($response->getBody()->getContents() , 'ARRAY_A');
                 if( isset($data['data']) ) {
                     $integration_product_id = $data['data']['id'];
@@ -182,9 +181,9 @@ if( !class_exists('PRINTCARTDESIGN') ){
                 $integration_product['id'] = $integration_product_id;
                 $integration_product['enable_design'] = $data['data']['enable_design'];
                 return $integration_product;
-            // } catch (Exception $e) {
-            //     return;
-            // }
+            } catch (Exception $e) {
+                return;
+            }
             
         }
 
@@ -211,10 +210,7 @@ if( !class_exists('PRINTCARTDESIGN') ){
                     transform: translateY(-50%);
                 }
             </style>
-            <div id="printcart-options-design">
-                <!-- <input id="design-ids" type="hidden" name="printcart_options_design" value=""> -->
-                <!-- <input id="design-ids" type="hidden" name="printcart_options_design" value="dfc15d9f-09dd-408c-bccf-b4d867d84bf2,659f584f-4149-40f1-96a0-436c6b93bde2,f611df77-0496-4d42-8c25-db468b549d5b"> -->
-            </div>
+            <div id="printcart-options-design"></div>
             <?php
         }
         public function printcart_add_cart_item_data( $cart_item_data ){
@@ -524,7 +520,6 @@ if( !class_exists('PRINTCARTDESIGN') ){
          */
         public function printcart_add_hidden_order_items( $order_items ) {
             $order_items[] = '_printcart_designs';
-            $order_items[] = '_printcart_project_id';
             // and so on...
             return $order_items;
         }
