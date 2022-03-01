@@ -17,4 +17,4 @@ WC tested up to: 5.0.0
 define( 'PRINTCART_PLUGIN_URL',             plugin_dir_url( __FILE__ ) );
 define( 'PRINTCART_PLUGIN_DIR',             plugin_dir_path( __FILE__ ) );
 require_once( PRINTCART_PLUGIN_DIR . 'includes/class-admin-options.php' );
-require_once( PRINTCART_PLUGIN_DIR . 'php-printcart/vendor/autoload.php' );
+require_once( PRINTCART_PLUGIN_DIR . 'vendor/autoload.php' );
