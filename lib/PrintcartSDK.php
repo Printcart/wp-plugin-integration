@@ -106,7 +106,7 @@ class PrintcartSDK
         /**
      * @var string Default Printcart API version
      */
-    public static $apiUrl = 'https://14d6-117-7-237-55.ngrok.io';
+    public static $apiUrl = 'https://api.printcart.com';
 
     /**
      * Shop / API configurations
