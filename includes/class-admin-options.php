@@ -18,10 +18,17 @@ if( !class_exists('PRINTCARTDESIGN') ){
          *  Endpoint API
          */
         protected $api_url = 'https://api.printcart.com/v1/integration/woocommerce/product';
+        
         /**
          *  Designtool Url
          */
         protected $designtool_url = 'https://customizer.printcart.com';
+
+        /**
+         *  JS SDK Url
+         */
+        protected $js_sdk_url = 'https://sdk.printcart.com/customizer/1.0.0/main.js';
+
         /**
          *  backoffice Url
          */
@@ -184,7 +191,6 @@ if( !class_exists('PRINTCARTDESIGN') ){
             } catch (Exception $e) {
                 return;
             }
-            
         }
 
         /**
@@ -235,8 +241,9 @@ if( !class_exists('PRINTCARTDESIGN') ){
         }
         public function printcart_add_sdk() {
             global $product;
-            $product_id = $this->printcart_get_product_integration()['id'];
-            $enable_design = $this->printcart_get_product_integration()['enable_design'];
+            $product_integration = $this->printcart_get_product_integration();
+            $product_id = $product_integration['id'];
+            $enable_design = $product_integration['enable_design'];
 
             /**
              *  Tạo thẻ div ở trong trang sản phẩm để hook các script
@@ -244,7 +251,7 @@ if( !class_exists('PRINTCARTDESIGN') ){
             echo '<div id="printcart-design-tool-sdk-wrap">';
                 if( isset( get_option('printcart_account')['unauth_token']) && $product_id && $enable_design  ) {
                     ?>
-                        <script type="text/javascript" async="" id="printcart-design-tool-sdk" data-unauthtoken="<?= get_option('printcart_account')['unauth_token'];?>" data-productid="<?= $product_id;?>" src="<?php echo $this->designtool_url.'/main.js'; ?>"></script>
+                        <script type="text/javascript" async="" id="printcart-design-tool-sdk" data-unauthtoken="<?= get_option('printcart_account')['unauth_token'];?>" data-productid="<?= $product_id;?>" src="<?php echo $this->js_sdk_url; ?>"></script>
                     <?php
                 }
                 ?>
@@ -508,7 +515,7 @@ if( !class_exists('PRINTCARTDESIGN') ){
                 if($integration['id'] && $integration['enable_design']) {
                     $product_id = $integration['id'];
                     $enable_design = $integration['enable_design'];
-                    $result = '<script type="text/javascript" async="" id="printcart-design-tool-sdk" data-unauthtoken="'.get_option('printcart_account')['unauth_token'].'" data-productid="'.$product_id.'" src="'.$this->designtool_url.'/main.js"></script>';
+                    $result = '<script type="text/javascript" async="" id="printcart-design-tool-sdk" data-unauthtoken="'.get_option('printcart_account')['unauth_token'].'" data-productid="'.$product_id.'" src="'.$this->js_sdk_url.'"></script>';
                 }
             }
             wp_send_json_success($result);

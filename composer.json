@@ -1,23 +1,5 @@
 {
-    "name": "printcart/php-printcart-sdk",
-    "description": "PHP SDK for Printcart API",
-    "keywords": ["PHP","Printcart","SDK", "API", "Print"],
-    "homepage": "https://github.com/Printcart/php-printcart-sdk",
-    "type": "library",
     "require": {
-        "php": ">=5.6",
-        "guzzlehttp/guzzle": "^7.4",
-        "ext-json": "*"
-    },
-    "authors": [
-        {
-            "name": "Printcart",
-            "email": "dev@printcart.com"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "PHPPrintcart\\": "lib/"
-        }
+        "printcart/php-printcart-sdk": "^1.0"
     }
 }
