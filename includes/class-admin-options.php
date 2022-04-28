@@ -17,8 +17,8 @@ if( !class_exists('PRINTCARTDESIGN') ){
         /**
          *  Endpoint API
          */
-        protected $api_url = 'https://api.printcart.com/v1/integration/woocommerce/product';
-        
+        protected $api_url = 'https://api.printcart.com/v1/integration/woocommerce/products';
+
         /**
          *  Designtool Url
          */
@@ -171,12 +171,13 @@ if( !class_exists('PRINTCARTDESIGN') ){
         /**
          *   Lấy integration Id khi vào trang sản phẩm
          */
-        public function printcart_get_product_integration($product_id = '') {
+        public function printcart_get_product_integration($product_id = '', $isVariant = false) {
             global $product;
-            if(!$product_id) {
+            if(!$isVariant && !$product_id) {
                 $product_id = $product->get_id();
             }
             $client = new \GuzzleHttp\Client();
+            $response = $client->request('GET', $this->api_url.'/'.$product_id, $this->config);
             try {
                 $response = $client->request('GET', $this->api_url.'/'.$product_id, $this->config);
                 $data = json_decode($response->getBody()->getContents() , 'ARRAY_A');
@@ -221,7 +222,7 @@ if( !class_exists('PRINTCARTDESIGN') ){
         }
         public function printcart_add_cart_item_data( $cart_item_data ){
             $post_data = $_POST;
-            if( isset($post_data['printcart_options_design']) || $post_data['printcart_options_design'] ){
+            if( isset($post_data['printcart_options_design']) && $post_data['printcart_options_design'] ){
                 $designs = $post_data['printcart_options_design'];
                 $cart_item_data['printcart_options'] = array();
                 $cart_item_data['printcart_options']['designs'] = $designs; // save Data design ids
@@ -249,7 +250,7 @@ if( !class_exists('PRINTCARTDESIGN') ){
              *  Tạo thẻ div ở trong trang sản phẩm để hook các script
              */
             echo '<div id="printcart-design-tool-sdk-wrap">';
-                if( isset( get_option('printcart_account')['unauth_token']) && $product_id && $enable_design  ) {
+                if( isset( get_option('printcart_account')['unauth_token']) && $product_id  ) {
                     ?>
                         <script type="text/javascript" async="" id="printcart-design-tool-sdk" data-unauthtoken="<?= get_option('printcart_account')['unauth_token'];?>" data-productid="<?= $product_id;?>" src="<?php echo $this->js_sdk_url; ?>"></script>
                     <?php
@@ -259,16 +260,21 @@ if( !class_exists('PRINTCARTDESIGN') ){
                 <!-- Bắt sự kiện khi nhấn process trong design tool -->
                 <script type="text/javascript">
                     window.addEventListener("message", function(event){
-                        var designs = event.data.designs;
-                        var html = '';
-                        if( !designs || designs.length <= 0 ) return;
-                        html += '<div><b>Preview designs</b></div><table><tbody><tr>';
-                        designs.forEach(function(design, index) {
-                            html += '<td><div class="design-thumbail" style="border: 1px solid #ddd;margin: 0 5px 5px 0;display: inline-block;text-align: center; vertical-align: top; background: #ddd; height: 100px; width: 100px"><img src="'+design.url+'"></div><input id="design-id" type="hidden" name="printcart_options_design['+index+'][id]" value="'+design.id+'"><input id="design-preview" type="hidden" name="printcart_options_design['+index+'][preview]" value="'+design.url+'"></td>';
-                        })
-                        html += '</tr></tbody></table>';
-                        document.getElementById('printcart-options-design').innerHTML = html;
-                        document.getElementById('pcdesigntool-iframe-wrapper').style.display = 'none';
+                        if(event.data && event.data.message === 'closeDesignTool') {
+                            if(event.data.closeDesignTool) document.getElementById('pcdesigntool-iframe-wrapper').style.display = 'none';
+                        }
+                        if(event.data && event.data.message === 'finishProcess') {
+                            var designs = event.data.data.data;
+                            var html = '';
+                            if( !designs || designs.length <= 0 ) return;
+                            html += '<div><b>Preview designs</b></div><table><tbody><tr>';
+                            designs.forEach(function(design, index) {
+                                html += '<td><div class="design-thumbail" style="border: 1px solid #ddd;margin: 0 5px 5px 0;display: inline-block;text-align: center; vertical-align: top; background: #ddd; height: 100px; width: 100px"><img src="'+design.design_image.url+'"></div><input id="design-id" type="hidden" name="printcart_options_design['+index+'][id]" value="'+design.id+'"><input id="design-preview" type="hidden" name="printcart_options_design['+index+'][preview]" value="'+design.design_image.url+'"></td>';
+                            })
+                            html += '</tr></tbody></table>';
+                            document.getElementById('printcart-options-design').innerHTML = html;
+                            // document.getElementById('pcdesigntool-iframe-wrapper').style.display = 'none';
+                        }
                         
                     } , false);
                 </script>
@@ -511,7 +517,7 @@ if( !class_exists('PRINTCARTDESIGN') ){
             $variation_id = isset($_POST['variation_id']) ? $_POST['variation_id'] : '';
             $result = '';
             if($variation_id && isset(get_option('printcart_account')['unauth_token'])) {
-                $integration = $this->printcart_get_product_integration($variation_id);
+                $integration = $this->printcart_get_product_integration($variation_id , true);
                 if($integration['id'] && $integration['enable_design']) {
                     $product_id = $integration['id'];
                     $enable_design = $integration['enable_design'];
