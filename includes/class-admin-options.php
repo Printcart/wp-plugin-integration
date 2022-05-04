@@ -134,6 +134,19 @@ if( !class_exists('PRINTCARTDESIGN') ){
                     <table class="form-table table table-striped">
                         <tbody>
                             <tr valign="top">
+                                <td colspan="2">
+                                    <p>To start using Princart, please insert your Printcart API keys to this form below. You can get those keys in <a href="http://dashboard.printcart.com/settings" >here</a></p><br>
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <th class="titledesc">
+                                    <label>Unauth Token: <span class="printcart-help-tip"></span></label>
+                                </th>
+                                <td>
+                                    <input name="unauth_token" value="<?php echo isset($printcart_account['unauth_token']) ? esc_attr($printcart_account['unauth_token']) : ''; ?>" type="text" style="width: 400px" class="">
+                                </td>
+                            </tr>
+                            <tr valign="top">
                                 <th class="titledesc">
                                     <label>Sid: <span class="printcart-help-tip"></span></label>
                                 </th>
@@ -147,14 +160,6 @@ if( !class_exists('PRINTCARTDESIGN') ){
                                 </th>
                                 <td>
                                     <input name="printcart_secret" value="<?php echo isset($printcart_account['secret']) ? esc_attr($printcart_account['secret']) : ''; ?>" type="text" style="width: 400px" class="">
-                                </td>
-                            </tr>
-                            <tr valign="top">
-                                <th class="titledesc">
-                                    <label>Unauth Token: <span class="printcart-help-tip"></span></label>
-                                </th>
-                                <td>
-                                    <input name="unauth_token" value="<?php echo isset($printcart_account['unauth_token']) ? esc_attr($printcart_account['unauth_token']) : ''; ?>" type="text" style="width: 400px" class="">
                                 </td>
                             </tr>
                         </tbody>
