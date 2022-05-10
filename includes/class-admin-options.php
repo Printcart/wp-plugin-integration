@@ -182,7 +182,6 @@ if( !class_exists('PRINTCARTDESIGN') ){
                 $product_id = $product->get_id();
             }
             $client = new \GuzzleHttp\Client();
-            $response = $client->request('GET', $this->api_url.'/'.$product_id, $this->config);
             try {
                 $response = $client->request('GET', $this->api_url.'/'.$product_id, $this->config);
                 $data = json_decode($response->getBody()->getContents() , 'ARRAY_A');
