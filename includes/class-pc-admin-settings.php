@@ -8,6 +8,8 @@ if (!class_exists('Pc_Admin_Settings')) {
 
         protected static $instance;
 
+        protected $config = array();
+
         public static function instance()
         {
             if (is_null(self::$instance)) {

@@ -8,6 +8,8 @@ if (!class_exists('Pc_Product_Hook')) {
 
         protected static $instance;
 
+        protected $config = array();
+
         public static function instance()
         {
             if (is_null(self::$instance)) {
@@ -88,16 +90,16 @@ if (!class_exists('Pc_Product_Hook')) {
                 $product_id = $product->get_id();
             }
             try {
+                if (empty($this->config)) return [];
                 $printcart = new PHPPrintcart\PrintcartSDK($this->config);
                 $data    = json_decode($printcart->Integration('woocommerce/products/' . $product_id)->get(), 'ARRAY_A');
-                if (isset($data['data'])) {
-                    $integration_product_id = $data['data']['id'];
+                if (isset($data['data']) && isset($data['data']['id']) && $data['data']['id']) {
+                    $integration_product_id                 = $data['data']['id'];
+                    $integration_product                    = array();
+                    $integration_product['id']              = $integration_product_id;
+                    $integration_product['enable_design']   = $data['data']['enable_design'];
+                    return $integration_product;
                 }
-                if (!$integration_product_id) return;
-                $integration_product = array();
-                $integration_product['id'] = $integration_product_id;
-                $integration_product['enable_design'] = $data['data']['enable_design'];
-                return $integration_product;
             } catch (Exception $e) {
                 return [];
             }
@@ -242,12 +244,9 @@ if (!class_exists('Pc_Product_Hook')) {
                     );
                     $printcart_account = get_option('printcart_account');
                     if (isset($printcart_account['sid']) && isset($printcart_account['secret'])) {
-                        $config = array(
-                            'Username' => $printcart_account['sid'],
-                            'Password' => $printcart_account['secret']
-                        );
                         try {
-                            $printcart = new PHPPrintcart\PrintcartSDK($config);
+                            if (empty($this->config)) return;
+                            $printcart = new PHPPrintcart\PrintcartSDK($this->config);
                             $projectSave = json_decode($printcart->Project()->post($project));
                             if (isset($projectSave->data) && isset($projectSave->data->id)) {
                                 $project_id = $projectSave->data->id;
@@ -305,7 +304,7 @@ if (!class_exists('Pc_Product_Hook')) {
             $result = '';
             if ($variation_id && isset(get_option('printcart_account')['unauth_token'])) {
                 $integration = $this->printcart_get_product_integration($variation_id, true);
-                if ($integration['id']) {
+                if (isset($integration['id']) && $integration['id']) {
                     $product_id     = isset($integration['id']) ? $integration['id'] : '';
                     $enable_design  = isset($integration['enable_design']) ? $integration['enable_design'] : '';
                     $result         = '<script type="text/javascript" async="" id="printcart-design-tool-sdk" data-unauthtoken="' . get_option('printcart_account')['unauth_token'] . '" data-productid="' . $product_id . '" src="' . PRINTCART_JS_SDK_URL . '"></script>';
