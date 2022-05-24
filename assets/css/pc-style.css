@@ -29,3 +29,14 @@
   border-radius: 4px;
   width: 157px;
 }
+
+.printcart-design-thumbail {
+  border: 1px solid #ddd;
+  margin: 0 5px 5px 0;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  background: #ddd;
+  height: 100px;
+  width: 100px;
+}
