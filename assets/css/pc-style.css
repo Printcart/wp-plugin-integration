@@ -1,0 +1,31 @@
+.printcart-options-design .design-thumbail {
+  border: 1px solid #ddd;
+  margin: 0 5px 5px 0;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  background: #ddd;
+  height: 100px;
+}
+
+.printcart-options-design .design-thumbail img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.printcart-button-design-loading {
+  position: fixed;
+  top: 50%;
+  right: 0px;
+  z-index: 9999;
+  padding: 12px 16px;
+  font-size: 1.5rem;
+  background: rgb(47, 123, 248);
+  color: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 4px;
+  width: 157px;
+}

@@ -1,0 +1,30 @@
+#pc-designtool-box {
+  display: none;
+}
+
+#pc-designtool-box.active {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: block;
+  z-index: 999999;
+  background: rgba(90, 90, 90, 0.7);
+}
+
+.pc-close-iframe {
+  position: fixed;
+  top: 18px;
+  left: 20px;
+  cursor: pointer;
+}
+
+.pc-designtool {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
