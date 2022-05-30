@@ -3,24 +3,22 @@ if (!defined('ABSPATH')) exit;
 
 if (!class_exists('Pc_Admin_Settings')) {
 
-    class Pc_Admin_Settings
-    {
+    class Pc_Admin_Settings {
 
         protected static $instance;
 
         protected $config = array();
 
-        public static function instance()
-        {
+        public static function instance() {
             if (is_null(self::$instance)) {
                 self::$instance = new self();
             }
             return self::$instance;
         }
 
-        public function __construct()
-        {
+        public function __construct() {
             $printcart_account = get_option('printcart_account');
+
             if ($printcart_account) {
                 $this->config   = array(
                     'Username'  => isset($printcart_account['sid']) ? $printcart_account['sid'] : '',
@@ -29,56 +27,72 @@ if (!class_exists('Pc_Admin_Settings')) {
             }
         }
 
-        public function init()
-        {
+        public function init() {
             add_action('admin_menu', array($this, 'printcart_add_admin_menu'));
         }
 
         /**
          *  Add to the Settings menu
          */
-        public function printcart_add_admin_menu()
-        {
-            add_submenu_page("options-general.php", "Printcart Settings", "Printcart Settings", "manage_options", 'printcart-design', array($this, 'printcart_settings'));
+        public function printcart_add_admin_menu() {
+            add_submenu_page(
+                'options-general.php',
+                'Printcart Settings',
+                'Printcart Settings',
+                'manage_options',
+                'printcart-design',
+                array($this, 'printcart_settings')
+            );
         }
 
         /**
          *  Create settings to setup API key in WP Dashboard
          */
-        public function printcart_settings()
-        {
+        public function printcart_settings() {
             $printcart_account = get_option('printcart_account');
             $message = '';
-            if (isset($_POST['_action']) && $_POST['_action'] == 'submit') {
+
+            if (isset($_POST['_action']) && $_POST['_action'] === 'submit') {
                 $printcart_sid      = isset($_POST['printcart_sid']) ? $_POST['printcart_sid'] : '';
                 $printcart_secret   = isset($_POST['printcart_secret']) ? $_POST['printcart_secret'] : '';
+
                 $config = array(
                     'Username'  => $printcart_sid,
                     'Password'  => $printcart_secret,
                 );
+
                 $unauth_token   = '';
+
                 try {
-                    $printcart              = new PHPPrintcart\PrintcartSDK($config);
-                    $storeDetail            = json_decode($printcart->Store()->get());
+                    $printcart      = new PHPPrintcart\PrintcartSDK($config);
+                    $storeDetail    = json_decode($printcart->Store()->get());
+
                     if ($storeDetail && isset($storeDetail->data) && isset($storeDetail->data->unauth_token)) {
-                        $message            = 'Your settings have been saved.';
-                        $status             = 'updated';
-                        $unauth_token       = $storeDetail->data->unauth_token;
+                        $message        = 'Your settings have been saved.';
+                        $status         = 'updated';
+                        $unauth_token   = $storeDetail->data->unauth_token;
                     }
                 } catch (Exception $e) {
                     $message = 'You have entered incorrect sid or secret. Please try again!';
                     $status = 'error';
                 }
+
                 $printcart_account  = array(
                     'sid'           => $printcart_sid,
                     'secret'        => $printcart_secret,
                     'unauth_token'  => $unauth_token,
                 );
+
                 update_option('printcart_account', $printcart_account);
+
                 if ($message) echo '<div id="message" class="inline ' . $status . '" style="margin-left: 0;"><p><strong>' . $message . '</strong></p></div>';
             }
-?>
 
+            $this->printcart_form_settings($printcart_account);
+        }
+
+        public function printcart_form_settings($printcart_account) {
+            ?>
             <div id="printcart-design">
                 <h1 class="title">Printcart Settings</h1>
                 <form method="post" action="" enctype="multipart/form-data">
@@ -86,7 +100,8 @@ if (!class_exists('Pc_Admin_Settings')) {
                         <tbody>
                             <tr valign="top">
                                 <td colspan="2">
-                                    <p>To start using Princart, please insert your Printcart API keys to this form below. You can get those keys in <a href="http://dashboard.printcart.com/settings">here</a></p><br>
+                                    <p>To start using Princart, please insert your Printcart API keys to this form below.
+                                        You can get those keys in <a href="http://dashboard.printcart.com/settings">here</a></p><br>
                                 </td>
                             </tr>
                             <tr valign="top">
@@ -121,8 +136,7 @@ if (!class_exists('Pc_Admin_Settings')) {
                     </p>
                 </form>
             </div>
-
-<?php
+            <?php
         }
     }
 }
