@@ -1,9 +1,9 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-if (!class_exists('Pc_Admin_Settings')) {
+if (!class_exists('Printcart_Admin_Settings')) {
 
-    class Pc_Admin_Settings {
+    class Printcart_Admin_Settings {
 
         protected static $instance;
 
@@ -53,8 +53,8 @@ if (!class_exists('Pc_Admin_Settings')) {
             $message = '';
 
             if (isset($_POST['_action']) && $_POST['_action'] === 'submit') {
-                $printcart_sid      = isset($_POST['printcart_sid']) ? $_POST['printcart_sid'] : '';
-                $printcart_secret   = isset($_POST['printcart_secret']) ? $_POST['printcart_secret'] : '';
+                $printcart_sid      = isset($_POST['printcart_sid']) ? sanitize_text_field($_POST['printcart_sid']) : '';
+                $printcart_secret   = isset($_POST['printcart_secret']) ? sanitize_text_field($_POST['printcart_secret']) : '';
 
                 $config = array(
                     'Username'  => $printcart_sid,
@@ -85,7 +85,7 @@ if (!class_exists('Pc_Admin_Settings')) {
 
                 update_option('printcart_account', $printcart_account);
 
-                if ($message) echo '<div id="message" class="inline ' . $status . '" style="margin-left: 0;"><p><strong>' . $message . '</strong></p></div>';
+                if ($message) echo '<div id="message" class="inline ' . esc_attr($status) . '" style="margin-left: 0;"><p><strong>' . esc_html($message) . '</strong></p></div>';
             }
 
             $this->printcart_form_settings($printcart_account);
@@ -141,5 +141,5 @@ if (!class_exists('Pc_Admin_Settings')) {
     }
 }
 
-$printcart = Pc_Admin_Settings::instance();
-$printcart->init();
+$printcart_admin_settings = Printcart_Admin_Settings::instance();
+$printcart_admin_settings->init();
