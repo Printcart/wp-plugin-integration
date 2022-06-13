@@ -68,12 +68,12 @@ if (!class_exists('Printcart_Admin_Settings')) {
                     $storeDetail    = json_decode($printcart->Store()->get());
 
                     if ($storeDetail && isset($storeDetail->data) && isset($storeDetail->data->unauth_token)) {
-                        $message        = 'Your settings have been saved.';
+                        $message        = esc_html__('Your settings have been saved.', 'printcart-integration');
                         $status         = 'updated';
                         $unauth_token   = $storeDetail->data->unauth_token;
                     }
                 } catch (Exception $e) {
-                    $message = 'You have entered incorrect sid or secret. Please try again!';
+                    $message = esc_html__('You have entered incorrect sid or secret. Please try again!', 'printcart-integration');
                     $status = 'error';
                 }
 
@@ -85,7 +85,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
 
                 update_option('printcart_account', $printcart_account);
 
-                if ($message) echo '<div id="message" class="inline ' . esc_attr($status) . '" style="margin-left: 0;"><p><strong>' . esc_html($message) . '</strong></p></div>';
+                if ($message) echo '<div id="message" class="inline ' . esc_attr($status) . '" style="margin-left: 0;"><p><strong>' . $message . '</strong></p></div>';
             }
 
             $this->printcart_form_settings($printcart_account);
@@ -94,7 +94,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
         public function printcart_form_settings($printcart_account) {
             ?>
             <div id="printcart-design">
-                <h1 class="title">Printcart Settings</h1>
+                <h1 class="title"><?php esc_html_e('Printcart Settings', 'printcart-integration') ?></h1>
                 <form method="post" action="" enctype="multipart/form-data">
                     <table class="form-table table table-striped">
                         <tbody>

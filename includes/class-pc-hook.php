@@ -94,14 +94,15 @@ if (!class_exists('Printcart_Product_Hook')) {
 
                 $printcart  = new PHPPrintcart\PrintcartSDK($this->config);
                 $data       = json_decode($printcart->Integration('woocommerce/products/' . $product_id)->get(), 'ARRAY_A');
+                $integration_product = array();
 
                 if (isset($data['data']) && isset($data['data']['id']) && $data['data']['id']) {
-                    $integration_product_id                 = $data['data']['id'];
-                    $integration_product                    = array();
+                    $integration_product_id                 = $data['data']['id'];                 
                     $integration_product['id']              = $integration_product_id;
                     $integration_product['enable_design']   = $data['data']['enable_design'];
-                    return $integration_product;
                 }
+
+                return $integration_product;
             } catch (Exception $e) {
                 return array();
             }
