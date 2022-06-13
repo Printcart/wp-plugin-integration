@@ -180,7 +180,7 @@ if (!class_exists('Printcart_Product_Hook')) {
 
                 foreach ($order_items as $order_item_id => $order_item) {
                     $has_design     = false;
-                    echo '<p><b>Product: </b>' . esc_html($order_item->get_name()) . '</p>';
+                    echo '<p><b>' . esc_html__('Product:', 'printcart-integration') . ' </b>' . esc_html($order_item->get_name()) . '</p>';
                     $printcart_account = get_option('printcart_account');
 
                     if (isset($printcart_account['unauth_token'])) {
@@ -198,7 +198,7 @@ if (!class_exists('Printcart_Product_Hook')) {
                                         $data_url = PRINTCART_DESIGNTOOL . '/?api_key=' . $printcart_account['unauth_token'] . '&design_id=' . $printcart_design['id']
                                         . '&task=edit';
 
-                                        echo '<div class="button button-small button-secondary" title="View design" style="margin: 0 4px 4px 0;" 
+                                        echo '<div class="button button-small button-secondary" title="' . esc_html__('View design', 'printcart-integration') . '" style="margin: 0 4px 4px 0;" 
                                         data-url="' . esc_url($data_url ) . '"><img style="max-width: 60px; max-height: 50px" src="' . esc_url($printcart_design['preview']) . '"></div>';
                                     }
                                 }
@@ -207,9 +207,9 @@ if (!class_exists('Printcart_Product_Hook')) {
                             }
                         }
 
-                        if (!$has_design) echo '<p>No design in this order</p>';
+                        if (!$has_design) echo '<p>' . esc_html__('No design in this order', 'printcart-integration') . '</p>';
                     } else {
-                        echo 'Invalid Api Token';
+                        esc_html_e('Invalid Api Token', 'printcart-integration');
                     }
                     $this->printcart_button_view_order($project_id);
                 }
@@ -228,7 +228,7 @@ if (!class_exists('Printcart_Product_Hook')) {
                 <div class="printcart-view-project">
                     <button type="button" class="button">
                         <a href="<?php echo esc_url($project_link); ?>" target="_blank" style="text-decoration: none;">
-                            View project
+                            <?php esc_html_e('View project', 'printcart-integration'); ?>
                         </a>
                     </button>
                 </div>
@@ -310,7 +310,7 @@ if (!class_exists('Printcart_Product_Hook')) {
          */
         public function printcart_add_preview_designs($title, $cart_item) {
             if (isset($cart_item['printcart_options']) && isset($cart_item['printcart_options']['designs']) && is_array($cart_item['printcart_options']['designs'])) {
-                $html = '<div><b>Preview designs</b></div><table><tbody><tr>';
+                $html = '<div><b>' . esc_html__('Preview designs', 'printcart-integration') . '</b></div><table><tbody><tr>';
 
                 foreach ($cart_item['printcart_options']['designs'] as $design) {
                     if (isset($design['preview'])) {
@@ -338,7 +338,7 @@ if (!class_exists('Printcart_Product_Hook')) {
                 $printcart_designs = unserialize($_printcart_designs);
 
                 if (is_array($printcart_designs)) {
-                    $html = '<div><b>Preview designs</b></div><table><tbody><tr>';
+                    $html = '<div><b>' . esc_html__('Preview designs', 'printcart-integration') . '</b></div><table><tbody><tr>';
                     foreach ($printcart_designs as $design) {
                         $html .= '<td style="padding: 0"><div style="border: 1px solid #ddd;margin: 0 5px 5px 0;display: inline-block;text-align: center; 
                         vertical-align: top;background: #ddd; height: 100px; width: 100px"><img src="' . esc_url($design['preview']) . '"></td>';

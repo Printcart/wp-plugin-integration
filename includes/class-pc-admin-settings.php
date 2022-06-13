@@ -100,13 +100,13 @@ if (!class_exists('Printcart_Admin_Settings')) {
                         <tbody>
                             <tr valign="top">
                                 <td colspan="2">
-                                    <p>To start using Princart, please insert your Printcart API keys to this form below.
-                                        You can get those keys in <a href="http://dashboard.printcart.com/settings">here</a></p><br>
+                                    <p><?php esc_html_e('To start using Princart, please insert your Printcart API keys to this form below.
+                                        You can get those keys in', 'printcart-integration'); ?> <a href="http://dashboard.printcart.com/settings"><?php esc_html_e('here', 'printcart-integration'); ?></a></p><br>
                                 </td>
                             </tr>
                             <tr valign="top">
                                 <th class="titledesc">
-                                    <label>Sid: <span class="printcart-help-tip"></span></label>
+                                    <label><?php esc_html_e('Sid: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
                                 </th>
                                 <td>
                                     <input name="printcart_sid" value="<?php echo isset($printcart_account['sid']) ? esc_attr($printcart_account['sid']) : ''; ?>" type="text" style="width: 400px" class="">
@@ -114,7 +114,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
                             </tr>
                             <tr valign="top">
                                 <th class="titledesc">
-                                    <label>Secret: <span class="printcart-help-tip"></span></label>
+                                    <label><?php esc_html_e('Secret: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
                                 </th>
                                 <td>
                                     <input name="printcart_secret" value="<?php echo isset($printcart_account['secret']) ? esc_attr($printcart_account['secret']) : ''; ?>" type="text" style="width: 400px" class="">
@@ -122,7 +122,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
                             </tr>
                             <tr valign="top">
                                 <th class="titledesc">
-                                    <label>Unauth token: <span class="printcart-help-tip"></span></label>
+                                    <label><?php esc_html_e('Unauth token: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
                                 </th>
                                 <td>
                                     <input name="printcart_unauth_token" value="<?php echo isset($printcart_account['unauth_token']) ? esc_attr($printcart_account['unauth_token']) : ''; ?>" disabled type="text" style="width: 400px" class="">
@@ -131,7 +131,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
                         </tbody>
                     </table>
                     <p class="submit">
-                        <button name="save" class="button-primary woocommerce-save-button" type="submit" value="Save changes">Save changes</button>
+                        <button name="save" class="button-primary woocommerce-save-button" type="submit" value="Save changes"><?php esc_html_e('Save changes', 'printcart-integration'); ?></button>
                         <input type="hidden" id="_action" name="_action" value="submit">
                     </p>
                 </form>
