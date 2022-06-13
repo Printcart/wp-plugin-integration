@@ -72,7 +72,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
                         $status         = 'updated';
                         $unauth_token   = $storeDetail->data->unauth_token;
                     }
-                } catch () {
+                } catch (Exception $e) {
                     $message = 'You have entered incorrect sid or secret. Please try again!';
                     $status = 'error';
                 }
