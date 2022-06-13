@@ -1,4 +1,6 @@
 (function () {
+  "use strict";
+
   function openDesign(e) {
     var src = jQuery(e).data("url");
 

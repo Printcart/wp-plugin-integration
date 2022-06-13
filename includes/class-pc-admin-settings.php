@@ -1,9 +1,9 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-if (!class_exists('Pc_Admin_Settings')) {
+if (!class_exists('Printcart_Admin_Settings')) {
 
-    class Pc_Admin_Settings {
+    class Printcart_Admin_Settings {
 
         protected static $instance;
 
@@ -53,8 +53,8 @@ if (!class_exists('Pc_Admin_Settings')) {
             $message = '';
 
             if (isset($_POST['_action']) && $_POST['_action'] === 'submit') {
-                $printcart_sid      = isset($_POST['printcart_sid']) ? $_POST['printcart_sid'] : '';
-                $printcart_secret   = isset($_POST['printcart_secret']) ? $_POST['printcart_secret'] : '';
+                $printcart_sid      = isset($_POST['printcart_sid']) ? sanitize_text_field($_POST['printcart_sid']) : '';
+                $printcart_secret   = isset($_POST['printcart_secret']) ? sanitize_text_field($_POST['printcart_secret']) : '';
 
                 $config = array(
                     'Username'  => $printcart_sid,
@@ -62,18 +62,18 @@ if (!class_exists('Pc_Admin_Settings')) {
                 );
 
                 $unauth_token   = '';
-
+ 
                 try {
                     $printcart      = new PHPPrintcart\PrintcartSDK($config);
                     $storeDetail    = json_decode($printcart->Store()->get());
 
                     if ($storeDetail && isset($storeDetail->data) && isset($storeDetail->data->unauth_token)) {
-                        $message        = 'Your settings have been saved.';
+                        $message        = esc_html__('Your settings have been saved.', 'printcart-integration');
                         $status         = 'updated';
                         $unauth_token   = $storeDetail->data->unauth_token;
                     }
                 } catch (Exception $e) {
-                    $message = 'You have entered incorrect sid or secret. Please try again!';
+                    $message = esc_html__('You have entered incorrect sid or secret. Please try again!', 'printcart-integration');
                     $status = 'error';
                 }
 
@@ -85,7 +85,7 @@ if (!class_exists('Pc_Admin_Settings')) {
 
                 update_option('printcart_account', $printcart_account);
 
-                if ($message) echo '<div id="message" class="inline ' . $status . '" style="margin-left: 0;"><p><strong>' . $message . '</strong></p></div>';
+                if ($message) echo '<div id="message" class="inline ' . esc_attr($status) . '" style="margin-left: 0;"><p><strong>' . $message . '</strong></p></div>';
             }
 
             $this->printcart_form_settings($printcart_account);
@@ -94,19 +94,19 @@ if (!class_exists('Pc_Admin_Settings')) {
         public function printcart_form_settings($printcart_account) {
             ?>
             <div id="printcart-design">
-                <h1 class="title">Printcart Settings</h1>
+                <h1 class="title"><?php esc_html_e('Printcart Settings', 'printcart-integration') ?></h1>
                 <form method="post" action="" enctype="multipart/form-data">
                     <table class="form-table table table-striped">
                         <tbody>
                             <tr valign="top">
                                 <td colspan="2">
-                                    <p>To start using Princart, please insert your Printcart API keys to this form below.
-                                        You can get those keys in <a href="http://dashboard.printcart.com/settings">here</a></p><br>
+                                    <p><?php esc_html_e('To start using Princart, please insert your Printcart API keys to this form below.
+                                        You can get those keys in', 'printcart-integration'); ?> <a href="http://dashboard.printcart.com/settings"><?php esc_html_e('here', 'printcart-integration'); ?></a></p><br>
                                 </td>
                             </tr>
                             <tr valign="top">
                                 <th class="titledesc">
-                                    <label>Sid: <span class="printcart-help-tip"></span></label>
+                                    <label><?php esc_html_e('Sid: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
                                 </th>
                                 <td>
                                     <input name="printcart_sid" value="<?php echo isset($printcart_account['sid']) ? esc_attr($printcart_account['sid']) : ''; ?>" type="text" style="width: 400px" class="">
@@ -114,7 +114,7 @@ if (!class_exists('Pc_Admin_Settings')) {
                             </tr>
                             <tr valign="top">
                                 <th class="titledesc">
-                                    <label>Secret: <span class="printcart-help-tip"></span></label>
+                                    <label><?php esc_html_e('Secret: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
                                 </th>
                                 <td>
                                     <input name="printcart_secret" value="<?php echo isset($printcart_account['secret']) ? esc_attr($printcart_account['secret']) : ''; ?>" type="text" style="width: 400px" class="">
@@ -122,7 +122,7 @@ if (!class_exists('Pc_Admin_Settings')) {
                             </tr>
                             <tr valign="top">
                                 <th class="titledesc">
-                                    <label>Unauth token: <span class="printcart-help-tip"></span></label>
+                                    <label><?php esc_html_e('Unauth token: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
                                 </th>
                                 <td>
                                     <input name="printcart_unauth_token" value="<?php echo isset($printcart_account['unauth_token']) ? esc_attr($printcart_account['unauth_token']) : ''; ?>" disabled type="text" style="width: 400px" class="">
@@ -131,7 +131,7 @@ if (!class_exists('Pc_Admin_Settings')) {
                         </tbody>
                     </table>
                     <p class="submit">
-                        <button name="save" class="button-primary woocommerce-save-button" type="submit" value="Save changes">Save changes</button>
+                        <button name="save" class="button-primary woocommerce-save-button" type="submit" value="Save changes"><?php esc_html_e('Save changes', 'printcart-integration'); ?></button>
                         <input type="hidden" id="_action" name="_action" value="submit">
                     </p>
                 </form>
@@ -141,5 +141,5 @@ if (!class_exists('Pc_Admin_Settings')) {
     }
 }
 
-$printcart = Pc_Admin_Settings::instance();
-$printcart->init();
+$printcart_admin_settings = Printcart_Admin_Settings::instance();
+$printcart_admin_settings->init();
