@@ -10,7 +10,7 @@ Description: Create design buttons for WC products
 Version: 1.0.0
 Author: Printcart Team
 Author URI: https://printcart.com
-Text Domain: printcart-design
+Text Domain: printcart-integration
 WC requires at least: 6.0.0
 WC tested up to: 6.5.1
 PHP: >=7.0
@@ -26,7 +26,7 @@ require_once(PRINTCART_PLUGIN_DIR .    'vendor/autoload.php');
 
 register_activation_hook(__FILE__, 'printcart_plugin_activation');
 
-function printcart_plugin_activation($network_wide)
+function printcart_plugin_activation()
 {
     if (!is_plugin_active('woocommerce/woocommerce.php')) {
         $message = '<div class="error"><p>' . esc_html__('WooCommerce is not active. Please activate WooCommerce before using', 'printcart-integration') . ' <b>

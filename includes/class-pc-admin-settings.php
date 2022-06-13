@@ -62,7 +62,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
                 );
 
                 $unauth_token   = '';
-
+ 
                 try {
                     $printcart      = new PHPPrintcart\PrintcartSDK($config);
                     $storeDetail    = json_decode($printcart->Store()->get());
@@ -72,7 +72,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
                         $status         = 'updated';
                         $unauth_token   = $storeDetail->data->unauth_token;
                     }
-                } catch (Exception $e) {
+                } catch () {
                     $message = 'You have entered incorrect sid or secret. Please try again!';
                     $status = 'error';
                 }

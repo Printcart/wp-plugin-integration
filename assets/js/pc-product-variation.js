@@ -1,4 +1,6 @@
 (function () {
+  "use strict";
+
   jQuery(".variations_form").on("show_variation", function () {
     var variation_id = jQuery(".variations_form .variation_id").val();
 
