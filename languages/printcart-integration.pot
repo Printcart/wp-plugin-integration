@@ -1,10 +1,11 @@
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: printcart-intargration "
 "v1.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name "
 "<printcart@gmail.com>\n"
-"POT-Creation-Date: 2022-06-13 09:24+0700\n"
+"POT-Creation-Date: 2022-06-13 09:33+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Your Name <printcart@gmail."
 "com>\n"
@@ -83,4 +84,14 @@ msgstr ""
 #: includes/class-pc-hook.php:313
 #: includes/class-pc-hook.php:341
 msgid "Preview designs"
+msgstr ""
+
+#: printcart-design.php:32
+msgid ""
+"WooCommerce is not active. Please activate "
+"WooCommerce before using"
+msgstr ""
+
+#: printcart-design.php:33
+msgid "Printcart Integration"
 msgstr ""

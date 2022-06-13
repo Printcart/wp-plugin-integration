@@ -29,7 +29,8 @@ register_activation_hook(__FILE__, 'printcart_plugin_activation');
 function printcart_plugin_activation($network_wide)
 {
     if (!is_plugin_active('woocommerce/woocommerce.php')) {
-        $message = '<div class="error"><p>' . sprintf('WooCommerce is not active. Please activate WooCommerce before using %s.', '<b>Printcart Integration</b>') . '</p></div>';
+        $message = '<div class="error"><p>' . esc_html__('WooCommerce is not active. Please activate WooCommerce before using', 'printcart-integration') . ' <b>
+        ' . esc_html__('Printcart Integration', 'printcart-integration') . '</b></p></div>';
         die($message);
     }
 }
