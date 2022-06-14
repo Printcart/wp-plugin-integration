@@ -5,7 +5,7 @@ msgstr ""
 "v1.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name "
 "<printcart@gmail.com>\n"
-"POT-Creation-Date: 2022-06-13 15:26+0700\n"
+"POT-Creation-Date: 2022-06-14 09:48+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Your Name <printcart@gmail."
 "com>\n"
@@ -29,6 +29,12 @@ msgstr ""
 "X-Generator: Poedit 3.1\n"
 "X-Poedit-SearchPath-0: .\n"
 
+#: includes/class-pc-admin-settings.php:40
+#: includes/class-pc-admin-settings.php:41
+#: includes/class-pc-admin-settings.php:97
+msgid "Printcart Settings"
+msgstr ""
+
 #: includes/class-pc-admin-settings.php:71
 msgid "Your settings have been saved."
 msgstr ""
@@ -37,10 +43,6 @@ msgstr ""
 msgid ""
 "You have entered incorrect sid or secret. "
 "Please try again!"
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:97
-msgid "Printcart Settings"
 msgstr ""
 
 #: includes/class-pc-admin-settings.php:103
@@ -71,32 +73,32 @@ msgstr ""
 msgid "Save changes"
 msgstr ""
 
-#: includes/class-pc-hook.php:167
+#: includes/class-pc-hook.php:166
 msgid "Printcart Customer Design"
 msgstr ""
 
-#: includes/class-pc-hook.php:185
+#: includes/class-pc-hook.php:184
 msgid "Product:"
 msgstr ""
 
-#: includes/class-pc-hook.php:203
+#: includes/class-pc-hook.php:202
 msgid "View design"
 msgstr ""
 
-#: includes/class-pc-hook.php:212
+#: includes/class-pc-hook.php:211
 msgid "No design in this order"
 msgstr ""
 
-#: includes/class-pc-hook.php:214
+#: includes/class-pc-hook.php:213
 msgid "Invalid Api Token"
 msgstr ""
 
-#: includes/class-pc-hook.php:233
+#: includes/class-pc-hook.php:232
 msgid "View project"
 msgstr ""
 
-#: includes/class-pc-hook.php:315
-#: includes/class-pc-hook.php:343
+#: includes/class-pc-hook.php:314
+#: includes/class-pc-hook.php:342
 msgid "Preview designs"
 msgstr ""
 
