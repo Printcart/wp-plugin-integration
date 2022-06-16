@@ -37,8 +37,8 @@ if (!class_exists('Printcart_Admin_Settings')) {
         public function printcart_add_admin_menu() {
             add_submenu_page(
                 'options-general.php',
-                'Printcart Settings',
-                'Printcart Settings',
+                esc_html__('Printcart Settings', 'printcart-integration'),
+                esc_html__('Printcart Settings', 'printcart-integration'),
                 'manage_options',
                 'printcart-design',
                 array($this, 'printcart_settings')
@@ -68,12 +68,12 @@ if (!class_exists('Printcart_Admin_Settings')) {
                     $storeDetail    = json_decode($printcart->Store()->get());
 
                     if ($storeDetail && isset($storeDetail->data) && isset($storeDetail->data->unauth_token)) {
-                        $message        = esc_html__('Your settings have been saved.', 'printcart-integration');
+                        $message        = __('Your settings have been saved.', 'printcart-integration');
                         $status         = 'updated';
                         $unauth_token   = $storeDetail->data->unauth_token;
                     }
                 } catch (Exception $e) {
-                    $message = esc_html__('You have entered incorrect sid or secret. Please try again!', 'printcart-integration');
+                    $message = __('You have entered incorrect sid or secret. Please try again!', 'printcart-integration');
                     $status = 'error';
                 }
 
@@ -85,7 +85,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
 
                 update_option('printcart_account', $printcart_account);
 
-                if ($message) echo '<div id="message" class="inline ' . esc_attr($status) . '" style="margin-left: 0;"><p><strong>' . $message . '</strong></p></div>';
+                if ($message) echo '<div id="message" class="inline ' . esc_attr($status) . '" style="margin-left: 0;"><p><strong>' . esc_html($message) . '</strong></p></div>';
             }
 
             $this->printcart_form_settings($printcart_account);
