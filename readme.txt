@@ -48,8 +48,16 @@ Our friendly team will assist you from implementation to launch. Email to suppor
 You can learn more about the user manual and developer guide [here](https://docs.printcart.com/docs).
 
 == Screenshots ==
-1. 
-2. 
+1. Printcart Design Tool Template
+2. Printcart Design Tool Text
+3. Printcart Design Tool Tliparts
+4. Printcart Design Tool Photos
+5. Printcart Design Tool Elements
+6. Printcart Design Tool Layers
+7. Printcart dashboard Projects
+8. Printcart dashboard Products
+9. Printcart dashboard Settings
+10. Printcart integration
 == ChangeLog ==
 = Version 1.0.0 =
 * Initial release!
