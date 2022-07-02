@@ -1,6 +1,6 @@
-=== Printcart Integration ===
+=== Printcart Web to Print ===
 Contributors: printcart-dev
-Tags: code, source, sourcecode, php, web2print, printing, customizer, product customizer, ecommerce, api
+Tags: product customizer, product designer, web2print, printing, customizer, ecommerce, api, code, source, sourcecode, php,
 Requires at least: 5.0
 Tested up to: 6.0
 Stable tag: 1.0.0
@@ -15,6 +15,11 @@ Printcart helps Printing startup founders and entrepreneurs to boost sales of th
 
 ### THE REVOLUTION OF PRINTING INDUSTRY
 **[Printcart](https://www.printcart.com/)** allows you to easily integrate Web-to-Print solutions to your website with innovative eCommerce technologies with better operations at a much lower cost. Our mission is to provide B2B SaaS the solution for any Traditional printing startups and enterprises that need a revolution.
+### Installation
+**Setup WordPress Printcart**
+<iframe width="611" height="344" src="https://www.youtube.com/embed/sC3hGgwftTI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+**Configure and start design on Printcart WordPress**
+<iframe width="611" height="344" src="https://www.youtube.com/embed/ToQ-mJ65d70" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 - **Cloud Print API Techology:** Manage the entire printing workflow seamlessly from products, projects and design on a Dashboard.
 
