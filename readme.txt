@@ -50,7 +50,7 @@ Install it for FREE today and see how these amazing features renovate your store
 Our friendly team will assist you from implementation to launch. Email to support@printcart.com and we typically reply to all questions in the same day. 
 
 ### DOCUMENTATION
-You can learn more about the user manual and developer guide [here](https://docs.printcart.com/docs).
+You can learn more about the user manual and developer guide [here](https://docs.printcart.com/).
 
 == Screenshots ==
 1. Printcart Design Tool Template
