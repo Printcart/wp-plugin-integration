@@ -77,7 +77,7 @@ Sticker Design & Printing
 Label Design & Printing
 Logo & Printing
 Pillow Design & Printing
-[View all demo](https://solution.printcart.com/wordpress-plugins/woocommerce-online-product-designer-plugin#demo)
+[View all demo](https://solution.printcart.com/app/wordpress-web-2-print-product-designer-plugin#demo)
 
 ### OTHER FEATURES
 **Auto fill template image placeholders**
