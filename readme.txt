@@ -132,6 +132,52 @@ Our friendly team will assist you from implementation to launch. Email to suppor
 ### DOCUMENTATION
 You can learn more about the user manual and developer guide [here](https://docs.printcart.com/).
 
+== Frequently Asked Questions ==
+
+= Do you provide custom development services? =
+
+Yes, we are happy to provide custom development services.
+
+= Customize new features as request? =
+
+Every business is different, whether that be the type, size, location, and the work that they do. List your request details Provide your reference sample or your own mockup file.
+
+= Create product builder (Configuration) =
+
+To be suitable for multi-component layering products: Clothes, Bag, Bike, Table, Chair, Cabinet... File format: PSD, AI… Layer of Components: Folds, Shadows Variations, Quantity of Materials/Colors of each Component Number of View:angle of View (Front, Top, Inside)
+
+= Deploy and synchronize data on cloud services =
+
+If a customer want to save his website data on cloud service, like Amazone S3 or Google Cloud Storage, choose this service.
+
+= Improve speed of loading design =
+
+The time of loading design depends on many factors such as server, size of design.
+
+= How can i upload images from Adobe Illustrator or, PSD file for design? =
+
+Printcart designer allows you to input the files with the below format: .jpg, .png, .svg. And you can download files to .jpg, png, .svg, or export to .pdf file. So if you want to upload images from Adobe Illustrator, you need to convert the image files to .jpg, .png, .svg file types.
+
+= Is Printcart plugin free of charge to use? =
+
+Printcart Web2Print Product Designer is a pure plug-n-play online editor powered with a centralized print order management software that works for all sorts of businesses be it print service providers, packaging manufacturers, garment decorators, promotional gift suppliers, brand management, marketing organizations, graphics designers, digital assets management, franchise businesses, in-plant printers, or a trade organization.
+This plugin is free-of-charge to install and configure products and receive some amount of order as a free account. After that you can upgrade to premium account to enjoy greater benefit.
+
+= What is Printcart API benefit? =
+
+This WP plugin is developed with latest Cloud Print API Techology: Manage the entire printing workflow seamlessly from products, projects and design on a Dashboard.
+
+No more re-platforming, just integrate through API
+No more loosing on SEO and website traffic
+Reduce the number of software installations and licensing fee
+Centralize your pre-press work and reduce production cost
+Manage more work in the most profitable way possible
+Offers thousands of pre-made templates to choose from
+
+= Is it compatible with any kinds of WooCommerce Theme? =
+
+Yes, it’s compatible with any WooCommerce theme including Flatsome / OceanWP / Astra / X-Theme / Avada / Uncode / Storefront / Labomba / WR Nitro / Divi / BeTheme…But sometimes it may require small css tweak. We are open for frontend customization request.
+
 == Screenshots ==
 1. Printcart Design Tool Template
 2. Printcart Design Tool Text
@@ -143,6 +189,7 @@ You can learn more about the user manual and developer guide [here](https://docs
 8. Printcart dashboard Products
 9. Printcart dashboard Settings
 10. Printcart integration
+
 == ChangeLog ==
 = Version 1.0.0 =
 * Initial release!
