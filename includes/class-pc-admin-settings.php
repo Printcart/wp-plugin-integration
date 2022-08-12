@@ -97,8 +97,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
         public function printcart_form_settings($printcart_account) {
             $user = wp_get_current_user();
             $user_email = $user->user_email;
-            // $url = 'http://dashboard.printcart.com/authorize';
-            $url = 'http://localhost:3000/authorize';
+            $url = 'http://dashboard.printcart.com/authorize';
 
             $return_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
