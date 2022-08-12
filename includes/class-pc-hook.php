@@ -67,7 +67,8 @@ if (!class_exists('Printcart_Product_Hook')) {
 
         public function printcart_ajax() {
             $ajax_events = array(
-                'printcart_get_product_integration_by_variation' => true
+                'printcart_get_product_integration_by_variation' => true,
+                'printcart_generate_key' => true
             );
 
             foreach ($ajax_events as $ajax_event => $nopriv) {
@@ -374,6 +375,50 @@ if (!class_exists('Printcart_Product_Hook')) {
         }
 
         /**
+         *  Callback ajax generate key
+         */
+        public function printcart_generate_key() {
+            global $wpdb;
+            $description = __('Printcart integration', 'printcart-integration');
+			$permissions = 'read_write';
+			$user_id     = get_current_user_id();
+            $response      = array();
+            $consumer_key    = 'ck_' . wc_rand_hash();
+            $consumer_secret = 'cs_' . wc_rand_hash();
+
+            if ( !$user_id || ($user_id && ! current_user_can( 'edit_user', $user_id )) ) {
+				throw new Exception( __( 'You do not have permission to assign API Keys to the selected user.', 'printcart-integration' ) );
+			}
+
+            $data = array(
+                'user_id'         => $user_id,
+                'description'     => $description,
+                'permissions'     => $permissions,
+                'consumer_key'    => wc_api_hash( $consumer_key ),
+                'consumer_secret' => $consumer_secret,
+                'truncated_key'   => substr( $consumer_key, -7 ),
+            );
+
+            $wpdb->insert(
+                $wpdb->prefix . 'woocommerce_api_keys',
+                $data,
+                array(
+                    '%d',
+                    '%s',
+                    '%s',
+                    '%s',
+                    '%s',
+                    '%s',
+                )
+            );
+
+            $response['consumer_key']    = $consumer_key;
+			$response['consumer_secret'] = $consumer_secret;
+            wp_send_json_success($response);
+            die();
+        }
+
+        /**
          *  Hide item _printcart_designs
          */
         public function printcart_add_hidden_order_items($order_items) {
@@ -401,7 +446,14 @@ if (!class_exists('Printcart_Product_Hook')) {
         }
 
         public function printcart_admin_enqueue_scripts() {
-            wp_enqueue_script('printcart', PRINTCART_PLUGIN_URL . 'assets/js/pc-admin.js', array(), PRINTCART_VERSION);
+            wp_register_script('printcart-admin', PRINTCART_PLUGIN_URL . 'assets/js/pc-admin.js', array(), PRINTCART_VERSION);
+
+            $args = array(
+                'url'   => admin_url('admin-ajax.php'),
+            );
+            wp_localize_script('printcart-admin', 'pc_admin', $args);
+
+            wp_enqueue_script('printcart-admin');
 
             wp_enqueue_style('printcart', PRINTCART_PLUGIN_URL . 'assets/css/pc-admin.css', array(), PRINTCART_VERSION);
         }
