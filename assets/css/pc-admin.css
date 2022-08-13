@@ -28,3 +28,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+a.pc-connect-dashboard {
+  color: #ffffff;
+  text-decoration: none;
+}
+a.pc-connect-dashboard:hover {
+  color: #ffffff;
+}
