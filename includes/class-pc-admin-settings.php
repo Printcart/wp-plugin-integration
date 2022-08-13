@@ -99,7 +99,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
             $user_email = $user->user_email;
             $user_name = ($user->user_firstname ? $user->user_firstname . ' ' : '') . $user->user_lastname;
             $name = $user->display_name ? $user->display_name : $user_name;
-            $url = 'http://dashboard.printcart.com/authorize';
+            $url = PRINTCART_BACKOFFICE_URL . '/authorize';
 
             $return_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
