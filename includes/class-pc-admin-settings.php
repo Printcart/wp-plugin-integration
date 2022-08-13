@@ -62,12 +62,12 @@ if (!class_exists('Printcart_Admin_Settings')) {
                 );
 
                 $unauth_token   = '';
-                
-                if($printcart_sid && $printcart_secret) {
+
+                if ($printcart_sid && $printcart_secret) {
                     try {
                         $printcart      = new PHPPrintcart\PrintcartSDK($config);
                         $storeDetail    = json_decode($printcart->Store()->get());
-    
+
                         if ($storeDetail && isset($storeDetail->data) && isset($storeDetail->data->unauth_token)) {
                             $message        = __('Your settings have been saved.', 'printcart-integration');
                             $status         = 'updated';
@@ -97,6 +97,8 @@ if (!class_exists('Printcart_Admin_Settings')) {
         public function printcart_form_settings($printcart_account) {
             $user = wp_get_current_user();
             $user_email = $user->user_email;
+            $user_name = ($user->user_firstname ? $user->user_firstname . ' ' : '') . $user->user_lastname;
+            $name = $user->display_name ? $user->display_name : $user_name;
             $url = 'http://dashboard.printcart.com/authorize';
 
             $return_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -108,10 +110,14 @@ if (!class_exists('Printcart_Admin_Settings')) {
             $url .= '?return_url=' . urlencode($return_url) . '&home_url=' . urlencode($home_url) . '&callback_url=' . urlencode($callback_url);
 
 
-            if($user_email) {
-               $url .= '&email=' .  $user_email;
+            if ($user_email) {
+                $url .= '&email=' .  $user_email;
             }
-            ?>
+
+            if ($name) {
+                $url .= '&name=' .  $name;
+            }
+?>
             <div id="printcart-design">
                 <h1 class="title"><?php esc_html_e('Printcart Settings', 'printcart-integration') ?></h1>
                 <form method="post" action="" enctype="multipart/form-data">
@@ -135,7 +141,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
                                     <label><?php esc_html_e('Sid: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
                                 </th>
                                 <td>
-                                    <input name="printcart_sid" value="<?php echo isset($printcart_account['sid']) ? esc_attr($printcart_account['sid']) : ''; ?>" type="text" style="width: 400px" class="">
+                                    <input name="printcart_sid" value="<?php echo isset($printcart_account['sid']) ? esc_attr($printcart_account['sid']) : ''; ?>" disabled type="text" style="width: 400px" class="">
                                 </td>
                             </tr>
                             <tr valign="top">
@@ -143,7 +149,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
                                     <label><?php esc_html_e('Secret: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
                                 </th>
                                 <td>
-                                    <input name="printcart_secret" value="<?php echo isset($printcart_account['secret']) ? esc_attr($printcart_account['secret']) : ''; ?>" type="text" style="width: 400px" class="">
+                                    <input name="printcart_secret" value="<?php echo isset($printcart_account['secret']) ? esc_attr($printcart_account['secret']) : ''; ?>" disabled type="text" style="width: 400px" class="">
                                 </td>
                             </tr>
                             <tr valign="top">
@@ -162,7 +168,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
                     </p>
                 </form>
             </div>
-            <?php
+<?php
         }
     }
 }
