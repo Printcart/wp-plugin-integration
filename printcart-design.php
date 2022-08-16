@@ -7,7 +7,7 @@
 Plugin Name: Printcart Integration
 Plugin URI: https://printcart.com
 Description: Create design buttons for WC products
-Version: 1.0.0
+Version: 1.1.0
 Author: Printcart Team
 Author URI: https://printcart.com
 Text Domain: printcart-integration
