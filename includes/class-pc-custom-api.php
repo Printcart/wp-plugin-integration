@@ -25,7 +25,7 @@ if (!class_exists('Printcart_REST_Custom_Controller')) {
 		public function register_routes() {
 			register_rest_route( $this->namespace, '/' . $this->rest_base.'/api-key',
 				array(
-					'methods'  => WP_REST_Server::EDITABLE,
+					'methods'  => WP_REST_Server::READABLE,
 					'callback' => array( $this, 'update_api_key' ),
 					'permission_callback' => array( $this, 'check_permission_unauth' ),
 				)
