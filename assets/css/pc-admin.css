@@ -35,3 +35,43 @@ a.pc-connect-dashboard {
 a.pc-connect-dashboard:hover {
   color: #ffffff;
 }
+
+#printcart-design .printcart-logo {
+  height: 60px;
+  margin-bottom: 20px;
+}
+#printcart-design {
+  margin: 0 auto;
+  text-align: center;
+  max-width: 45rem;
+  padding: 1.5rem;
+}
+#printcart-design .printcart-box {
+  box-sizing: border-box;
+  background: white;
+  border: 1px solid rgba(200, 215, 225, 0.5);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+#printcart-design .printcart-setup-instructions h2 {
+  padding: 10px;
+}
+#printcart-design .printcart-setup-instructions .pc-connect-dashboard {
+  padding: 4px 20px;
+  background-color: #2f7bf8;
+}
+.printcart-form {
+  display: none;
+}
+.printcart-connected-wrap {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+.printcart-connected-wrap svg {
+  height: 16px;
+  width: 16px;
+}
+.printcart-connected-text {
+  margin-left: 4px;
+}

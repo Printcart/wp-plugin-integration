@@ -51,6 +51,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
         public function printcart_settings() {
             $printcart_account = get_option('printcart_account');
             $message = '';
+            $status = '';
 
             if (isset($_POST['_action']) && $_POST['_action'] === 'submit') {
                 $printcart_sid      = isset($_POST['printcart_sid']) ? sanitize_text_field($_POST['printcart_sid']) : '';
@@ -87,23 +88,27 @@ if (!class_exists('Printcart_Admin_Settings')) {
                 );
 
                 update_option('printcart_account', $printcart_account);
-
-                if ($message) echo '<div id="message" class="inline ' . esc_attr($status) . '" style="margin-left: 0;"><p><strong>' . esc_html($message) . '</strong></p></div>';
             }
 
-            $this->printcart_form_settings($printcart_account);
+            $result = array(
+                'message'       => $message,
+                'status'    => $status,
+            );
+
+            $this->printcart_form_settings($printcart_account, $result);
         }
 
-        public function printcart_form_settings($printcart_account) {
-            $user = wp_get_current_user();
+        public function printcart_form_settings($printcart_account, $result) {
+            $user       = wp_get_current_user();
             $user_email = $user->user_email;
-            $user_name = ($user->user_firstname ? $user->user_firstname . ' ' : '') . $user->user_lastname;
-            $name = $user->display_name ? $user->display_name : $user_name;
-            $url = PRINTCART_BACKOFFICE_URL . '/authorize';
+            $user_name  = ($user->user_firstname ? $user->user_firstname . ' ' : '') . $user->user_lastname;
+            $name       = $user->display_name ? $user->display_name : $user_name;
+            $url        = PRINTCART_BACKOFFICE_URL . '/authorize';
+            $site_title = get_bloginfo();
 
             $return_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
-            $home_url = home_url();
+            $home_url   = home_url();
 
             $callback_url = trim(home_url(), '/') . '/wp-json/wc/v3/printcart/api-key';
 
@@ -117,56 +122,83 @@ if (!class_exists('Printcart_Admin_Settings')) {
             if ($name) {
                 $url .= '&name=' .  $name;
             }
+
+            if ($site_title) {
+                $url .= '&site_title=' .  $site_title;
+            }
 ?>
             <div id="printcart-design">
-                <h1 class="title"><?php esc_html_e('Printcart Settings', 'printcart-integration') ?></h1>
-                <form method="post" action="" enctype="multipart/form-data">
-                    <table class="form-table table table-striped">
-                        <tbody>
-                            <tr valign="top">
-                                <td colspan="2">
-                                    <p><?php esc_html_e('To start using Princart, please insert your Printcart API keys to this form below.', 'printcart-integration'); ?></p>
-                                </td>
-                            </tr>
-                            <tr valign="top">
-                                <th>
-                                    <span><?php esc_html_e('You can get those keys by', 'printcart-integration'); ?></span>
-                                </th>
-                                <td>
-                                    <div class="pc-connect-dashboard button-primary" data-url="<?php echo esc_attr($url); ?>" target="_blank"><?php esc_html_e('Generate key and Connect to Dashboard', 'printcart-integration'); ?></div>
-                                </td>
-                            </tr>
-                            <tr valign="top">
-                                <th class="titledesc">
-                                    <label><?php esc_html_e('Sid: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
-                                </th>
-                                <td>
-                                    <input name="printcart_sid" value="<?php echo isset($printcart_account['sid']) ? esc_attr($printcart_account['sid']) : ''; ?>" disabled type="text" style="width: 400px" class="">
-                                </td>
-                            </tr>
-                            <tr valign="top">
-                                <th class="titledesc">
-                                    <label><?php esc_html_e('Secret: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
-                                </th>
-                                <td>
-                                    <input name="printcart_secret" value="<?php echo isset($printcart_account['secret']) ? esc_attr($printcart_account['secret']) : ''; ?>" disabled type="text" style="width: 400px" class="">
-                                </td>
-                            </tr>
-                            <tr valign="top">
-                                <th class="titledesc">
-                                    <label><?php esc_html_e('Unauth token: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
-                                </th>
-                                <td>
-                                    <input name="printcart_unauth_token" value="<?php echo isset($printcart_account['unauth_token']) ? esc_attr($printcart_account['unauth_token']) : ''; ?>" disabled type="text" style="width: 400px" class="">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="submit">
-                        <button name="save" class="button-primary" type="submit" value="Save changes"><?php esc_html_e('Save changes', 'printcart-integration'); ?></button>
-                        <input type="hidden" id="_action" name="_action" value="submit">
-                    </p>
-                </form>
+                <img src="<?php echo PRINTCART_PLUGIN_URL . 'assets/images/logo-printcart.svg'; ?>" class="printcart-logo" />
+                <div class="printcart-box">
+                    <div class="printcart-setup-instructions">
+                        <h2><?php esc_html_e('Connect the Printcart Dashboard to your site', 'printcart-integration'); ?></h2>
+                        <div class="pc-connect-dashboard button-primary" data-url="<?php echo esc_attr($url); ?>" target="_blank"><?php esc_html_e('Connect to Dashboard', 'printcart-integration'); ?></div>
+                    </div>
+                    <div class="printcart-connected-wrap">
+                        <?php
+                        if (isset($printcart_account['unauth_token']) && $printcart_account['unauth_token']) {
+                        ?>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#008000" class="bi bi-check-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                            </svg>
+                            <span class="printcart-connected-text" style="color: #008000"><b><?php esc_html_e('The plugin has been connected to the Printcart dashboard.', 'printcart-integration'); ?>
+                                </b></span>
+                        <?php
+                        } else {
+                        ?>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffa500" class="bi bi-x-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                            <span class="printcart-connected-text" style="color: #ffa500"><b><?php esc_html_e('The plugin has not been connected to the Printcart dashboard!', 'printcart-integration'); ?></b></span>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+                <div class="printcart-box">
+                    <a class="manually-key" href=""><?php esc_html_e('Manually enter an API key', 'printcart-integration'); ?></a>
+                    <?php
+                    if (isset($result['message']) && $result['message'] && isset($result['status']) && $result['status']) {
+                        echo '<div id="message" class="inline ' . esc_attr($result['status']) . '" style="margin-left: 0;"><p><strong>' . esc_html($result['message']) . '</strong></p></div>';
+                    }
+                    ?>
+                    <form class="printcart-form" method="post" action="" enctype="multipart/form-data">
+                        <table class="form-table table table-striped">
+                            <tbody>
+                                <tr valign="top">
+                                    <th class="titledesc">
+                                        <label><?php esc_html_e('Sid: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
+                                    </th>
+                                    <td>
+                                        <input name="printcart_sid" value="<?php echo isset($printcart_account['sid']) ? esc_attr($printcart_account['sid']) : ''; ?>" type="text" style="width: 400px" class="">
+                                    </td>
+                                </tr>
+                                <tr valign="top">
+                                    <th class="titledesc">
+                                        <label><?php esc_html_e('Secret: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
+                                    </th>
+                                    <td>
+                                        <input name="printcart_secret" value="<?php echo isset($printcart_account['secret']) ? esc_attr($printcart_account['secret']) : ''; ?>" type="text" style="width: 400px" class="">
+                                    </td>
+                                </tr>
+                                <tr valign="top">
+                                    <th class="titledesc">
+                                        <label><?php esc_html_e('Unauth token: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
+                                    </th>
+                                    <td>
+                                        <input name="printcart_unauth_token" value="<?php echo isset($printcart_account['unauth_token']) ? esc_attr($printcart_account['unauth_token']) : ''; ?>" disabled type="text" style="width: 400px" class="">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="submit">
+                            <button name="save" class="button-primary" type="submit" value="Save changes"><?php esc_html_e('Save changes', 'printcart-integration'); ?></button>
+                            <input type="hidden" id="_action" name="_action" value="submit">
+                        </p>
+                    </form>
+                </div>
             </div>
 <?php
         }

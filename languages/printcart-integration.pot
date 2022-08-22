@@ -5,7 +5,7 @@ msgstr ""
 "v1.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name "
 "<printcart@gmail.com>\n"
-"POT-Creation-Date: 2022-08-12 10:45+0700\n"
+"POT-Creation-Date: 2022-08-22 10:48+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Your Name <printcart@gmail."
 "com>\n"
@@ -31,47 +31,57 @@ msgstr ""
 
 #: includes/class-pc-admin-settings.php:40
 #: includes/class-pc-admin-settings.php:41
-#: includes/class-pc-admin-settings.php:117
 msgid "Printcart Settings"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:72
+#: includes/class-pc-admin-settings.php:73
 msgid "Your settings have been saved."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:77
+#: includes/class-pc-admin-settings.php:78
 msgid ""
 "You have entered incorrect sid or secret. "
 "Please try again!"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:123
+#: includes/class-pc-admin-settings.php:134
 msgid ""
-"To start using Princart, please insert your "
-"Printcart API keys to this form below."
+"Connect the Printcart Dashboard to your site"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:128
-msgid "You can get those keys by"
+#: includes/class-pc-admin-settings.php:135
+msgid "Connect to Dashboard"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:131
-msgid "Generate key and Connect to Dashboard"
+#: includes/class-pc-admin-settings.php:145
+msgid ""
+"The plugin has been connected to the "
+"Printcart dashboard."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:136
-msgid "Sid: "
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:144
-msgid "Secret: "
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:152
-msgid "Unauth token: "
+#: includes/class-pc-admin-settings.php:154
+msgid ""
+"The plugin has not been connected to the "
+"Printcart dashboard!"
 msgstr ""
 
 #: includes/class-pc-admin-settings.php:161
+msgid "Manually enter an API key"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:172
+msgid "Sid: "
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:180
+msgid "Secret: "
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:188
+msgid "Unauth token: "
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:197
 msgid "Save changes"
 msgstr ""
 
@@ -114,12 +124,12 @@ msgid ""
 "Keys to the selected user."
 msgstr ""
 
-#: printcart-design.php:33
+#: printcart-design.php:34
 msgid ""
 "WooCommerce is not active. Please activate "
 "WooCommerce before using"
 msgstr ""
 
-#: printcart-design.php:34
+#: printcart-design.php:35
 msgid "Printcart Integration"
 msgstr ""

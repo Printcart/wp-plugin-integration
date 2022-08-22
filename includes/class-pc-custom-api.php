@@ -43,10 +43,10 @@ if (!class_exists('Printcart_REST_Custom_Controller')) {
 
 			if($sid && $secret && $unauth_token) {
 				$printcart_account  = array(
-                    'sid'           => $sid,
-                    'secret'        => $secret,
-                    'unauth_token'  => $unauth_token,
-                );
+					'sid'           => $sid,
+					'secret'        => $secret,
+					'unauth_token'  => $unauth_token,
+				);
 				update_option('printcart_account', $printcart_account);
 				$data['result'] = true;
 			}
