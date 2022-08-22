@@ -399,6 +399,15 @@ if (!class_exists('Printcart_Product_Hook')) {
                 'truncated_key'   => substr( $consumer_key, -7 ),
             );
 
+            // Delete all previously generated keys
+            $wpdb->delete(
+                $wpdb->prefix . 'woocommerce_api_keys',
+                array(
+                    'user_id'         => $user_id,
+                    'description'     => $description,
+                )
+            );
+
             $wpdb->insert(
                 $wpdb->prefix . 'woocommerce_api_keys',
                 $data,

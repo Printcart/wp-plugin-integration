@@ -29,10 +29,20 @@ register_activation_hook(__FILE__, 'printcart_plugin_activation');
 
 function printcart_plugin_activation()
 {
+    add_option('printcart_plugin_do_activation_redirect', true);
     if (!is_plugin_active('woocommerce/woocommerce.php')) {
         $message = '<div class="error"><p>' . esc_html__('WooCommerce is not active. Please activate WooCommerce before using', 'printcart-integration') . ' <b>
         ' . esc_html__('Printcart Integration', 'printcart-integration') . '</b></p></div>';
         die($message);
+    }
+}
+
+add_action('admin_init', 'printcart_plugin_redirect');
+
+function printcart_plugin_redirect() {
+    if (get_option('printcart_plugin_do_activation_redirect', false)) {
+        delete_option('printcart_plugin_do_activation_redirect');
+        wp_redirect( add_query_arg( array( 'page' => 'printcart-design' ), admin_url( 'options-general.php' ) ) );
     }
 }
 
@@ -50,3 +60,4 @@ define('PRINTCART_JS_SDK_URL',            'https://sdk.printcart.com/customizer/
  *  backoffice Url
  */
 define('PRINTCART_BACKOFFICE_URL',         'https://dashboard.printcart.com');
+

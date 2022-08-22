@@ -55,5 +55,9 @@
         },
       });
     });
+    $(".manually-key").on("click", function (e) {
+      e.preventDefault();
+      $(".printcart-form").toggle("active");
+    });
   });
 })();
