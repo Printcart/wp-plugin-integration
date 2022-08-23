@@ -53,10 +53,11 @@ a.pc-connect-dashboard:hover {
   padding: 16px;
   margin-bottom: 16px;
 }
-#printcart-design .printcart-setup-instructions h2 {
+#printcart-design .printcart-setup-instructions h1 {
   padding: 10px;
 }
-#printcart-design .printcart-setup-instructions .pc-connect-dashboard {
+#printcart-design .pc-connect-dashboard,
+#printcart-design .pc-button-dashboard {
   padding: 4px 20px;
   background-color: #2f7bf8;
 }
