@@ -136,7 +136,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
                     if (isset($printcart_account['unauth_token']) && $printcart_account['unauth_token']) {
                     ?>
                         <div class="printcart-setup-instructions">
-                            <h1><?php esc_html_e('Congratulations', 'printcart-integration'); ?></h1>
+                            <h1><?php esc_html_e('Congratulations!', 'printcart-integration'); ?></h1>
                         </div>
                         <div class="printcart-connected-wrap">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#008000" class="bi bi-check-circle" viewBox="0 0 16 16">
