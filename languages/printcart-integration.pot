@@ -5,7 +5,7 @@ msgstr ""
 "v1.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name "
 "<printcart@gmail.com>\n"
-"POT-Creation-Date: 2022-08-22 10:48+0700\n"
+"POT-Creation-Date: 2022-08-23 16:12+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Your Name <printcart@gmail."
 "com>\n"
@@ -44,81 +44,89 @@ msgid ""
 "Please try again!"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:134
-msgid ""
-"Connect the Printcart Dashboard to your site"
+#: includes/class-pc-admin-settings.php:139
+msgid "Congratulations"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:135
-msgid "Connect to Dashboard"
+#: includes/class-pc-admin-settings.php:146
+msgid ""
+"Your website has been successfully "
+"connected to the Printcart dashboard."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:145
-msgid ""
-"The plugin has been connected to the "
-"Printcart dashboard."
+#: includes/class-pc-admin-settings.php:149
+msgid "Go to Dashboard"
 msgstr ""
 
 #: includes/class-pc-admin-settings.php:154
 msgid ""
-"The plugin has not been connected to the "
-"Printcart dashboard!"
+"Connect the Printcart Dashboard to your site"
 msgstr ""
 
 #: includes/class-pc-admin-settings.php:161
+msgid ""
+"Your website has failed to connect to the "
+"Printcart dashboard!"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:163
+msgid "Connect to Dashboard"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:169
 msgid "Manually enter an API key"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:172
+#: includes/class-pc-admin-settings.php:180
 msgid "Sid: "
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:180
+#: includes/class-pc-admin-settings.php:188
 msgid "Secret: "
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:188
+#: includes/class-pc-admin-settings.php:196
 msgid "Unauth token: "
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:197
+#: includes/class-pc-admin-settings.php:205
 msgid "Save changes"
 msgstr ""
 
-#: includes/class-pc-hook.php:167
+#: includes/class-pc-hook.php:169
 msgid "Printcart Customer Design"
 msgstr ""
 
-#: includes/class-pc-hook.php:185
+#: includes/class-pc-hook.php:187
 msgid "Product:"
 msgstr ""
 
-#: includes/class-pc-hook.php:203
+#: includes/class-pc-hook.php:205
 msgid "View design"
 msgstr ""
 
-#: includes/class-pc-hook.php:212
+#: includes/class-pc-hook.php:214
 msgid "No design in this order"
 msgstr ""
 
-#: includes/class-pc-hook.php:214
+#: includes/class-pc-hook.php:216
 msgid "Invalid Api Token"
 msgstr ""
 
-#: includes/class-pc-hook.php:233
+#: includes/class-pc-hook.php:235
 msgid "View project"
 msgstr ""
 
-#: includes/class-pc-hook.php:315
-#: includes/class-pc-hook.php:343
+#: includes/class-pc-hook.php:317
+#: includes/class-pc-hook.php:345
 msgid "Preview designs"
 msgstr ""
 
-#: includes/class-pc-hook.php:382
+#: includes/class-pc-hook.php:384
 msgid "Printcart integration"
 msgstr ""
 
-#: includes/class-pc-hook.php:390
+#: includes/class-pc-hook.php:392
 msgid ""
 "You do not have permission to assign API "
 "Keys to the selected user."
@@ -132,4 +140,8 @@ msgstr ""
 
 #: printcart-design.php:35
 msgid "Printcart Integration"
+msgstr ""
+
+#: printcart-design.php:54
+msgid "Settings"
 msgstr ""
