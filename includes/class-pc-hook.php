@@ -138,26 +138,28 @@ if (!class_exists('Printcart_Product_Hook')) {
         }
 
         public function printcart_add_sdk() {
-            global $product;
-            
-            $product_integration    = $this->printcart_get_product_integration();
-            $product_id             = isset($product_integration['id']) ? $product_integration['id'] : '';
-            $enable_design          = isset($product_integration['enable_design']) ? $product_integration['enable_design'] : '';
-            $printcart_account      = get_option('printcart_account');
+            if(is_single()) {
+                global $product;
 
-            echo '<div id="printcart-design-tool-sdk-wrap">';
+                $product_integration    = $this->printcart_get_product_integration();
+                $product_id             = isset($product_integration['id']) ? $product_integration['id'] : '';
+                $enable_design          = isset($product_integration['enable_design']) ? $product_integration['enable_design'] : '';
+                $printcart_account      = get_option('printcart_account');
 
-            if ($product_id && isset($printcart_account['unauth_token'])) {
-                echo '<script type="text/javascript" async="" id="printcart-design-tool-sdk" data-unauthtoken="' . esc_attr($printcart_account['unauth_token'])
-                . '" data-productid="' . esc_attr($product_id) . '" src="' . esc_url(PRINTCART_JS_SDK_URL) . '"></script>';
-            }
+                echo '<div id="printcart-design-tool-sdk-wrap">';
 
-            echo '</div>';
+                if ($product_id && isset($printcart_account['unauth_token'])) {
+                    echo '<script type="text/javascript" async="" id="printcart-design-tool-sdk" data-unauthtoken="' . esc_attr($printcart_account['unauth_token'])
+                    . '" data-productid="' . esc_attr($product_id) . '" src="' . esc_url(PRINTCART_JS_SDK_URL) . '"></script>';
+                }
 
-            $product_variation = $product->get_children();
+                echo '</div>';
 
-            if (!empty($product_variation)) {
-                wp_enqueue_script('pc-product-variation');
+                $product_variation = $product->get_children();
+
+                if (!empty($product_variation)) {
+                    wp_enqueue_script('pc-product-variation');
+                }
             }
         }
 
