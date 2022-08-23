@@ -5,7 +5,7 @@ msgstr ""
 "v1.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name "
 "<printcart@gmail.com>\n"
-"POT-Creation-Date: 2022-08-23 16:12+0700\n"
+"POT-Creation-Date: 2022-08-23 16:27+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Your Name <printcart@gmail."
 "com>\n"
@@ -45,7 +45,7 @@ msgid ""
 msgstr ""
 
 #: includes/class-pc-admin-settings.php:139
-msgid "Congratulations"
+msgid "Congratulations!"
 msgstr ""
 
 #: includes/class-pc-admin-settings.php:146
