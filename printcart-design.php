@@ -27,8 +27,8 @@ require_once(PRINTCART_PLUGIN_DIR .    'vendor/autoload.php');
 
 register_activation_hook(__FILE__, 'printcart_plugin_activation');
 
-function printcart_plugin_activation()
-{
+function printcart_plugin_activation() {
+    delete_option('printcart_account');
     add_option('printcart_plugin_do_activation_redirect', true);
     if (!is_plugin_active('woocommerce/woocommerce.php')) {
         $message = '<div class="error"><p>' . esc_html__('WooCommerce is not active. Please activate WooCommerce before using', 'printcart-integration') . ' <b>
