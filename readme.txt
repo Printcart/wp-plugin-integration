@@ -1,6 +1,6 @@
 === Printcart Web to Print Product Designer for WooCommerce ===
 Contributors: printcart-dev
-Tags: product customizer, product designer, web2print, printing, print-on-demand, ecommerce, api, code, source, sourcecode, php,
+Tags: product customizer, product designer, web to print, printing, print-on-demand, ecommerce, api, code, source, sourcecode, php,
 Requires at least: 5.0
 Tested up to: 6.0
 Stable tag: 1.1.0
