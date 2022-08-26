@@ -191,5 +191,7 @@ Yes, it’s compatible with any WooCommerce theme including Flatsome / OceanWP /
 10. Printcart integration
 
 == ChangeLog ==
+= Version 1.1.0 =
+* New Authentication flow
 = Version 1.0.0 =
 * Initial release!
