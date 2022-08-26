@@ -1,9 +1,9 @@
 === Printcart Web to Print Product Designer for WooCommerce ===
 Contributors: printcart-dev
-Tags: product customizer, product designer, web2print, printing, print-on-demand, ecommerce, api, code, source, sourcecode, php,
+Tags: product customizer, product designer, web to print, printing, print-on-demand, ecommerce, api, code, source, sourcecode, php,
 Requires at least: 5.0
 Tested up to: 6.0
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -191,6 +191,8 @@ Yes, it’s compatible with any WooCommerce theme including Flatsome / OceanWP /
 10. Printcart integration
 
 == ChangeLog ==
+= Version 1.1.1 =
+* Update readme
 = Version 1.1.0 =
 * New Authentication flow
 = Version 1.0.0 =
