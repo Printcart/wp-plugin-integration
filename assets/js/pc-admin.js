@@ -42,7 +42,7 @@
                 "&consumer_secret=" +
                 response.data.consumer_secret;
               url += parma;
-              window.location = url;
+              window.open(url, '_blank');
             } else {
               $(this).attr("disabled", false);
               $(this).html("Try again");

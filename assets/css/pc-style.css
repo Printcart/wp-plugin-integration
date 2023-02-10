@@ -40,3 +40,15 @@
   height: 100px;
   width: 100px;
 }
+.printcart-button-design {
+    position: fixed;
+    top: 50%;
+    right: 0px;
+    z-index: 9999;
+    padding: 12px 16px;
+    font-size: 1.5rem;
+    background: rgb(47, 123, 248);
+    color: rgb(255, 255, 255);
+    border: 0px;
+    border-radius: 4px;
+}
