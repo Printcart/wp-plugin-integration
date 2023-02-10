@@ -5,7 +5,7 @@ msgstr ""
 "v1.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name "
 "<printcart@gmail.com>\n"
-"POT-Creation-Date: 2022-08-24 17:12+0700\n"
+"POT-Creation-Date: 2023-02-10 14:21+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Your Name <printcart@gmail."
 "com>\n"
@@ -93,40 +93,40 @@ msgstr ""
 msgid "Save changes"
 msgstr ""
 
-#: includes/class-pc-hook.php:169
+#: includes/class-pc-hook.php:167
 msgid "Printcart Customer Design"
 msgstr ""
 
-#: includes/class-pc-hook.php:187
+#: includes/class-pc-hook.php:185
 msgid "Product:"
 msgstr ""
 
-#: includes/class-pc-hook.php:205
+#: includes/class-pc-hook.php:203
 msgid "View design"
 msgstr ""
 
-#: includes/class-pc-hook.php:214
+#: includes/class-pc-hook.php:212
 msgid "No design in this order"
 msgstr ""
 
-#: includes/class-pc-hook.php:216
+#: includes/class-pc-hook.php:214
 msgid "Invalid Api Token"
 msgstr ""
 
-#: includes/class-pc-hook.php:235
+#: includes/class-pc-hook.php:233
 msgid "View project"
 msgstr ""
 
-#: includes/class-pc-hook.php:317
-#: includes/class-pc-hook.php:345
+#: includes/class-pc-hook.php:315
+#: includes/class-pc-hook.php:343
 msgid "Preview designs"
 msgstr ""
 
-#: includes/class-pc-hook.php:384
+#: includes/class-pc-hook.php:381
 msgid "Printcart integration"
 msgstr ""
 
-#: includes/class-pc-hook.php:392
+#: includes/class-pc-hook.php:389
 msgid ""
 "You do not have permission to assign API "
 "Keys to the selected user."

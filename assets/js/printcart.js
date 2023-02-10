@@ -1,5 +1,34 @@
 (function () {
   "use strict";
+  var designer;
+  jQuery(document).ready(function ($) {
+    $('.printcart-button-design').on('click', function() {
+      var productId = $(this).data('productid');
+      designer = new PrintcartDesigner({
+        token: pc_frontend.unauth_token,
+        productId: productId,
+        options: {
+          showRuler: pc_frontend.options.showRuler,
+          showGrid: pc_frontend.options.showGrid,
+          showBleedLine: pc_frontend.options.showBleedLine,
+          showDimensions: pc_frontend.options.showDimensions,
+        },
+      });
+      designer.render();
+    });
+
+    window.addEventListener(
+      "message",
+      function (event) {
+        console.log(event.data)
+        if (event.data && event.data.message === "closeDesignTool" && event.data.closeDesignTool) {
+          designer.close();
+        }
+      },
+      false
+    );
+
+  });
 
   window.addEventListener(
     "message",
@@ -14,7 +43,7 @@
         designs.forEach(function (design, index) {
           html +=
             '<td><div class="printcart-design-thumbail"><img src="' +
-            design.design_image.url +
+            design.preview_image.url +
             '"></div><input id="design-id" type="hidden" name="printcart_options_design[' +
             index +
             '][id]" value="' +
@@ -22,15 +51,17 @@
             '"><input id="design-preview" type="hidden" name="printcart_options_design[' +
             index +
             '][preview]" value="' +
-            design.design_image.url +
+            design.preview_image.url +
             '"></td>';
         });
 
         html += "</tr></tbody></table>";
 
         document.getElementById("printcart-options-design").innerHTML = html;
+        designer.close();
       }
     },
     false
   );
+
 })();

@@ -191,6 +191,8 @@ Yes, it’s compatible with any WooCommerce theme including Flatsome / OceanWP /
 10. Printcart integration
 
 == ChangeLog ==
+= Version 1.2.0 (2023, Feb 10) =
+* Update sdk for button design
 = Version 1.1.1 =
 * Update readme
 = Version 1.1.0 =
