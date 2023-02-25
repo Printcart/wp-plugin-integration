@@ -5,7 +5,7 @@ msgstr ""
 "v1.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name "
 "<printcart@gmail.com>\n"
-"POT-Creation-Date: 2023-02-10 14:21+0700\n"
+"POT-Creation-Date: 2023-02-25 16:58+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Your Name <printcart@gmail."
 "com>\n"
@@ -29,119 +29,281 @@ msgstr ""
 "X-Generator: Poedit 3.1\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: includes/class-pc-admin-settings.php:40
 #: includes/class-pc-admin-settings.php:41
+msgid "Printcart WebToPrint"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:42
+msgid "PC Web2Print"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:50
+msgid "Printcart Products"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:51
+#: includes/class-pc-admin-settings.php:76
+#: includes/class-pc-product-table.php:8
+#: includes/class-pc-product-table.php:9
+msgid "Products"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:59
 msgid "Printcart Settings"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:73
+#: includes/class-pc-admin-settings.php:60
+#: printcart-design.php:55
+msgid "Settings"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:117
+#: includes/class-pc-admin-settings.php:348
 msgid "Your settings have been saved."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:78
+#: includes/class-pc-admin-settings.php:121
 msgid ""
 "You have entered incorrect sid or secret. "
 "Please try again!"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:139
+#: includes/class-pc-admin-settings.php:164
+msgid "Store details"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:169
+msgid "Name:"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:175
+msgid "Email:"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:181
+msgid "Tier:"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:231
 msgid "Congratulations!"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:146
+#: includes/class-pc-admin-settings.php:238
 msgid ""
 "Your website has been successfully "
 "connected to the Printcart dashboard."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:149
+#: includes/class-pc-admin-settings.php:241
 msgid "Go to Dashboard"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:154
+#: includes/class-pc-admin-settings.php:246
 msgid ""
 "Connect the Printcart Dashboard to your site"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:161
+#: includes/class-pc-admin-settings.php:253
 msgid ""
 "Your website has failed to connect to the "
 "Printcart dashboard!"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:163
+#: includes/class-pc-admin-settings.php:255
 msgid "Connect to Dashboard"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:169
+#: includes/class-pc-admin-settings.php:266
 msgid "Manually enter an API key"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:180
+#: includes/class-pc-admin-settings.php:278
 msgid "Sid: "
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:188
+#: includes/class-pc-admin-settings.php:284
+msgid "Enter your Printcart sid API key."
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:289
 msgid "Secret: "
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:196
+#: includes/class-pc-admin-settings.php:295
+msgid "Enter your Printcart secret API key."
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:300
 msgid "Unauth token: "
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:205
+#: includes/class-pc-admin-settings.php:306
+msgid ""
+"Unauth token of store Printcart "
+"(Automatically generated when you enter "
+"valid sid and secret)."
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:311
+msgid ""
+"Check connection to Printcart Dashboard: "
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:316
+msgid "Test connection"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:322
+msgid "Enter both Sid and Secret to check."
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:330
+#: includes/class-pc-admin-settings.php:414
 msgid "Save changes"
 msgstr ""
 
-#: includes/class-pc-hook.php:167
+#: includes/class-pc-admin-settings.php:360
+msgid "Setting Button design"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:372
+msgid ""
+"Label for \"Start design\" button in "
+"product page: "
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:378
+msgid ""
+"Enter your label to replace the default "
+"label \"Start design\"."
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:383
+msgid ""
+"Class for \"Start design\" button in "
+"product page: "
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:389
+msgid ""
+"Enter your class to show \"Start design\" "
+"button with your style."
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:394
+msgid "Position of design button: "
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:398
+msgid ""
+"Before add to cart button and after "
+"variantions option."
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:401
+msgid "Before variantions option."
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:404
+msgid "After add to cart button."
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:407
+msgid "Stick left side."
+msgstr ""
+
+#: includes/class-pc-hook.php:155
+msgid "Start Design"
+msgstr ""
+
+#: includes/class-pc-hook.php:179
 msgid "Printcart Customer Design"
 msgstr ""
 
-#: includes/class-pc-hook.php:185
+#: includes/class-pc-hook.php:197
 msgid "Product:"
 msgstr ""
 
-#: includes/class-pc-hook.php:203
+#: includes/class-pc-hook.php:215
 msgid "View design"
 msgstr ""
 
-#: includes/class-pc-hook.php:212
+#: includes/class-pc-hook.php:224
 msgid "No design in this order"
 msgstr ""
 
-#: includes/class-pc-hook.php:214
+#: includes/class-pc-hook.php:226
 msgid "Invalid Api Token"
 msgstr ""
 
-#: includes/class-pc-hook.php:233
+#: includes/class-pc-hook.php:245
 msgid "View project"
 msgstr ""
 
-#: includes/class-pc-hook.php:315
-#: includes/class-pc-hook.php:343
+#: includes/class-pc-hook.php:323
+#: includes/class-pc-hook.php:351
 msgid "Preview designs"
 msgstr ""
 
-#: includes/class-pc-hook.php:381
+#: includes/class-pc-hook.php:392
 msgid "Printcart integration"
 msgstr ""
 
-#: includes/class-pc-hook.php:389
+#: includes/class-pc-hook.php:400
 msgid ""
 "You do not have permission to assign API "
 "Keys to the selected user."
 msgstr ""
 
-#: printcart-design.php:34
+#: includes/class-pc-product-table.php:43
+msgid "Image"
+msgstr ""
+
+#: includes/class-pc-product-table.php:44
+msgid "Name"
+msgstr ""
+
+#: includes/class-pc-product-table.php:45
+msgid "Date"
+msgstr ""
+
+#: includes/class-pc-product-table.php:46
+msgid "Modified"
+msgstr ""
+
+#: includes/class-pc-product-table.php:47
+msgid "Status"
+msgstr ""
+
+#: includes/class-pc-product-table.php:48
+msgid "Design tool"
+msgstr ""
+
+#: includes/class-pc-product-table.php:49
+msgid "Design Upload"
+msgstr ""
+
+#: includes/class-pc-product-table.php:73
+#, php-format
+msgid "%s item"
+msgid_plural "%s items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-pc-product-table.php:83
+msgid "Previous page"
+msgstr ""
+
+#: includes/class-pc-product-table.php:93
+msgid "Next page"
+msgstr ""
+
+#: printcart-design.php:35
 msgid ""
 "WooCommerce is not active. Please activate "
 "WooCommerce before using"
 msgstr ""
 
-#: printcart-design.php:35
+#: printcart-design.php:36
 msgid "Printcart Integration"
-msgstr ""
-
-#: printcart-design.php:54
-msgid "Settings"
 msgstr ""

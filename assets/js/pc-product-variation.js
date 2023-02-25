@@ -1,26 +1,26 @@
 (function () {
   "use strict";
 
+  var buttonHtml = jQuery(".printcart-button-design");
+  var buttonLabel = buttonHtml.html();
   jQuery(".variations_form").on("show_variation", function () {
     var variation_id = jQuery(".variations_form .variation_id").val();
-
     if (variation_id) {
       printcart_get_integration_id(variation_id);
+    } else {
+      buttonHtml.attr("data-productid", "");
+      buttonHtml.prop("disabled", true);
     }
   });
-
   function printcart_trigger_button_design(disabled = false) {
     if (disabled) {
-      jQuery("#pcdesigntool-design-btn").prop("disabled", true);
-      jQuery("body").append(
-        '<div class="printcart-button-design-loading"><i class="fa fa-spinner fa-spin"></i>Loading</div>'
-      );
+      buttonHtml.prop("disabled", true);
+      buttonHtml.html('<i class="fa fa-spinner fa-spin"></i>Loading');
     } else {
-      jQuery("#pcdesigntool-design-btn").prop("disabled", false);
-      jQuery("#pcdesigntool-design-btn").html("Start Design");
+      buttonHtml.prop("disabled", false);
+      buttonHtml.html(buttonLabel);
     }
   }
-
   function printcart_get_integration_id(variation_id) {
     jQuery.ajax({
       type: "post",
@@ -35,12 +35,20 @@
         printcart_trigger_button_design(true);
       },
       success: function (response) {
-        if (response.success && response.data) {
-          jQuery("#printcart-design-tool-sdk-wrap").append(response.data);
+        if (
+          response.success &&
+          response.data &&
+          response.data.product_id &&
+          response.data.enable_design
+        ) {
+          buttonHtml.attr("data-productid", response.data.product_id);
+          buttonHtml.data("productid", response.data.product_id);
           printcart_trigger_button_design();
         } else {
-          jQuery("#printcart-design-tool-sdk").remove();
-          jQuery("body .printcart-button-design-loading").remove();
+          buttonHtml.attr("data-productid", "");
+          buttonHtml.data("productid", "");
+          buttonHtml.html(buttonLabel);
+          buttonHtml.prop("disabled", true);
         }
       },
     });
