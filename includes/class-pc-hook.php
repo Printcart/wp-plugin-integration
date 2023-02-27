@@ -158,14 +158,14 @@ if (!class_exists('Printcart_Product_Hook')) {
                 if ($posititon == 4) {
                     $class_stick = ' printcart-stick';
                 }
+                $product_variation = $product->get_children();
                 echo '<div id="printcart-design-tool-sdk-wrap">';
                 if ($product_id && $enable_design) {
                     echo '<button data-productid="' . esc_attr($product_id) . '" class="button printcart-button-design alt ' . $printcart_class_button . $class_stick . '">' . $printcart_label_button . '</button>';
+                } else if(!empty($product_variation)) {
+                    echo '<button data-productid="' . esc_attr($product_id) . '" class="button printcart-button-design alt ' . $printcart_class_button . $class_stick . '" disabled>' . $printcart_label_button . '</button>';
                 }
-
                 echo '</div>';
-
-                $product_variation = $product->get_children();
 
                 if (!empty($product_variation)) {
                     wp_enqueue_script('pc-product-variation');
