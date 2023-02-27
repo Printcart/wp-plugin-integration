@@ -191,11 +191,21 @@ Yes, it’s compatible with any WooCommerce theme including Flatsome / OceanWP /
 10. Printcart integration
 
 == ChangeLog ==
+= Version 2.0.0 (2023, Feb 10) =
+* Update: Products page (Listing all products imported from the Printcart Dashboard)
+* Update: Menu 'PC Web2Print'
+* Update: Page settings
+* Update: Add Settings to adjust button 'Start Design' ( add class, change title, change position)
+* Update: Store details in settings page
+
 = Version 1.2.0 (2023, Feb 10) =
 * Update sdk for button design
+
 = Version 1.1.1 =
 * Update readme
+
 = Version 1.1.0 =
 * New Authentication flow
+
 = Version 1.0.0 =
 * Initial release!

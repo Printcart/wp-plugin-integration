@@ -42,7 +42,8 @@ if (!class_exists('Printcart_Admin_Settings')) {
                 esc_html__('PC Web2Print', 'printcart-integration'),
                 'manage_options',
                 'pc-integration-web2print',
-                array($this, 'printcart_products')
+                array($this, 'printcart_products'),
+                PRINTCART_PLUGIN_URL . 'assets/images/logo.svg'
             );
 
             add_submenu_page(
