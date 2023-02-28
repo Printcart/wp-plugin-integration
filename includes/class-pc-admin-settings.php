@@ -76,6 +76,10 @@ if (!class_exists('Printcart_Admin_Settings')) {
                 <h1>
                     <?php esc_html_e('Products', 'printcart-integration'); ?>
                 </h1>
+                <div class="description">
+                    <?php esc_html_e("Below are all the products that you have entered on Printcart Dashboard, You can import more products into Printcart Dashboard ", "printcart-integration"); ?>
+                    <a href="<?php echo esc_url(PRINTCART_BACKOFFICE_URL . '/inventory') ?>"><?php esc_html_e("here", "printcart-integration") ?></a>
+                </div>
                 <div id="poststuff">
                     <div id="post-body" class="metabox-holder">
                         <div id="post-body-content">
@@ -145,9 +149,9 @@ if (!class_exists('Printcart_Admin_Settings')) {
                 </a>
                 <?php
                 $this->printcart_api_status();
-                $this->printcart_account_details();
                 $this->printcart_api_form($printcart_account, $result);
                 $this->printcart_setting_button_design();
+                $this->printcart_account_details();
                 do_action('printcart_custom_settings');
                 ?>
             </div>
@@ -162,7 +166,14 @@ if (!class_exists('Printcart_Admin_Settings')) {
 
         ?>
             <div class="printcart-box">
-                <h3 class="manually-key"><?php esc_html_e('Store details', 'printcart-integration'); ?></h3>
+                <div class="manually-key">
+                    <h3 class="manually-title">
+                        <?php esc_html_e('Store details', 'printcart-integration'); ?>
+                    </h3>
+                    <div>
+                        <a href="<?php echo esc_url(PRINTCART_BACKOFFICE_URL . '/settings') ?>" target="_blank"><?php esc_html_e(' Store settings', 'printcart-integration'); ?></a>
+                    </div>
+                </div>
                 <hr>
                 <table class="form-table pc-table" role="presentation">
                     <tbody>

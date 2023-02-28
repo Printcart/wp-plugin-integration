@@ -53,6 +53,11 @@ a.pc-connect-dashboard:hover {
   padding: 16px;
   margin-bottom: 16px;
 }
+#printcart-design .printcart-box .manually-key {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 #printcart-design .manually-key {
   text-align: left;
 }
