@@ -53,16 +53,25 @@ a.pc-connect-dashboard:hover {
   padding: 16px;
   margin-bottom: 16px;
 }
+#printcart-design .printcart-box .manually-key {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#printcart-design .manually-key {
+  text-align: left;
+}
 #printcart-design .printcart-setup-instructions h1 {
   padding: 10px;
 }
-#printcart-design .pc-connect-dashboard,
 #printcart-design .pc-button-dashboard {
   padding: 4px 20px;
+}
+#printcart-design .pc-button-primary {
   background-color: #2f7bf8;
 }
-.printcart-form {
-  display: none;
+#printcart-design .pc-action-wrap {
+  text-align: left;
 }
 .printcart-connected-wrap {
   margin: 20px 0;
@@ -75,4 +84,21 @@ a.pc-connect-dashboard:hover {
 }
 .printcart-connected-text {
   margin-left: 4px;
+}
+.pc-product-table .tablenav {
+  display: none;
+}
+
+.pc-product-table .tablenav.show {
+  display: block;
+}
+.pc-table td {
+  text-align: left;
+}
+.printcart-nan {
+  color: red;
+}
+.printcart-account-tier,
+.printcart-account-name {
+  text-transform: capitalize;
 }

@@ -33,22 +33,21 @@
 .printcart-design-thumbail {
   border: 1px solid #ddd;
   margin: 0 5px 5px 0;
-  display: inline-block;
-  text-align: center;
-  vertical-align: top;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #ddd;
   height: 100px;
   width: 100px;
 }
-.printcart-button-design {
-    position: fixed;
-    top: 50%;
-    right: 0px;
-    z-index: 9999;
-    padding: 12px 16px;
-    font-size: 1.5rem;
-    background: rgb(47, 123, 248);
-    color: rgb(255, 255, 255);
-    border: 0px;
-    border-radius: 4px;
+.printcart-button-design.printcart-stick {
+  position: fixed;
+  top: 50%;
+  right: 0px;
+  z-index: 9999;
 }
+.printcart-button-design {
+  margin: 10px 0;
+  display: inline-block;
+}
+

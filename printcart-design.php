@@ -7,7 +7,7 @@
 Plugin Name: Printcart Integration
 Plugin URI: https://printcart.com
 Description: Create design buttons for WC products
-Version: 1.2.0
+Version: 2.0.0
 Author: Printcart Team
 Author URI: https://printcart.com
 Text Domain: printcart-integration
@@ -16,10 +16,11 @@ WC tested up to: 6.5.1
 PHP: >=7.0
 */
 
-define('PRINTCART_VERSION',            '1.2.0');
+define('PRINTCART_VERSION',            '2.0.0');
 define('PRINTCART_PLUGIN_URL',         plugin_dir_url(__FILE__));
 define('PRINTCART_PLUGIN_DIR',         plugin_dir_path(__FILE__));
 
+require_once(PRINTCART_PLUGIN_DIR .    'includes/class-pc-api.php');
 require_once(PRINTCART_PLUGIN_DIR .    'includes/class-pc-admin-settings.php');
 require_once(PRINTCART_PLUGIN_DIR .    'includes/class-pc-hook.php');
 require_once(PRINTCART_PLUGIN_DIR .    'includes/class-pc-custom-api.php');
@@ -41,19 +42,19 @@ add_action('admin_init', 'printcart_plugin_redirect');
 function printcart_plugin_redirect() {
     if (get_option('printcart_plugin_do_activation_redirect', false)) {
         delete_option('printcart_plugin_do_activation_redirect');
-        wp_redirect( add_query_arg( array( 'page' => 'printcart-design' ), admin_url( 'options-general.php' ) ) );
+        wp_redirect(add_query_arg(array('page' => 'printcart-design'), admin_url('options-general.php')));
     }
 }
 
-add_filter( 'plugin_action_links_'.plugin_basename( plugin_dir_path( __FILE__ ) . 'printcart-design.php'), 'printcart_plugin_settings_link' );
-function printcart_plugin_settings_link( $links ) {
-    $args = array( 'page' => 'printcart-design' );
+add_filter('plugin_action_links_' . plugin_basename(plugin_dir_path(__FILE__) . 'printcart-design.php'), 'printcart_plugin_settings_link');
+function printcart_plugin_settings_link($links) {
+    $args = array('page' => 'printcart-design');
 
-    $url = add_query_arg( $args, admin_url( 'options-general.php' ) );
+    $url = add_query_arg($args, admin_url('options-general.php'));
 
-    $settings_link = '<a href="'.esc_url( $url ).'">'.__('Settings', 'printcart-integration').'</a>';
-    array_unshift( $links, $settings_link ); 
-    return $links; 
+    $settings_link = '<a href="' . esc_url($url) . '">' . __('Settings', 'printcart-integration') . '</a>';
+    array_unshift($links, $settings_link);
+    return $links;
 }
 
 
@@ -74,4 +75,3 @@ define('PRINTCART_JS_SDK_URL',            'https://unpkg.com/@printcart/design-t
  */
 define('PRINTCART_BACKOFFICE_URL',         'https://dashboard.printcart.com');
 // define('PRINTCART_BACKOFFICE_URL',         'http://localhost:3000');
-

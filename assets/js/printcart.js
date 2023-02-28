@@ -2,8 +2,12 @@
   "use strict";
   var designer;
   jQuery(document).ready(function ($) {
-    $('.printcart-button-design').on('click', function() {
-      var productId = $(this).data('productid');
+    $(".printcart-button-design").on("click", function (e) {
+      e.preventDefault();
+      var productId = $(this).data("productid");
+      if (!productId) {
+        alert("The product has not been enabled Design Tool.");
+      }
       designer = new PrintcartDesigner({
         token: pc_frontend.unauth_token,
         productId: productId,
@@ -20,14 +24,16 @@
     window.addEventListener(
       "message",
       function (event) {
-        console.log(event.data)
-        if (event.data && event.data.message === "closeDesignTool" && event.data.closeDesignTool) {
+        if (
+          event.data &&
+          event.data.message === "closeDesignTool" &&
+          event.data.closeDesignTool
+        ) {
           designer.close();
         }
       },
       false
     );
-
   });
 
   window.addEventListener(
@@ -63,5 +69,4 @@
     },
     false
   );
-
 })();

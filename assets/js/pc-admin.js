@@ -42,7 +42,7 @@
                 "&consumer_secret=" +
                 response.data.consumer_secret;
               url += parma;
-              window.open(url, '_blank');
+              window.open(url, "_blank");
             } else {
               $(this).attr("disabled", false);
               $(this).html("Try again");
@@ -55,9 +55,52 @@
         },
       });
     });
-    $(".manually-key").on("click", function (e) {
-      e.preventDefault();
-      $(".printcart-form").toggle("active");
+    jQuery(".printcart-w2p-button-check-connection").on("click", function () {
+      var text = jQuery(this).html();
+      var sid = jQuery("input[name='printcart_sid']").val();
+      var secret = jQuery("input[name='printcart_secret']").val();
+      var result_check = jQuery(".printcart-w2p-result-check");
+      result_check.html("");
+
+      jQuery.ajax({
+        type: "post",
+        dataType: "json",
+        url: pc_admin.url,
+        data: {
+          action: "printcart_w2p_check_connection_dashboard",
+          sid: sid,
+          secret: secret,
+        },
+        context: this,
+        beforeSend: function () {
+          jQuery(this).html("Checking...");
+          jQuery(this).attr("disabled", "disabled");
+        },
+        success: function (response) {
+          jQuery(this).attr("disabled", false);
+          jQuery(this).html(text);
+          console.log(response);
+          if (
+            response.success &&
+            response.data.connected &&
+            response.data.unauth_token
+          ) {
+            result_check.html(
+              '<div style="color: #0f631e"><b>Connected.</b></div>'
+            );
+            jQuery("input[name='printcart_unauth_token']").val(
+              response.data.unauth_token
+            );
+          } else {
+            result_check.html('<div style="color: #f11"><b>Error.</b></div>');
+            jQuery("input[name='printcart_unauth_token']").val("");
+          }
+        },
+        error: function (error) {
+          jQuery(this).attr("disabled", false);
+          jQuery(this).html("Try again");
+        },
+      });
     });
   });
 })();
