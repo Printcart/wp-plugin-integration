@@ -57,6 +57,15 @@ if (!class_exists('Printcart_Admin_Settings')) {
 
             add_submenu_page(
                 'pc-integration-web2print',
+                esc_html__('Printcart Orders', 'printcart-integration'),
+                esc_html__('Orders', 'printcart-integration'),
+                'manage_options',
+                'pc-integration-web2print/orders',
+                array($this, 'printcart_orders')
+            );
+
+            add_submenu_page(
+                'pc-integration-web2print',
                 esc_html__('Printcart Settings', 'printcart-integration'),
                 esc_html__('Settings', 'printcart-integration'),
                 'manage_options',
@@ -99,7 +108,36 @@ if (!class_exists('Printcart_Admin_Settings')) {
             </div>
         <?php
         }
+        public function printcart_orders() {
+            require_once PRINTCART_PLUGIN_DIR . 'includes/class-pc-order-table.php';
+            $pc_table = new Printcart_Options_List_Table(); ?>
 
+            <div class="wrap">
+                <h1>
+                    <?php esc_html_e('Order', 'printcart-integration'); ?>
+                </h1>
+                <div class="description">
+                    <?php esc_html_e("Below are all the order that you  on Printcart Dashboard", "printcart-integration"); ?>
+                </div>
+                <div id="poststuff">
+                    <div id="post-body" class="metabox-holder">
+                        <div id="post-body-content">
+                            <div class="meta-box-sortables ui-sortable pc-product-table">
+                                <form method="post">
+                                    <?php
+                                    $pc_table->prepare_items();
+                                    $pc_table->display();
+                                    $pc_table->pc_display_pagination();
+                                    ?>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <br class="clear">
+                </div>
+            </div>
+        <?php
+        }
         public function printcart_settings() {
             $printcart_account = get_option('printcart_w2p_account');
             $message = '';

@@ -4,9 +4,8 @@ if (!defined('ABSPATH')) exit;
 if (!class_exists('PC_W2P_API')) {
 
     class PC_W2P_API {
-        public static $api_url = 'https://api.printcart.com/v1';
-        // public static $api_url = 'http://localhost:8001/v1';
-
+        // public static $api_url = 'https://api.printcart.com/v1';
+        public static $api_url = 'http://localhost:8001/v1';
         public function __construct() {
         }
 
@@ -74,9 +73,22 @@ if (!class_exists('PC_W2P_API')) {
 
             return self::fetchData($url);
         }
+        public static function fetchOrders($limit = 99, $cursor = '') {
+            $url = self::$api_url . '/projects?limit=' . $limit;
 
+            if ($cursor) {
+                $url = self::$api_url . '/projects?cursor=' . $cursor . '&limit=' . $limit;
+            }
+
+            return self::fetchData($url);
+        }
         public static function fetchProductCount() {
             $url = self::$api_url . '/products/count';
+
+            return self::fetchData($url);
+        }
+        public static function fetchOrderCount() {
+            $url = self::$api_url . '/projects/count';
 
             return self::fetchData($url);
         }
