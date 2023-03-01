@@ -24,7 +24,7 @@ require_once(PRINTCART_PLUGIN_DIR .    'includes/class-pc-api.php');
 require_once(PRINTCART_PLUGIN_DIR .    'includes/class-pc-admin-settings.php');
 require_once(PRINTCART_PLUGIN_DIR .    'includes/class-pc-hook.php');
 require_once(PRINTCART_PLUGIN_DIR .    'includes/class-pc-custom-api.php');
-require_once(PRINTCART_PLUGIN_DIR .    'vendor/autoload.php');
+// require_once(PRINTCART_PLUGIN_DIR .    'vendor/autoload.php');
 
 register_activation_hook(__FILE__, 'printcart_plugin_activation');
 
