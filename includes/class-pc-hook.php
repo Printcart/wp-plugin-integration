@@ -18,7 +18,7 @@ if (!class_exists('Printcart_Product_Hook')) {
         }
 
         public function __construct() {
-            $printcart_account = get_option('printcart_account');
+            $printcart_account = get_option('printcart_w2p_account');
 
             if ($printcart_account) {
                 if ($printcart_account) {
@@ -162,7 +162,7 @@ if (!class_exists('Printcart_Product_Hook')) {
                 echo '<div id="printcart-design-tool-sdk-wrap">';
                 if ($product_id && $enable_design) {
                     echo '<button data-productid="' . esc_attr($product_id) . '" class="button printcart-button-design alt ' . $printcart_class_button . $class_stick . '">' . $printcart_label_button . '</button>';
-                } else if(!empty($product_variation)) {
+                } else if (!empty($product_variation)) {
                     echo '<button data-productid="' . esc_attr($product_id) . '" class="button printcart-button-design alt ' . $printcart_class_button . $class_stick . '" disabled>' . $printcart_label_button . '</button>';
                 }
                 echo '</div>';
@@ -195,7 +195,7 @@ if (!class_exists('Printcart_Product_Hook')) {
                 foreach ($order_items as $order_item_id => $order_item) {
                     $has_design     = false;
                     echo '<p><b>' . esc_html__('Product:', 'printcart-integration') . ' </b>' . esc_html($order_item->get_name()) . '</p>';
-                    $printcart_account = get_option('printcart_account');
+                    $printcart_account = get_option('printcart_w2p_account');
 
                     if (isset($printcart_account['unauth_token'])) {
                         $_printcart_designs = wc_get_order_item_meta($order_item_id, '_printcart_designs');
@@ -205,15 +205,13 @@ if (!class_exists('Printcart_Product_Hook')) {
 
                             if (is_array($printcart_designs)) {
                                 echo '<div class="printcart_container_item_designs">';
-
                                 foreach ($printcart_designs as $printcart_design) {
                                     if (isset($printcart_design['id']) && $printcart_design['preview']) {
                                         $has_design = true;
-                                        $data_url = PRINTCART_DESIGNTOOL . '/?api_key=' . $printcart_account['unauth_token'] . '&design_id=' . $printcart_design['id']
-                                            . '&task=edit';
+                                        $data_url = PRINTCART_BACKOFFICE_URL . '/design/' . $printcart_design['id'];
 
-                                        echo '<div class="button button-small button-secondary" title="' . esc_html__('View design', 'printcart-integration') . '" style="margin: 0 4px 4px 0;" 
-                                        data-url="' . esc_url($data_url) . '"><img style="max-width: 60px; max-height: 50px" src="' . esc_url($printcart_design['preview']) . '"></div>';
+                                        echo '<div><a class="button button-small button-secondary" title="' . esc_html__('View design', 'printcart-integration') . '" style="margin: 0 4px 4px 0;" 
+                                        href="' . esc_url($data_url) . '" target="_blank"><img style="max-width: 60px; max-height: 50px" src="' . esc_url($printcart_design['preview']) . '"></a></div>';
                                     }
                                 }
 
@@ -297,7 +295,7 @@ if (!class_exists('Printcart_Product_Hook')) {
                         'note'          => $note,
                         'design_ids'    => $design_ids,
                     );
-                    $printcart_account = get_option('printcart_account');
+                    $printcart_account = get_option('printcart_w2p_account');
 
                     if (isset($printcart_account['sid']) && isset($printcart_account['secret'])) {
                         try {
@@ -320,15 +318,13 @@ if (!class_exists('Printcart_Product_Hook')) {
          */
         public function printcart_add_preview_designs($title, $cart_item) {
             if (isset($cart_item['printcart_options']) && isset($cart_item['printcart_options']['designs']) && is_array($cart_item['printcart_options']['designs'])) {
-                $html = '<div><b>' . esc_html__('Preview designs', 'printcart-integration') . '</b></div><table><tbody><tr>';
+                $html = '<div style="text-align: left"><b>' . esc_html__('Preview designs', 'printcart-integration') . '</b></div>';
 
                 foreach ($cart_item['printcart_options']['designs'] as $design) {
                     if (isset($design['preview'])) {
-                        $html .= '<td style="padding: 0"><div style="border: 1px solid #ddd;margin: 0 5px 5px 0;display: inline-block;text-align: center; vertical-align: top; 
-                        background: #ddd; height: 100px; width: 100px"><img src="' . esc_url($design['preview']) . '"></td>';
+                        $html .= '<div style="padding: 0"><div style="border: 1px solid #ddd; background: #ddd; margin: 0 5px 5px 0; max-width: 120px"><img src="' . esc_url($design['preview']) . '" style="width: 100%; object-fit:contain;"></div>';
                     }
                 }
-                $html .= '</tr></tbody></table>';
                 $title .= $html;
             }
             return $title;
@@ -348,12 +344,10 @@ if (!class_exists('Printcart_Product_Hook')) {
                 $printcart_designs = unserialize($_printcart_designs);
 
                 if (is_array($printcart_designs)) {
-                    $html = '<div><b>' . esc_html__('Preview designs', 'printcart-integration') . '</b></div><table><tbody><tr>';
+                    $html = '<div style="text-align: left"><b>' . esc_html__('Preview designs', 'printcart-integration') . '</b></div>';
                     foreach ($printcart_designs as $design) {
-                        $html .= '<td style="padding: 0"><div style="border: 1px solid #ddd;margin: 0 5px 5px 0;display: inline-block;text-align: center; 
-                        vertical-align: top;background: #ddd; height: 100px; width: 100px"><img src="' . esc_url($design['preview']) . '"></td>';
+                        $html .= '<div style="padding: 0"><div style="border: 1px solid #ddd; background: #ddd; margin: 0 5px 5px 0; max-width: 120px"><img src="' . esc_url($design['preview']) . '" style="width: 100%; object-fit:contain;"></div>';
                     }
-                    $html .= '</tr></tbody></table>';
                     $title .= $html;
                 }
             }
@@ -369,7 +363,7 @@ if (!class_exists('Printcart_Product_Hook')) {
                 'product_id' => '',
                 'enable_design' => '',
             );
-            $printcart_account = get_option('printcart_account');
+            $printcart_account = get_option('printcart_w2p_account');
 
             if ($variation_id && isset($printcart_account['unauth_token'])) {
                 $product_integration = $this->printcart_get_product_integration($variation_id, true);
@@ -477,7 +471,7 @@ if (!class_exists('Printcart_Product_Hook')) {
 
             wp_register_script('pc-product-variation', PRINTCART_PLUGIN_URL . 'assets/js/pc-product-variation.js', array(), PRINTCART_VERSION);
 
-            $printcart_account = get_option('printcart_account');
+            $printcart_account = get_option('printcart_w2p_account');
 
             $args = array(
                 'url'           => admin_url('admin-ajax.php'),
