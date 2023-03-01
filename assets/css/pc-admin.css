@@ -97,6 +97,7 @@ a.pc-connect-dashboard:hover {
 }
 .printcart-nan {
   color: red;
+  font-weight: 600;
 }
 .printcart-account-tier,
 .printcart-account-name {

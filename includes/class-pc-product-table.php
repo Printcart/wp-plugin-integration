@@ -22,6 +22,7 @@ class Printcart_Options_List_Table extends WP_List_Table {
         $per_page       = $this->get_items_per_page('options_per_page', 10);
         $cusor = isset($_GET['cusor']) ? $_GET['cusor'] : '';
         $products = PC_W2P_API::fetchProducts($per_page, $cusor);
+
         if (isset($products['links']) && isset($products['links']['next'])) {
             $parts_url = parse_url($products['links']['next']);
             parse_str($parts_url['query'], $query_url);
@@ -47,6 +48,7 @@ class Printcart_Options_List_Table extends WP_List_Table {
             'status'            => esc_html__('Status', 'printcart-integration'),
             'enable_design'     => esc_html__('Design tool', 'printcart-integration'),
             'enable_upload'     => esc_html__('Design Upload', 'printcart-integration'),
+            'view'              => esc_html__('View', 'printcart-integration'),
         );
         return $columns;
     }
@@ -137,5 +139,13 @@ class Printcart_Options_List_Table extends WP_List_Table {
         $enable_design = isset($item['enable_design']) ? $item['enable_design'] : false;
         $checked = $enable_design ? 'checked' : '';
         return '<input disabled type="checkbox" ' . $checked . ' />';
+    }
+    function column_view($item) {
+        $integration_product_id = isset($item['integration_product_id']) ? $item['integration_product_id'] : '';
+        if (!$integration_product_id) {
+            return '';
+        }
+        $preview_link = get_permalink($integration_product_id);
+        return '<a href="' . $preview_link . '" target="_blank">' . esc_html__('View') . '</a>';
     }
 }

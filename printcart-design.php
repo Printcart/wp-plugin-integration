@@ -24,12 +24,14 @@ require_once(PRINTCART_PLUGIN_DIR .    'includes/class-pc-api.php');
 require_once(PRINTCART_PLUGIN_DIR .    'includes/class-pc-admin-settings.php');
 require_once(PRINTCART_PLUGIN_DIR .    'includes/class-pc-hook.php');
 require_once(PRINTCART_PLUGIN_DIR .    'includes/class-pc-custom-api.php');
-// require_once(PRINTCART_PLUGIN_DIR .    'vendor/autoload.php');
 
 register_activation_hook(__FILE__, 'printcart_plugin_activation');
 
 function printcart_plugin_activation() {
-    delete_option('printcart_account');
+    if (get_option('printcart_account') && !get_option('printcart_w2p_account')) {
+        update_option('printcart_w2p_account', get_option('printcart_account'));
+        delete_option('printcart_account');
+    }
     add_option('printcart_plugin_do_activation_redirect', true);
     if (!is_plugin_active('woocommerce/woocommerce.php')) {
         $message = '<div class="error"><p>' . esc_html__('WooCommerce is not active. Please activate WooCommerce before using', 'printcart-integration') . ' <b>
@@ -42,15 +44,15 @@ add_action('admin_init', 'printcart_plugin_redirect');
 function printcart_plugin_redirect() {
     if (get_option('printcart_plugin_do_activation_redirect', false)) {
         delete_option('printcart_plugin_do_activation_redirect');
-        wp_redirect(add_query_arg(array('page' => 'printcart-design'), admin_url('options-general.php')));
+        wp_redirect(add_query_arg(array('page' => 'pc-integration-web2print%2Fsettings'), admin_url('admin.php')));
     }
 }
 
 add_filter('plugin_action_links_' . plugin_basename(plugin_dir_path(__FILE__) . 'printcart-design.php'), 'printcart_plugin_settings_link');
 function printcart_plugin_settings_link($links) {
-    $args = array('page' => 'printcart-design');
+    $args = array('page' => 'pc-integration-web2print%2Fsettings');
 
-    $url = add_query_arg($args, admin_url('options-general.php'));
+    $url = add_query_arg($args, admin_url('admin.php'));
 
     $settings_link = '<a href="' . esc_url($url) . '">' . __('Settings', 'printcart-integration') . '</a>';
     array_unshift($links, $settings_link);

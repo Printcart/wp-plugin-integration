@@ -17,7 +17,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
         }
 
         public function __construct() {
-            $printcart_account = get_option('printcart_account');
+            $printcart_account = get_option('printcart_w2p_account');
 
             if ($printcart_account) {
                 $printcart_sid      = isset($printcart_account['sid']) ? $printcart_account['sid'] : '';
@@ -116,14 +116,14 @@ if (!class_exists('Printcart_Admin_Settings')) {
                         $this->basic_auth =  array(
                             "Authorization" => 'Basic ' . base64_encode($printcart_sid . ':' . $printcart_secret),
                         );
-                        $store_detail = PC_W2P_API::fetchStoreDetailsWithAuth($this->basic_auth);
+                        $store_detail = PC_W2P_API::fetchStoreDetailWithAuth($this->basic_auth);
                         $unauth_token = isset($store_detail['data']) && isset($store_detail['data']['unauth_token']) ? $store_detail['data']['unauth_token'] : '';
                         if ($unauth_token) {
-                            $message        = __('Your settings have been saved.', 'printcart-integration');
+                            $message        = esc_html__('Your settings have been saved.', 'printcart-integration');
                             $status         = 'updated';
                         }
                     } catch (Exception $e) {
-                        $message = __('You have entered incorrect sid or secret. Please try again!', 'printcart-integration');
+                        $message = esc_html__('You have entered incorrect sid or secret. Please try again!', 'printcart-integration');
                         $status = 'error';
                     }
                 }
@@ -159,9 +159,9 @@ if (!class_exists('Printcart_Admin_Settings')) {
         }
         public function printcart_account_details() {
             $account = PC_W2P_API::fetchAccount();
-            $tier = isset($account['data']) && isset($account['data']['tier']) ? $account['data']['tier'] : '<b class="printcart-nan">N/A</b>';
-            $email = isset($account['data']) && isset($account['data']['email']) ? $account['data']['email'] : '<b class="printcart-nan">N/A</b>';
-            $name = isset($account['data']) && isset($account['data']['name']) ? $account['data']['name'] : '<b class="printcart-nan">N/A</b>';
+            $tier = isset($account['data']) && isset($account['data']['tier']) ? $account['data']['tier'] : 'N/A';
+            $email = isset($account['data']) && isset($account['data']['email']) ? $account['data']['email'] : 'N/A';
+            $name = isset($account['data']) && isset($account['data']['name']) ? $account['data']['name'] : 'N/A';
 
 
         ?>
@@ -180,19 +180,19 @@ if (!class_exists('Printcart_Admin_Settings')) {
                         <tr>
                             <th scope="row"><label><?php esc_html_e('Name:', 'printcart-integration'); ?></label></th>
                             <td>
-                                <div class="printcart-account-name"><?php echo esc_attr($name); ?></div>
+                                <div class="printcart-account-info <?php echo $name == 'N/A' ? 'printcart-nan' : '';  ?>"><?php echo esc_html($name); ?></div>
                             </td>
                         </tr>
                         <tr>
                             <th scope="row"><label><?php esc_html_e('Email:', 'printcart-integration'); ?></label></th>
                             <td>
-                                <div class="printcart-account-email"><?php echo esc_attr($email); ?></div>
+                                <div class="printcart-account-info <?php echo $email == 'N/A' ? 'printcart-nan' : '';  ?>"><?php echo esc_html($email); ?></div>
                             </td>
                         </tr>
                         <tr>
                             <th scope="row"><label><?php esc_html_e('Tier:', 'printcart-integration'); ?></label></th>
                             <td>
-                                <div class="printcart-account-tier"><?php echo esc_attr($tier); ?></div>
+                                <div class="printcart-account-info <?php echo $tier == 'N/A' ? 'printcart-nan' : '';  ?>"><?php echo esc_html($tier); ?></div>
                             </td>
                         </tr>
                     </tbody>
@@ -203,7 +203,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
         public function printcart_api_status() {
             $store_detail = PC_W2P_API::fetchStoreDetail();
             if (count($this->basic_auth) > 1) {
-                $store_detail = PC_W2P_API::fetchStoreDetailsWithAuth($this->basic_auth);
+                $store_detail = PC_W2P_API::fetchStoreDetailWithAuth($this->basic_auth);
             }
             $unauth_token = isset($store_detail['data']) && isset($store_detail['data']['unauth_token']) ? $store_detail['data']['unauth_token'] : '';
             $user       = wp_get_current_user();
@@ -264,7 +264,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
                         </svg>
                         <span class="printcart-connected-text" style="color: #ffa500"><b><?php esc_html_e('Your website has failed to connect to the Printcart dashboard!', 'printcart-integration'); ?></b></span>
                     </div>
-                    <div class="pc-connect-dashboard button-primary" data-url="<?php echo esc_attr($url); ?>"><?php esc_html_e('Connect to Dashboard', 'printcart-integration'); ?></div>
+                    <div class="pc-connect-dashboard pc-button-dashboard pc-button-primary button-primary" data-url="<?php echo esc_attr($url); ?>"><?php esc_html_e('Connect to Dashboard', 'printcart-integration'); ?></div>
                 <?php
                 }
                 ?>

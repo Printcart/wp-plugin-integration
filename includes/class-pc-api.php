@@ -7,18 +7,11 @@ if (!class_exists('PC_W2P_API')) {
         public static $api_url = 'https://api.printcart.com/v1';
         // public static $api_url = 'http://localhost:8001/v1';
 
-        public static $dashboard_url = 'https://dashboard.printcart.com';
-        // public static $dashboard_url = 'http://localhost:3000';
-
         public function __construct() {
         }
 
-        public static function get_dashboard_url() {
-            return self::$dashboard_url;
-        }
-
         public static function get_basic_auth() {
-            $printcart_account = get_option('printcart_account');
+            $printcart_account = get_option('printcart_w2p_account');
 
             $sid = isset($printcart_account['sid']) ? $printcart_account['sid'] : '';
 
@@ -30,7 +23,7 @@ if (!class_exists('PC_W2P_API')) {
         }
 
         public static function get_header_unauth_token() {
-            $printcart_account = get_option('printcart_account');
+            $printcart_account = get_option('printcart_w2p_account');
 
             $unauth_token = isset($printcart_account['unauth_token']) ? $printcart_account['unauth_token'] : '';
 
@@ -97,7 +90,7 @@ if (!class_exists('PC_W2P_API')) {
 
             return self::fetchData($url);
         }
-        public static function fetchStoreDetailsWithAuth($auth) {
+        public static function fetchStoreDetailWithAuth($auth) {
             $url = self::$api_url . '/stores/store-details';
 
             return self::fetchDataWithAuth($url, $auth);
