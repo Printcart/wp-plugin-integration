@@ -103,3 +103,37 @@ a.pc-connect-dashboard:hover {
 .printcart-account-name {
   text-transform: capitalize;
 }
+
+.pc-order-status {
+  border-radius: 4px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  margin: -0.25em 0;
+  cursor: inherit !important;
+  white-space: nowrap;
+  max-width: 100%;
+  line-height: 2.5em;
+}
+.pc-order-status > span {
+  margin-left: 12px;
+  margin-right: 12px;
+}
+.pc-status-success {
+  background-color: #d1fae5 !important;
+  color: #065f46 !important;
+}
+.pc-status-warning {
+  background-color: #fef3c7 !important;
+  color: #92400e !important;
+}
+.pc-status-primary {
+  background-color: #dbeafe !important;
+  color: #1e40af !important;
+}
+.pc-status-secondary {
+  background-color: #f3f4f6 !important;
+  color: #1f2937 !important;
+}
+.pc-status-danger {
+  background-color: #fee2e2 !important;
+  color: #991b1b !important;
+}

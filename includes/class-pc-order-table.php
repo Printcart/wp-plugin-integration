@@ -40,13 +40,10 @@ class Printcart_Options_List_Table extends WP_List_Table {
     function get_columns() {
         $columns = array(
             'cb'                => '<input type="checkbox" />',
-            'product_image'     => esc_html__('Image', 'printcart-integration'),
-            'name'              => esc_html__('Name', 'printcart-integration'),
+            'order'              => esc_html__('Order', 'printcart-integration'),
             'created_at'        => esc_html__('Date', 'printcart-integration'),
             'updated_at'        => esc_html__('Modified', 'printcart-integration'),
             'status'            => esc_html__('Status', 'printcart-integration'),
-            'enable_design'     => esc_html__('Design tool', 'printcart-integration'),
-            'enable_upload'     => esc_html__('Design Upload', 'printcart-integration'),
         );
         return $columns;
     }
@@ -106,14 +103,9 @@ class Printcart_Options_List_Table extends WP_List_Table {
     function column_cb($item) {
         return sprintf('<input type="checkbox" name="bulk-delete[]" value="%s" />', $item['id']);
     }
-    function column_product_image($item) {
-        $product_link = isset($item['id'])  ? PRINTCART_BACKOFFICE_URL . '/product/' . $item['id'] : '';
-        $product_image = isset($item['product_image']) && $item['product_image']['url'] ? $item['product_image']['url'] : PRINTCART_PLUGIN_URL . 'assets/images/place-holder.jpg';
-        return '<a href="' . $product_link . '" target="_blank"><img style="max-width: 40px; max-height: 40px" width="150" height="150" src="' . $product_image . '" /></a>';
-    }
-    function column_name($item) {
+    function column_order($item) {
         $title      = $item['name'];
-        $product_link = isset($item['id'])  ? PRINTCART_BACKOFFICE_URL . '/product/' . $item['id'] : '';
+        $product_link = isset($item['id'])  ? PRINTCART_BACKOFFICE_URL . '/order/' . $item['id'] : '';
         return '<a href="' . $product_link . '" target="_blank">' . $title . '</a>';
     }
     function column_created_at($item) {
@@ -126,16 +118,31 @@ class Printcart_Options_List_Table extends WP_List_Table {
         return $update_at;
     }
     function column_status($item) {
-        return '<span style="text-transform: capitalize;">' . $item['status'] . '</span>';
-    }
-    function column_enable_upload($item) {
-        $enable_upload = isset($item['enable_upload']) ? $item['enable_upload'] : false;
-        $checked = $enable_upload ? 'checked' : '';
-        return '<input disabled type="checkbox" ' . $checked  . ' />';
-    }
-    function column_enable_design($item) {
-        $enable_design = isset($item['enable_design']) ? $item['enable_design'] : false;
-        $checked = $enable_design ? 'checked' : '';
-        return '<input disabled type="checkbox" ' . $checked . ' />';
+        $status = isset($item['status']) ? $item['status'] : 'Processing';
+        $class = 'success';
+
+        switch ($status) {
+            case 'processing':
+                $class = 'pc-status-success';
+                break;
+            case 'reviewing':
+                $class = 'pc-status-warning';
+                break;
+            case 'accepted':
+                $class = 'pc-status-primary';
+                break;
+            case 'canceled':
+                $class = 'pc-status-secondary';
+                break;
+            case 'trashed':
+                $class = 'pc-status-secondary';
+                break;
+            case 'deleted':
+                $class = 'pc-status-danger';
+                break;
+            default:
+                $class = 'pc-status-success';
+        }
+        return '<mark class="pc-order-status ' . $class . '" style="text-transform: capitalize;"><span>' . $status . '</span></mark>';
     }
 }
