@@ -149,8 +149,8 @@ if (!class_exists('Printcart_Admin_Settings')) {
                 </a>
                 <?php
                 $this->printcart_api_status();
-                $this->printcart_api_form($printcart_account, $result);
                 $this->printcart_setting_button_design();
+                $this->printcart_api_form($printcart_account, $result);
                 $this->printcart_account_details();
                 do_action('printcart_custom_settings');
                 ?>
@@ -250,7 +250,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
                         <span class="printcart-connected-text" style="color: #008000"><b><?php esc_html_e('Your website has been successfully connected to the Printcart dashboard.', 'printcart-integration'); ?>
                             </b></span>
                     </div>
-                    <a href="<?php echo esc_attr(PRINTCART_BACKOFFICE_URL); ?>" class="pc-button-dashboard pc-button-primary button-primary" target="_blank"><?php esc_html_e('Go to Dashboard', 'printcart-integration'); ?></a>
+                    <a href="<?php echo esc_attr(PRINTCART_BACKOFFICE_URL . '/inventory'); ?>" class="pc-button-dashboard pc-button-primary button-primary" target="_blank"><?php esc_html_e('Go to Dashboard to Import', 'printcart-integration'); ?></a>
                 <?php
                 } else {
                 ?>
@@ -351,17 +351,23 @@ if (!class_exists('Printcart_Admin_Settings')) {
             $message = '';
             $status = '';
             $printcart_class_button = get_option('printcart_w2p_class_design');
-            $printcart_label_button = get_option('printcart_w2p_label_design');
+            $printcart_label_button_design = get_option('printcart_w2p_label_design');
+            $printcart_label_button_upload = get_option('printcart_w2p_label_upload');
             $printcart_button_posititon = get_option('printcart_w2p_button_posititon') ? get_option('printcart_w2p_button_posititon') : 1;
+            $printcart_separate_design_buttons = get_option('printcart_w2p_separate_design_buttons') ? get_option('printcart_w2p_separate_design_buttons') : 'yes';
             if (isset($_POST['_action_button_design']) && $_POST['_action_button_design'] === 'submit') {
-                $printcart_button_posititon = isset($_POST['printcart_button_posititon']) ? sanitize_text_field($_POST['printcart_button_posititon']) : '';
                 $printcart_class_button = isset($_POST['printcart_class_button']) ? sanitize_text_field($_POST['printcart_class_button']) : '';
-                $printcart_label_button = isset($_POST['printcart_label_button']) ? sanitize_text_field($_POST['printcart_label_button']) : '';
+                $printcart_label_button_design = isset($_POST['printcart_w2p_label_design']) ? sanitize_text_field($_POST['printcart_w2p_label_design']) : '';
+                $printcart_label_button_upload = isset($_POST['printcart_w2p_label_upload']) ? sanitize_text_field($_POST['printcart_w2p_label_upload']) : '';
+                $printcart_button_posititon = isset($_POST['printcart_button_posititon']) ? sanitize_text_field($_POST['printcart_button_posititon']) : '';
+                $printcart_separate_design_buttons = isset($_POST['printcart_separate_design_buttons']) ? sanitize_text_field($_POST['printcart_separate_design_buttons']) : '';
                 $message        = __('Your settings have been saved.', 'printcart-integration');
                 $status         = 'updated';
                 update_option('printcart_w2p_class_design', $printcart_class_button);
-                update_option('printcart_w2p_label_design', $printcart_label_button);
+                update_option('printcart_w2p_label_design', $printcart_label_button_design);
+                update_option('printcart_w2p_label_upload', $printcart_label_button_upload);
                 update_option('printcart_w2p_button_posititon', $printcart_button_posititon);
+                update_option('printcart_w2p_separate_design_buttons', $printcart_separate_design_buttons);
             }
             $result = array(
                 'message'       => $message,
@@ -385,20 +391,45 @@ if (!class_exists('Printcart_Admin_Settings')) {
                                 </th>
                                 <td>
                                     <p>
-                                        <input placeholder="Start design" name="printcart_label_button" value="<?php echo esc_attr($printcart_label_button); ?>" type="text" style="width: 400px" class="">
+                                        <input placeholder="<?php echo esc_html_e('Start design', 'printcart-integration'); ?>" name="printcart_w2p_label_design" value="<?php echo esc_attr($printcart_label_button_design); ?>" type="text" style="width: 400px" class="">
                                     </p>
                                     <label class="description"><?php esc_html_e('Enter your label to replace the default label "Start design".', 'printcart-integration'); ?></label>
                                 </td>
                             </tr>
                             <tr valign="top">
                                 <th class="titledesc">
-                                    <label><?php esc_html_e('Class for "Start design" button in product page: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
+                                    <label><?php esc_html_e('Label for "Upload design" button in product page: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
+                                </th>
+                                <td>
+                                    <p>
+                                        <input placeholder="<?php echo esc_html_e('Upload design', 'printcart-integration'); ?>" name="printcart_w2p_label_upload" value="<?php echo esc_attr($printcart_label_button_upload); ?>" type="text" style="width: 400px" class="">
+                                    </p>
+                                    <label class="description"><?php esc_html_e('Enter your label to replace the default label "Upload design".', 'printcart-integration'); ?></label>
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <th class="titledesc">
+                                    <label><?php esc_html_e('Class for "Button design" button in product page: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
                                 </th>
                                 <td>
                                     <p>
                                         <input placeholder="printcart-btn-design" name="printcart_class_button" value="<?php echo esc_attr($printcart_class_button); ?>" type="text" style="width: 400px" class="">
                                     </p>
                                     <label class="description"><?php esc_html_e('Enter your class to show "Start design" button with your style.', 'printcart-integration'); ?></label>
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <th class="titledesc">
+                                    <label><?php esc_html_e('Separate artwork action buttons', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
+                                </th>
+                                <td>
+                                    <p class="row">
+                                        <input type="radio" name="printcart_separate_design_buttons" value="yes" <?php echo esc_attr($printcart_separate_design_buttons == 'yes' ? 'checked' : ''); ?> /><?php esc_html_e('Yes', 'printcart-integration'); ?>
+                                    </p>
+                                    <p class="row">
+                                        <input type="radio" name="printcart_separate_design_buttons" value="no" <?php echo esc_attr($printcart_separate_design_buttons == 'no' ? 'checked' : '');  ?> /><?php esc_html_e('No', 'printcart-integration'); ?>
+                                    </p>
+                                    <label class="description"><?php esc_html_e('Show artwork actions as buttons directly on the product page instead of wrap them on the popup.', 'printcart-integration'); ?></label>
                                 </td>
                             </tr>
                             <tr valign="top">
@@ -416,7 +447,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
                                         <input type="radio" name="printcart_button_posititon" value="3" <?php echo esc_attr($printcart_button_posititon == 3 ? 'checked' : '');  ?> /><?php esc_html_e('After add to cart button.', 'printcart-integration'); ?>
                                     </p>
                                     <p class="row">
-                                        <input type="radio" name="printcart_button_posititon" value="4" <?php echo esc_attr($printcart_button_posititon == 4 ? 'checked' : '');  ?> /><?php esc_html_e('Stick left side.', 'printcart-integration'); ?>
+                                        <input type="radio" name="printcart_button_posititon" value="4" <?php echo esc_attr($printcart_button_posititon == 4 ? 'checked' : '');  ?> /><?php esc_html_e('Stick right side.', 'printcart-integration'); ?>
                                     </p>
                                 </td>
                             </tr>

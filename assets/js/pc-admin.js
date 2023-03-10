@@ -79,7 +79,6 @@
         success: function (response) {
           jQuery(this).attr("disabled", false);
           jQuery(this).html(text);
-          console.log(response);
           if (
             response.success &&
             response.data.connected &&

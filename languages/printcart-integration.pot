@@ -5,7 +5,7 @@ msgstr ""
 "v1.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name "
 "<printcart@gmail.com>\n"
-"POT-Creation-Date: 2023-03-01 14:19+0700\n"
+"POT-Creation-Date: 2023-03-10 16:08+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Your Name <printcart@gmail."
 "com>\n"
@@ -26,7 +26,7 @@ msgstr ""
 "_n_noop:1,2;__ngettext:1,2;"
 "__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 3.1\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: includes/class-pc-admin-settings.php:41
@@ -70,7 +70,7 @@ msgid "here"
 msgstr ""
 
 #: includes/class-pc-admin-settings.php:122
-#: includes/class-pc-admin-settings.php:360
+#: includes/class-pc-admin-settings.php:364
 msgid "Your settings have been saved."
 msgstr ""
 
@@ -111,7 +111,7 @@ msgid ""
 msgstr ""
 
 #: includes/class-pc-admin-settings.php:253
-msgid "Go to Dashboard"
+msgid "Go to Dashboard to Import"
 msgstr ""
 
 #: includes/class-pc-admin-settings.php:258
@@ -174,143 +174,197 @@ msgid "Enter both Sid and Secret to check."
 msgstr ""
 
 #: includes/class-pc-admin-settings.php:342
-#: includes/class-pc-admin-settings.php:426
+#: includes/class-pc-admin-settings.php:457
 msgid "Save changes"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:372
+#: includes/class-pc-admin-settings.php:378
 msgid "Setting Button design"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:384
+#: includes/class-pc-admin-settings.php:390
 msgid ""
 "Label for \"Start design\" button in "
 "product page: "
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:390
+#: includes/class-pc-admin-settings.php:394
+msgid "Start design"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:396
 msgid ""
 "Enter your label to replace the default "
 "label \"Start design\"."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:395
+#: includes/class-pc-admin-settings.php:401
 msgid ""
-"Class for \"Start design\" button in "
+"Label for \"Upload design\" button in "
 "product page: "
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:401
+#: includes/class-pc-admin-settings.php:405
+msgid "Upload design"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:407
+msgid ""
+"Enter your label to replace the default "
+"label \"Upload design\"."
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:412
+msgid ""
+"Class for \"Button design\" button in "
+"product page: "
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:418
 msgid ""
 "Enter your class to show \"Start design\" "
 "button with your style."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:406
+#: includes/class-pc-admin-settings.php:423
+msgid "Separate artwork action buttons"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:427
+msgid "Yes"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:430
+msgid "No"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:432
+msgid ""
+"Show artwork actions as buttons directly on "
+"the product page instead of wrap them on "
+"the popup."
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:437
 msgid "Position of design button: "
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:410
+#: includes/class-pc-admin-settings.php:441
 msgid ""
 "Before add to cart button and after "
 "variantions option."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:413
+#: includes/class-pc-admin-settings.php:444
 msgid "Before variantions option."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:416
+#: includes/class-pc-admin-settings.php:447
 msgid "After add to cart button."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:419
-msgid "Stick left side."
+#: includes/class-pc-admin-settings.php:450
+msgid "Stick right side."
 msgstr ""
 
-#: includes/class-pc-hook.php:155
+#: includes/class-pc-hook.php:169
 msgid "Start Design"
 msgstr ""
 
-#: includes/class-pc-hook.php:179
+#: includes/class-pc-hook.php:170
+msgid "Upload Design"
+msgstr ""
+
+#: includes/class-pc-hook.php:190
 msgid "Printcart Customer Design"
 msgstr ""
 
-#: includes/class-pc-hook.php:197
+#: includes/class-pc-hook.php:208
 msgid "Product:"
 msgstr ""
 
-#: includes/class-pc-hook.php:215
+#: includes/class-pc-hook.php:226
+#: includes/class-pc-hook.php:244
 msgid "View design"
 msgstr ""
 
-#: includes/class-pc-hook.php:224
+#: includes/class-pc-hook.php:253
 msgid "No design in this order"
 msgstr ""
 
-#: includes/class-pc-hook.php:226
+#: includes/class-pc-hook.php:255
 msgid "Invalid Api Token"
 msgstr ""
 
-#: includes/class-pc-hook.php:245
+#: includes/class-pc-hook.php:274
 msgid "View project"
 msgstr ""
 
-#: includes/class-pc-hook.php:323
-#: includes/class-pc-hook.php:351
+#: includes/class-pc-hook.php:359
+#: includes/class-pc-hook.php:397
 msgid "Preview designs"
 msgstr ""
 
-#: includes/class-pc-hook.php:392
+#: includes/class-pc-hook.php:369
+#: includes/class-pc-hook.php:408
+msgid "Preview design upload"
+msgstr ""
+
+#: includes/class-pc-hook.php:450
 msgid "Printcart integration"
 msgstr ""
 
-#: includes/class-pc-hook.php:400
+#: includes/class-pc-hook.php:458
 msgid ""
 "You do not have permission to assign API "
 "Keys to the selected user."
 msgstr ""
 
-#: includes/class-pc-product-table.php:43
+#: includes/class-pc-product-table.php:44
 msgid "Image"
 msgstr ""
 
-#: includes/class-pc-product-table.php:44
+#: includes/class-pc-product-table.php:45
 msgid "Name"
 msgstr ""
 
-#: includes/class-pc-product-table.php:45
+#: includes/class-pc-product-table.php:46
 msgid "Date"
 msgstr ""
 
-#: includes/class-pc-product-table.php:46
+#: includes/class-pc-product-table.php:47
 msgid "Modified"
 msgstr ""
 
-#: includes/class-pc-product-table.php:47
+#: includes/class-pc-product-table.php:48
 msgid "Status"
 msgstr ""
 
-#: includes/class-pc-product-table.php:48
+#: includes/class-pc-product-table.php:49
 msgid "Design tool"
 msgstr ""
 
-#: includes/class-pc-product-table.php:49
+#: includes/class-pc-product-table.php:50
 msgid "Design Upload"
 msgstr ""
 
-#: includes/class-pc-product-table.php:73
+#: includes/class-pc-product-table.php:51
+#: includes/class-pc-product-table.php:149
+msgid "View"
+msgstr ""
+
+#: includes/class-pc-product-table.php:75
 #, php-format
 msgid "%s item"
 msgid_plural "%s items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-pc-product-table.php:83
+#: includes/class-pc-product-table.php:85
 msgid "Previous page"
 msgstr ""
 
-#: includes/class-pc-product-table.php:93
+#: includes/class-pc-product-table.php:95
 msgid "Next page"
 msgstr ""
 
@@ -322,4 +376,44 @@ msgstr ""
 
 #: printcart-design.php:38
 msgid "Printcart Integration"
+msgstr ""
+
+#: views/start-and-upload-design.php:3
+msgid "Start and Upload Design"
+msgstr ""
+
+#: views/start-and-upload-design.php:28
+msgid "Choose a way to design this product"
+msgstr ""
+
+#: views/start-and-upload-design.php:34
+msgid "Printcart Uploader"
+msgstr ""
+
+#: views/start-and-upload-design.php:39
+msgid "Upload a full design"
+msgstr ""
+
+#: views/start-and-upload-design.php:41
+msgid "- Have a complete design"
+msgstr ""
+
+#: views/start-and-upload-design.php:42
+msgid "- Have your own designer"
+msgstr ""
+
+#: views/start-and-upload-design.php:52
+msgid "Printcart Designer"
+msgstr ""
+
+#: views/start-and-upload-design.php:57
+msgid "Design here online"
+msgstr ""
+
+#: views/start-and-upload-design.php:59
+msgid "- Already have your concept"
+msgstr ""
+
+#: views/start-and-upload-design.php:60
+msgid "- Customize every details"
 msgstr ""
