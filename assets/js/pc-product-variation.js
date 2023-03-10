@@ -1,26 +1,42 @@
 (function () {
   "use strict";
 
-  var buttonHtml = jQuery(".printcart-button-design");
-  var buttonLabel = buttonHtml.html();
+  var buttonDesignDom = jQuery("#pc-select_btn_design");
+  var buttonUploadDom = jQuery("#pc-select_btn_upload");
+  var buttonUploadAndDesignDom = jQuery("#pc-select_btn_upload-and-design");
+  var buttonDesignLabel = buttonDesignDom.html();
+  var buttonUploadLabel = buttonUploadDom.html();
+  var buttonUploadAndDesignLabel = buttonUploadAndDesignDom.html();
+  function toggleLoading(loading = true) {
+    if (loading) {
+      buttonDesignDom.addClass("pc-disabled");
+      buttonDesignDom.html("Loading...");
+      buttonUploadDom.addClass("pc-disabled");
+      buttonUploadDom.html("Loading...");
+      buttonUploadAndDesignDom.addClass("pc-disabled");
+      buttonUploadAndDesignDom.html("Loading...");
+    } else {
+      buttonDesignDom.removeClass("pc-disabled");
+      buttonDesignDom.html(buttonDesignLabel);
+      buttonUploadDom.removeClass("pc-disabled");
+      buttonUploadDom.html(buttonUploadLabel);
+      buttonUploadAndDesignDom.removeClass("pc-disabled");
+      buttonUploadAndDesignDom.html(buttonUploadAndDesignLabel);
+    }
+  }
   jQuery(".variations_form").on("show_variation", function () {
-    var variation_id = jQuery(".variations_form .variation_id").val();
+    var variation_id = jQuery('form input[name="variation_id"]').val();
     if (variation_id) {
       printcart_get_integration_id(variation_id);
     } else {
-      buttonHtml.attr("data-productid", "");
-      buttonHtml.prop("disabled", true);
+      buttonDesignDom.attr("data-productid", "");
+      buttonUploadDom.attr("data-productid", "");
+      // toggleLoading(false);
+      buttonDesignDom.addClass("pc-disabled");
+      buttonUploadDom.addClass("pc-disabled");
+      buttonUploadAndDesignDom.addClass("pc-disabled");
     }
   });
-  function printcart_trigger_button_design(disabled = false) {
-    if (disabled) {
-      buttonHtml.prop("disabled", true);
-      buttonHtml.html('<i class="fa fa-spinner fa-spin"></i>Loading');
-    } else {
-      buttonHtml.prop("disabled", false);
-      buttonHtml.html(buttonLabel);
-    }
-  }
   function printcart_get_integration_id(variation_id) {
     jQuery.ajax({
       type: "post",
@@ -32,23 +48,23 @@
       },
       context: this,
       beforeSend: function () {
-        printcart_trigger_button_design(true);
+        toggleLoading();
       },
       success: function (response) {
-        if (
-          response.success &&
-          response.data &&
-          response.data.product_id &&
-          response.data.enable_design
-        ) {
-          buttonHtml.attr("data-productid", response.data.product_id);
-          buttonHtml.data("productid", response.data.product_id);
-          printcart_trigger_button_design();
-        } else {
-          buttonHtml.attr("data-productid", "");
-          buttonHtml.data("productid", "");
-          buttonHtml.html(buttonLabel);
-          buttonHtml.prop("disabled", true);
+        toggleLoading(false);
+        if (response.success && response.data && response.data.product_id) {
+          if (response.data.enable_design) {
+            buttonDesignDom.attr("data-productid", response.data.product_id);
+          } else {
+            buttonDesignDom.attr("data-productid", "");
+            buttonDesignDom.addClass("pc-disabled");
+          }
+          if (response.data.enable_upload) {
+            buttonUploadDom.attr("data-productid", response.data.product_id);
+          } else {
+            buttonUploadDom.attr("data-productid", "");
+            buttonUploadDom.addClass("pc-disabled");
+          }
         }
       },
     });

@@ -7,7 +7,7 @@
 Plugin Name: Printcart Integration
 Plugin URI: https://printcart.com
 Description: Create design buttons for WC products
-Version: 2.0.0
+Version: 2.1.0
 Author: Printcart Team
 Author URI: https://printcart.com
 Text Domain: printcart-integration
@@ -16,7 +16,7 @@ WC tested up to: 6.5.1
 PHP: >=7.0
 */
 
-define('PRINTCART_VERSION',            '2.0.0');
+define('PRINTCART_VERSION',            '2.1.0');
 define('PRINTCART_PLUGIN_URL',         plugin_dir_url(__FILE__));
 define('PRINTCART_PLUGIN_DIR',         plugin_dir_path(__FILE__));
 
@@ -69,8 +69,14 @@ define('PRINTCART_DESIGNTOOL',          'https://customizer.printcart.com');
 /**
  *  JS SDK Url
  */
-define('PRINTCART_JS_SDK_URL',            'https://unpkg.com/@printcart/design-tool-sdk@1.5.0/dist/main.js');
-// define('PRINTCART_JS_SDK_URL',            'http://designtool.loc/main.js');
+define('PRINTCART_DESIGNTOOL_SDK_URL',            'https://unpkg.com/@printcart/design-tool-sdk@1.5.0/dist/main.js');
+// define('PRINTCART_DESIGNTOOL_SDK_URL',            'http://localhost:3101/dist/main.js');
+
+/**
+ *  Upload SDK Url
+ */
+define('PRINTCART_UPLOAD_SDK_URL',            'https://unpkg.com/@printcart/uploader-sdk@1.2.0/dist/main.js');
+// define('PRINTCART_UPLOAD_SDK_URL',            'http://localhost:3003/dist/main.js');
 
 /**
  *  backoffice Url
