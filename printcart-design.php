@@ -25,9 +25,9 @@ require_once(PRINTCART_PLUGIN_DIR .    'includes/class-pc-admin-settings.php');
 require_once(PRINTCART_PLUGIN_DIR .    'includes/class-pc-hook.php');
 require_once(PRINTCART_PLUGIN_DIR .    'includes/class-pc-custom-api.php');
 
-register_activation_hook(__FILE__, 'printcart_plugin_activation');
+register_activation_hook(__FILE__, 'printcart_w2p_plugin_activation');
 
-function printcart_plugin_activation() {
+function printcart_w2p_plugin_activation() {
     if (get_option('printcart_account') && !get_option('printcart_w2p_account')) {
         update_option('printcart_w2p_account', get_option('printcart_account'));
         delete_option('printcart_account');
@@ -40,16 +40,16 @@ function printcart_plugin_activation() {
     }
 }
 
-add_action('admin_init', 'printcart_plugin_redirect');
-function printcart_plugin_redirect() {
+add_action('admin_init', 'printcart_w2p_plugin_redirect');
+function printcart_w2p_plugin_redirect() {
     if (get_option('printcart_plugin_do_activation_redirect', false)) {
         delete_option('printcart_plugin_do_activation_redirect');
         wp_redirect(add_query_arg(array('page' => 'pc-integration-web2print'), admin_url('admin.php')));
     }
 }
 
-add_filter('plugin_action_links_' . plugin_basename(plugin_dir_path(__FILE__) . 'printcart-design.php'), 'printcart_plugin_settings_link');
-function printcart_plugin_settings_link($links) {
+add_filter('plugin_action_links_' . plugin_basename(plugin_dir_path(__FILE__) . 'printcart-design.php'), 'printcart_w2p_plugin_settings_link');
+function printcart_w2p_plugin_settings_link($links) {
     $args = array('page' => 'pc-integration-web2print%2Fsettings');
 
     $url = add_query_arg($args, admin_url('admin.php'));
