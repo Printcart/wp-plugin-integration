@@ -44,7 +44,7 @@ add_action('admin_init', 'printcart_plugin_redirect');
 function printcart_plugin_redirect() {
     if (get_option('printcart_plugin_do_activation_redirect', false)) {
         delete_option('printcart_plugin_do_activation_redirect');
-        wp_redirect(add_query_arg(array('page' => 'pc-integration-web2print%2Fsettings'), admin_url('admin.php')));
+        wp_redirect(add_query_arg(array('page' => 'pc-integration-web2print'), admin_url('admin.php')));
     }
 }
 

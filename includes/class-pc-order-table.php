@@ -60,7 +60,7 @@ class Printcart_Options_List_Table extends WP_List_Table {
 <?php
     }
     public function pc_pagination() {
-        $count_data = PC_W2P_API::fetchProductCount();
+        $count_data = PC_W2P_API::fetchOrderCount();
         $count = isset($count_data['data']) && isset($count_data['data']['count']) && $count_data['data']['count'] ? $count_data['data']['count'] : 0;
         $removable_query_args = wp_removable_query_args();
         $current_url = set_url_scheme('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
