@@ -5,7 +5,7 @@ msgstr ""
 "v1.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name "
 "<printcart@gmail.com>\n"
-"POT-Creation-Date: 2023-03-10 16:08+0700\n"
+"POT-Creation-Date: 2023-03-10 18:01+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Your Name <printcart@gmail."
 "com>\n"
@@ -38,26 +38,44 @@ msgid "PC Web2Print"
 msgstr ""
 
 #: includes/class-pc-admin-settings.php:51
-msgid "Printcart Products"
+msgid "Printcart Dashboard"
 msgstr ""
 
 #: includes/class-pc-admin-settings.php:52
-#: includes/class-pc-admin-settings.php:77
+msgid "Dashboard"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:60
+msgid "Printcart Products"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:61
+#: includes/class-pc-admin-settings.php:104
 #: includes/class-pc-product-table.php:8
 #: includes/class-pc-product-table.php:9
 msgid "Products"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:60
+#: includes/class-pc-admin-settings.php:69
+msgid "Printcart Orders"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:70
+#: includes/class-pc-order-table.php:8
+#: includes/class-pc-order-table.php:9
+msgid "Orders"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:78
 msgid "Printcart Settings"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:61
+#: includes/class-pc-admin-settings.php:79
 #: printcart-design.php:57
 msgid "Settings"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:80
+#: includes/class-pc-admin-settings.php:107
 msgid ""
 "Below are all the products that you have "
 "entered on Printcart Dashboard, You can "
@@ -65,205 +83,216 @@ msgid ""
 "Dashboard "
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:81
+#: includes/class-pc-admin-settings.php:108
 msgid "here"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:122
-#: includes/class-pc-admin-settings.php:364
+#: includes/class-pc-admin-settings.php:135
+#: includes/class-pc-order-table.php:43
+msgid "Order"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:138
+msgid ""
+"Below are all your orders on Printcart "
+"Dashboard"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:181
+#: includes/class-pc-admin-settings.php:421
 msgid "Your settings have been saved."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:126
+#: includes/class-pc-admin-settings.php:185
 msgid ""
 "You have entered incorrect sid or secret. "
 "Please try again!"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:171
+#: includes/class-pc-admin-settings.php:228
 msgid "Store details"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:174
+#: includes/class-pc-admin-settings.php:231
 msgid " Store settings"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:181
+#: includes/class-pc-admin-settings.php:238
 msgid "Name:"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:187
+#: includes/class-pc-admin-settings.php:244
 msgid "Email:"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:193
+#: includes/class-pc-admin-settings.php:250
 msgid "Tier:"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:243
+#: includes/class-pc-admin-settings.php:300
 msgid "Congratulations!"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:250
+#: includes/class-pc-admin-settings.php:307
 msgid ""
 "Your website has been successfully "
 "connected to the Printcart dashboard."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:253
+#: includes/class-pc-admin-settings.php:310
 msgid "Go to Dashboard to Import"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:258
+#: includes/class-pc-admin-settings.php:315
 msgid ""
 "Connect the Printcart Dashboard to your site"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:265
+#: includes/class-pc-admin-settings.php:322
 msgid ""
 "Your website has failed to connect to the "
 "Printcart dashboard!"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:267
+#: includes/class-pc-admin-settings.php:324
 msgid "Connect to Dashboard"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:278
+#: includes/class-pc-admin-settings.php:335
 msgid "Manually enter an API key"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:290
+#: includes/class-pc-admin-settings.php:347
 msgid "Sid: "
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:296
+#: includes/class-pc-admin-settings.php:353
 msgid "Enter your Printcart sid API key."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:301
+#: includes/class-pc-admin-settings.php:358
 msgid "Secret: "
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:307
+#: includes/class-pc-admin-settings.php:364
 msgid "Enter your Printcart secret API key."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:312
+#: includes/class-pc-admin-settings.php:369
 msgid "Unauth token: "
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:318
+#: includes/class-pc-admin-settings.php:375
 msgid ""
 "Unauth token of store Printcart "
 "(Automatically generated when you enter "
 "valid sid and secret)."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:323
+#: includes/class-pc-admin-settings.php:380
 msgid ""
 "Check connection to Printcart Dashboard: "
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:328
+#: includes/class-pc-admin-settings.php:385
 msgid "Test connection"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:334
+#: includes/class-pc-admin-settings.php:391
 msgid "Enter both Sid and Secret to check."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:342
-#: includes/class-pc-admin-settings.php:457
+#: includes/class-pc-admin-settings.php:399
+#: includes/class-pc-admin-settings.php:514
 msgid "Save changes"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:378
+#: includes/class-pc-admin-settings.php:435
 msgid "Setting Button design"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:390
+#: includes/class-pc-admin-settings.php:447
 msgid ""
 "Label for \"Start design\" button in "
 "product page: "
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:394
+#: includes/class-pc-admin-settings.php:451
 msgid "Start design"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:396
+#: includes/class-pc-admin-settings.php:453
 msgid ""
 "Enter your label to replace the default "
 "label \"Start design\"."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:401
+#: includes/class-pc-admin-settings.php:458
 msgid ""
 "Label for \"Upload design\" button in "
 "product page: "
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:405
+#: includes/class-pc-admin-settings.php:462
 msgid "Upload design"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:407
+#: includes/class-pc-admin-settings.php:464
 msgid ""
 "Enter your label to replace the default "
 "label \"Upload design\"."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:412
+#: includes/class-pc-admin-settings.php:469
 msgid ""
 "Class for \"Button design\" button in "
 "product page: "
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:418
+#: includes/class-pc-admin-settings.php:475
 msgid ""
 "Enter your class to show \"Start design\" "
 "button with your style."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:423
+#: includes/class-pc-admin-settings.php:480
 msgid "Separate artwork action buttons"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:427
+#: includes/class-pc-admin-settings.php:484
 msgid "Yes"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:430
+#: includes/class-pc-admin-settings.php:487
 msgid "No"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:432
+#: includes/class-pc-admin-settings.php:489
 msgid ""
 "Show artwork actions as buttons directly on "
 "the product page instead of wrap them on "
 "the popup."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:437
+#: includes/class-pc-admin-settings.php:494
 msgid "Position of design button: "
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:441
+#: includes/class-pc-admin-settings.php:498
 msgid ""
 "Before add to cart button and after "
 "variantions option."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:444
+#: includes/class-pc-admin-settings.php:501
 msgid "Before variantions option."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:447
+#: includes/class-pc-admin-settings.php:504
 msgid "After add to cart button."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:450
+#: includes/class-pc-admin-settings.php:507
 msgid "Stick right side."
 msgstr ""
 
@@ -320,24 +349,45 @@ msgid ""
 "Keys to the selected user."
 msgstr ""
 
+#: includes/class-pc-order-table.php:44
+#: includes/class-pc-product-table.php:46
+msgid "Date"
+msgstr ""
+
+#: includes/class-pc-order-table.php:45
+#: includes/class-pc-product-table.php:47
+msgid "Modified"
+msgstr ""
+
+#: includes/class-pc-order-table.php:46
+#: includes/class-pc-product-table.php:48
+msgid "Status"
+msgstr ""
+
+#: includes/class-pc-order-table.php:70
+#: includes/class-pc-product-table.php:75
+#, php-format
+msgid "%s item"
+msgid_plural "%s items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-pc-order-table.php:80
+#: includes/class-pc-product-table.php:85
+msgid "Previous page"
+msgstr ""
+
+#: includes/class-pc-order-table.php:90
+#: includes/class-pc-product-table.php:95
+msgid "Next page"
+msgstr ""
+
 #: includes/class-pc-product-table.php:44
 msgid "Image"
 msgstr ""
 
 #: includes/class-pc-product-table.php:45
 msgid "Name"
-msgstr ""
-
-#: includes/class-pc-product-table.php:46
-msgid "Date"
-msgstr ""
-
-#: includes/class-pc-product-table.php:47
-msgid "Modified"
-msgstr ""
-
-#: includes/class-pc-product-table.php:48
-msgid "Status"
 msgstr ""
 
 #: includes/class-pc-product-table.php:49
@@ -351,21 +401,6 @@ msgstr ""
 #: includes/class-pc-product-table.php:51
 #: includes/class-pc-product-table.php:149
 msgid "View"
-msgstr ""
-
-#: includes/class-pc-product-table.php:75
-#, php-format
-msgid "%s item"
-msgid_plural "%s items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: includes/class-pc-product-table.php:85
-msgid "Previous page"
-msgstr ""
-
-#: includes/class-pc-product-table.php:95
-msgid "Next page"
 msgstr ""
 
 #: printcart-design.php:37

@@ -42,8 +42,17 @@ if (!class_exists('Printcart_Admin_Settings')) {
                 esc_html__('PC Web2Print', 'printcart-integration'),
                 'manage_options',
                 'pc-integration-web2print',
-                array($this, 'printcart_products'),
+                array($this, 'printcart_dashboard'),
                 PRINTCART_PLUGIN_URL . 'assets/images/logo.svg'
+            );
+
+            add_submenu_page(
+                'pc-integration-web2print',
+                esc_html__('Printcart Dashboard', 'printcart-integration'),
+                esc_html__('Dashboard', 'printcart-integration'),
+                'manage_options',
+                'pc-integration-web2print',
+                array($this, 'printcart_dashboard')
             );
 
             add_submenu_page(
@@ -51,7 +60,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
                 esc_html__('Printcart Products', 'printcart-integration'),
                 esc_html__('Products', 'printcart-integration'),
                 'manage_options',
-                'pc-integration-web2print',
+                'pc-integration-web2print/products',
                 array($this, 'printcart_products')
             );
 
@@ -73,10 +82,19 @@ if (!class_exists('Printcart_Admin_Settings')) {
                 array($this, 'printcart_settings')
             );
         }
-
-        /**
-         *  Create settings to setup API key in WP Dashboard
-         */
+        public function printcart_dashboard() {
+?>
+            <div id="printcart-design">
+                <a href="<?php echo esc_attr(PRINTCART_BACKOFFICE_URL); ?>">
+                    <img src="<?php echo esc_attr(PRINTCART_PLUGIN_URL . 'assets/images/logo-printcart.svg'); ?>" class="printcart-logo" />
+                </a>
+                <?php
+                $this->printcart_api_status();
+                $this->printcart_account_details();
+                ?>
+            </div>
+        <?php
+        }
         public function printcart_products() {
             require_once PRINTCART_PLUGIN_DIR . 'includes/class-pc-product-table.php';
             $pc_table = new Printcart_Options_List_Table(); ?>
@@ -138,6 +156,9 @@ if (!class_exists('Printcart_Admin_Settings')) {
             </div>
         <?php
         }
+        /**
+         *  Create settings to setup API key in WP Dashboard
+         */
         public function printcart_settings() {
             $printcart_account = get_option('printcart_w2p_account');
             $message = '';
@@ -186,10 +207,8 @@ if (!class_exists('Printcart_Admin_Settings')) {
                     <img src="<?php echo esc_attr(PRINTCART_PLUGIN_URL . 'assets/images/logo-printcart.svg'); ?>" class="printcart-logo" />
                 </a>
                 <?php
-                $this->printcart_api_status();
                 $this->printcart_setting_button_design();
                 $this->printcart_api_form($printcart_account, $result);
-                $this->printcart_account_details();
                 do_action('printcart_custom_settings');
                 ?>
             </div>
