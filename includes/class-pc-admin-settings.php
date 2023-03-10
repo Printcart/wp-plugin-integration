@@ -117,7 +117,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
                     <?php esc_html_e('Order', 'printcart-integration'); ?>
                 </h1>
                 <div class="description">
-                    <?php esc_html_e("Below are all the order that you  on Printcart Dashboard", "printcart-integration"); ?>
+                    <?php esc_html_e("Below are all your orders on Printcart Dashboard", "printcart-integration"); ?>
                 </div>
                 <div id="poststuff">
                     <div id="post-body" class="metabox-holder">
