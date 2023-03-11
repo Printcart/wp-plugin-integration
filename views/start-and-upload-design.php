@@ -3,20 +3,20 @@
     $start_and_upload_design_button = esc_html__('Start and Upload Design', 'printcart-integration');
     if ($printcart_separate_design_buttons === 'yes') {
         if ($product_id && !empty($product_variation)) {
-            echo '<div id="pc-select_btn_design" data-productid="' . esc_attr($product_id) . '" class="button printcart-button alt pc-disabled ' . $printcart_class_button . '">' . $printcart_label_button_design . '</div>';
+            echo '<button id="pc-select_btn_design" data-productid="' . esc_attr($product_id) . '" class="button printcart-button alt pc-disabled ' . $printcart_class_button . '">' . $printcart_label_button_design . '</button>';
         } else if ($product_id && $enable_design) {
-            echo '<div id="pc-select_btn_design" data-productid="' . esc_attr($product_id) . '" class="button printcart-button alt ' . $printcart_class_button . '">' . $printcart_label_button_design . '</div>';
+            echo '<button id="pc-select_btn_design" data-productid="' . esc_attr($product_id) . '" class="button printcart-button alt ' . $printcart_class_button . '">' . $printcart_label_button_design . '</button>';
         }
         if ($product_id && !empty($product_variation)) {
-            echo '<div id="pc-select_btn_upload" data-productid="' . esc_attr($product_id) . '" class="button printcart-button alt pc-disabled ' . $printcart_class_button  . '">' . $printcart_label_button_upload . '</div>';
+            echo '<button id="pc-select_btn_upload" data-productid="' . esc_attr($product_id) . '" class="button printcart-button alt pc-disabled ' . $printcart_class_button  . '">' . $printcart_label_button_upload . '</button>';
         } else if ($product_id && $enable_upload) {
-            echo '<div id="pc-select_btn_upload" data-productid="' . esc_attr($product_id) . '" class="button printcart-button alt ' . $printcart_class_button  . '">' . $printcart_label_button_upload . '</div>';
+            echo '<button id="pc-select_btn_upload" data-productid="' . esc_attr($product_id) . '" class="button printcart-button alt ' . $printcart_class_button  . '">' . $printcart_label_button_upload . '</button>';
         }
     } else {
         if ($product_id && !empty($product_variation)) {
-            echo '<div id="pc-select_btn_upload-and-design" class="button printcart-button alt pc-disabled ' . $printcart_class_button . '">' . $start_and_upload_design_button . '</div>';
+            echo '<button id="pc-select_btn_upload-and-design" class="button printcart-button alt pc-disabled ' . $printcart_class_button . '"><i class="fa-light fa-loader"></i>' . $start_and_upload_design_button . '</button>';
         } else if ($product_id && ($enable_design || $enable_upload)) {
-            echo '<div id="pc-select_btn_upload-and-design" class="button printcart-button alt ' . $printcart_class_button . '">' . $start_and_upload_design_button . '</div>';
+            echo '<button id="pc-select_btn_upload-and-design" class="button printcart-button alt ' . $printcart_class_button . '"><i class="fa-light fa-loader"></i>' . $start_and_upload_design_button . '</button>';
         }
     }
     ?>

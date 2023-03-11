@@ -528,7 +528,7 @@ if (!class_exists('Printcart_Product_Hook')) {
 
             wp_enqueue_style('printcart', PRINTCART_PLUGIN_URL . 'assets/css/pc-style.css', array(), PRINTCART_VERSION);
 
-            $depends = apply_filters('printcart_depend_js', array());
+            $depends = apply_filters('printcart_depend_js', array('jquery-core'));
 
             wp_register_script('printcart', PRINTCART_PLUGIN_URL . 'assets/js/printcart.js', $depends, PRINTCART_VERSION);
 
