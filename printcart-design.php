@@ -67,16 +67,10 @@ define('PRINTCART_DESIGNTOOL',          'https://customizer.printcart.com');
 // define('PRINTCART_DESIGNTOOL',          'http://designtool.loc');
 
 /**
- *  JS SDK Url
+ *  Designer SDK Url
  */
-define('PRINTCART_DESIGNTOOL_SDK_URL',            'https://unpkg.com/@printcart/design-tool-sdk@1.5.0/dist/main.js');
-// define('PRINTCART_DESIGNTOOL_SDK_URL',            'http://localhost:3101/dist/main.js');
-
-/**
- *  Upload SDK Url
- */
-define('PRINTCART_UPLOAD_SDK_URL',            'https://unpkg.com/@printcart/uploader-sdk@1.2.0/dist/main.js');
-// define('PRINTCART_UPLOAD_SDK_URL',            'http://localhost:3003/dist/main.js');
+define('PRINTCART_DESIGNER_SDK_URL',            PRINTCART_PLUGIN_URL . 'assets/js/printcart-designer.min.js');
+// define('PRINTCART_DESIGNER_SDK_URL',            'http://localhost:3103/dist/main.js');
 
 /**
  *  backoffice Url
