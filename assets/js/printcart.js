@@ -1,6 +1,7 @@
 (function () {
   "use strict";
-  var designer;
+  var printcartDesigner = new PrintcartDesigner();
+  var designTool;
   var orderUpload;
   jQuery(document).ready(function ($) {
     $("#pc-select_btn_design").on("click", function (e) {
@@ -12,7 +13,7 @@
         return;
       }
       closePopup();
-      designer = new PrintcartDesigner({
+      designTool = printcartDesigner.initDesignTool({
         token: pc_frontend.unauth_token,
         productId: productId,
         options: {
@@ -22,7 +23,7 @@
           showDimensions: pc_frontend.options.showDimensions,
         },
       });
-      designer.render();
+      designTool.render();
     });
 
     $("#pc-select_btn_upload").on("click", function (e) {
@@ -30,11 +31,11 @@
       if ($(this).hasClass("pc-disabled")) return;
       var productId = $(this).data("productid");
       if (!productId) {
-        alert("The product has not been enabled Design Tool.");
+        alert("The product has not been enabled Uploader.");
         return;
       }
       closePopup();
-      orderUpload = new PrintcartUploader({
+      orderUpload = printcartDesigner.initUploader({
         token: pc_frontend.unauth_token,
         productId: productId,
       });
@@ -105,7 +106,7 @@
         html += "</tr></tbody></table>";
 
         document.getElementById("printcart-options-design").innerHTML = html;
-        designer.close();
+        designTool.close();
       }
       if (event.data && event.data.uploaderEvent === "upload-success") {
         var designUpload = event.data.data;

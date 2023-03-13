@@ -49,7 +49,7 @@
                     <div aria-hidden="true" class="pc-select_btn_wrap">
                         <div class="pc-select_btn_img">
                             <div class="pc-select_btn_img_inner">
-                                <img src="https://files.printcart.com/common/design.svg" alt="<?php esc_html_e('Printcart Designer', 'printcart-integration'); ?>">
+                                <img src="https://files.printcart.com/common/design.svg" alt="<?php esc_attr_e('Printcart Designer', 'printcart-integration'); ?>">
                             </div>
                         </div>
                         <div class="pc-select_btn_content">

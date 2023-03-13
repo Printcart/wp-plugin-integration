@@ -105,7 +105,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
                 </h1>
                 <div class="description">
                     <?php esc_html_e("Below are all the products that you have entered on Printcart Dashboard, You can import more products into Printcart Dashboard ", "printcart-integration"); ?>
-                    <a href="<?php echo esc_url(PRINTCART_BACKOFFICE_URL . '/inventory') ?>"><?php esc_html_e("here", "printcart-integration") ?></a>
+                    <a href="<?php echo esc_url(PRINTCART_BACKOFFICE_URL . '/inventory'); ?>"><?php esc_html_e("here", "printcart-integration"); ?></a>
                 </div>
                 <div id="poststuff">
                     <div id="post-body" class="metabox-holder">
@@ -228,7 +228,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
                         <?php esc_html_e('Store details', 'printcart-integration'); ?>
                     </h3>
                     <div>
-                        <a href="<?php echo esc_url(PRINTCART_BACKOFFICE_URL . '/settings') ?>" target="_blank"><?php esc_html_e(' Store settings', 'printcart-integration'); ?></a>
+                        <a href="<?php echo esc_url(PRINTCART_BACKOFFICE_URL . '/settings'); ?>" target="_blank"><?php esc_html_e(' Store settings', 'printcart-integration'); ?></a>
                     </div>
                 </div>
                 <hr>
@@ -402,7 +402,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
                     </p>
                 </form>
             </div>
-        <?
+        <?php
         }
         public function printcart_setting_button_design() {
             $message = '';
@@ -516,7 +516,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
                     </p>
                 </form>
             </div>
-<?
+<?php
         }
         public function admin_enqueue_scripts() {
             if (is_admin()) {

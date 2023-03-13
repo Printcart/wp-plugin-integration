@@ -528,13 +528,11 @@ if (!class_exists('Printcart_Product_Hook')) {
 
             wp_enqueue_style('printcart', PRINTCART_PLUGIN_URL . 'assets/css/pc-style.css', array(), PRINTCART_VERSION);
 
-            $depends = apply_filters('printcart_depend_js', array('jquery-core'));
+            $depends = apply_filters('printcart_depend_js', array('printcart-designer-sdk', 'jquery-core'));
 
             wp_register_script('printcart', PRINTCART_PLUGIN_URL . 'assets/js/printcart.js', $depends, PRINTCART_VERSION);
 
-            wp_register_script('printcart-design-sdk', PRINTCART_DESIGNTOOL_SDK_URL, $depends, PRINTCART_VERSION);
-
-            wp_register_script('printcart-upload-sdk', PRINTCART_UPLOAD_SDK_URL, $depends, PRINTCART_VERSION);
+            wp_register_script('printcart-designer-sdk', PRINTCART_DESIGNER_SDK_URL, array(), PRINTCART_VERSION);
 
             wp_register_script('pc-product-variation', PRINTCART_PLUGIN_URL . 'assets/js/pc-product-variation.js', array(), PRINTCART_VERSION);
 
@@ -556,7 +554,7 @@ if (!class_exists('Printcart_Product_Hook')) {
             );
             wp_localize_script('printcart', 'pc_frontend', $args);
 
-            wp_enqueue_script(array('printcart', 'printcart-design-sdk', 'printcart-upload-sdk'));
+            wp_enqueue_script('printcart');
         }
 
         public function printcart_admin_enqueue_scripts() {
