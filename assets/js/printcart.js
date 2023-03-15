@@ -23,7 +23,29 @@
           showDimensions: pc_frontend.options.showDimensions,
         },
       });
-      designTool.render();
+
+      // designTool.render();
+
+      if (designTool) {
+        if (buttonDesignDom) {
+          pcButtonLoading(buttonDesignDom, buttonDesignLabel);
+        }
+        if (buttonUploadAndDesignLabel) {
+          pcButtonLoading(buttonUploadAndDesignDom, buttonUploadAndDesignLabel);
+        }
+        designTool.on("render-finish", function () {
+          if (buttonDesignDom) {
+            pcButtonLoading(buttonDesignDom, buttonDesignLabel, false);
+          }
+          if (buttonUploadAndDesignLabel) {
+            pcButtonLoading(
+              buttonUploadAndDesignDom,
+              buttonUploadAndDesignLabel,
+              false
+            );
+          }
+        });
+      }
     });
 
     $("#pc-select_btn_upload").on("click", function (e) {
@@ -39,7 +61,30 @@
         token: pc_frontend.unauth_token,
         productId: productId,
       });
+
       orderUpload.open();
+
+      if (orderUpload) {
+        if (buttonUploadDom) {
+          pcButtonLoading(buttonUploadDom, buttonUploadLabel);
+        }
+        if (buttonUploadAndDesignLabel) {
+          pcButtonLoading(buttonUploadAndDesignDom, buttonUploadAndDesignLabel);
+        }
+
+        orderUpload.on("onload", function () {
+          if (buttonUploadDom) {
+            pcButtonLoading(buttonUploadDom, buttonUploadLabel, false);
+          }
+          if (buttonUploadAndDesignLabel) {
+            pcButtonLoading(
+              buttonUploadAndDesignDom,
+              buttonUploadAndDesignLabel,
+              false
+            );
+          }
+        });
+      }
     });
 
     function closePopup() {
@@ -61,6 +106,24 @@
       e.preventDefault();
       jQuery("#pc-select_wrap").addClass("is-visible");
     });
+
+    var buttonDesignDom = jQuery("#pc-select_btn_design");
+    var buttonUploadDom = jQuery("#pc-select_btn_upload");
+    var buttonUploadAndDesignDom = jQuery("#pc-select_btn_upload-and-design");
+    var buttonDesignLabel = buttonDesignDom.html();
+    var buttonUploadLabel = buttonUploadDom.html();
+    var buttonUploadAndDesignLabel = buttonUploadAndDesignDom.html();
+
+    function pcButtonLoading(el, label, isLoading = true) {
+      if (!el) return;
+      if (isLoading) {
+        el.addClass("pc-disabled");
+        el.html('<span class="pc-loading"> </span>' + label);
+      } else {
+        el.removeClass("pc-disabled");
+        el.html(label);
+      }
+    }
 
     window.addEventListener(
       "message",
