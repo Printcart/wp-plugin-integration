@@ -248,6 +248,38 @@
   width: 100%;
 }
 
+.pc-loading {
+  display: inline-block;
+  margin-right: 4px;
+  border: 2px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 2px solid #3498db;
+  border-right: 2px solid #3498db;
+  width: 16px;
+  height: 16px;
+  -webkit-animation: spin 1s linear infinite; /* Safari */
+  animation: spin 1s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 @media only screen and (max-width: 992px) {
   #pc-select_wrap .pc-popup-wrap #pc-select_container {
     flex-direction: column;
