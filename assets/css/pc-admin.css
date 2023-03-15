@@ -137,3 +137,62 @@ a.pc-connect-dashboard:hover {
   background-color: #fee2e2 !important;
   color: #991b1b !important;
 }
+
+.printcart-container .postbox {
+  background: #fff;
+  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+  -ms-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+  border: none;
+}
+.printcart-container .postbox h3 {
+  border-bottom: 1px solid #ddd;
+  padding: 12px;
+  margin: 0;
+}
+.pc-admin-line-height {
+  line-height: 20px;
+}
+.printcart-right {
+  float: right;
+}
+.printcart_art_link {
+  position: relative;
+  height: 145px;
+  width: 145px;
+  border-radius: 2px;
+  padding: 5px;
+  display: inline-block;
+  margin: 0px 5px 10px 0;
+  overflow: hidden;
+  background: #ededed;
+  border: none;
+}
+.printcart_art_link img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.printcart-list .tablenav-pages span.pagination-links > a,
+.printcart-list .tablenav-pages span.pagination-links > span {
+  margin-right: 3px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #ccc;
+}
+.printcart-manager-product .prev-page,
+.printcart-manager-product .next-page,
+.printcart-list .prev-page,
+.printcart-list .next-page {
+  display: inline-block;
+  min-width: 17px;
+  border: 1px solid #ccc;
+  padding: 3px 5px 7px;
+  background: #e5e5e5;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+}

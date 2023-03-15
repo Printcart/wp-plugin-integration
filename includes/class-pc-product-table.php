@@ -110,7 +110,7 @@ class Printcart_Options_List_Table extends WP_List_Table {
     }
     function column_product_image($item) {
         $product_link = isset($item['id'])  ? PRINTCART_BACKOFFICE_URL . '/product/' . $item['id'] : '';
-        $product_image = isset($item['product_image']) && $item['product_image']['url'] ? $item['product_image']['url'] : PRINTCART_PLUGIN_URL . 'assets/images/place-holder.jpg';
+        $product_image = isset($item['product_image']) && $item['product_image']['url'] ? $item['product_image']['url'] : PRINTCART_W2P_PLUGIN_URL . 'assets/images/place-holder.jpg';
         return '<a href="' . $product_link . '" target="_blank"><img style="max-width: 40px; max-height: 40px" width="150" height="150" src="' . $product_image . '" /></a>';
     }
     function column_name($item) {

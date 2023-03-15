@@ -176,7 +176,7 @@ if (!class_exists('Printcart_Product_Hook')) {
                 }
                 $product_variation = $product->get_children();
 
-                include(PRINTCART_PLUGIN_DIR . 'views/start-and-upload-design.php');
+                include(PRINTCART_W2P_PLUGIN_DIR . 'views/start-and-upload-design.php');
 
                 if (!empty($product_variation)) {
                     wp_enqueue_script('pc-product-variation');
@@ -526,15 +526,15 @@ if (!class_exists('Printcart_Product_Hook')) {
 
         public function printcart_frontend_enqueue_scripts() {
 
-            wp_enqueue_style('printcart', PRINTCART_PLUGIN_URL . 'assets/css/pc-style.css', array(), PRINTCART_VERSION);
+            wp_enqueue_style('printcart', PRINTCART_W2P_PLUGIN_URL . 'assets/css/pc-style.css', array(), PRINTCART_VERSION);
 
             $depends = apply_filters('printcart_depend_js', array('printcart-designer-sdk', 'jquery-core'));
 
-            wp_register_script('printcart', PRINTCART_PLUGIN_URL . 'assets/js/printcart.js', $depends, PRINTCART_VERSION);
+            wp_register_script('printcart', PRINTCART_W2P_PLUGIN_URL . 'assets/js/printcart.js', $depends, PRINTCART_VERSION);
 
             wp_register_script('printcart-designer-sdk', PRINTCART_DESIGNER_SDK_URL, array(), PRINTCART_VERSION);
 
-            wp_register_script('pc-product-variation', PRINTCART_PLUGIN_URL . 'assets/js/pc-product-variation.js', array(), PRINTCART_VERSION);
+            wp_register_script('pc-product-variation', PRINTCART_W2P_PLUGIN_URL . 'assets/js/pc-product-variation.js', array(), PRINTCART_VERSION);
 
             $printcart_account = get_option('printcart_w2p_account');
 
@@ -558,7 +558,7 @@ if (!class_exists('Printcart_Product_Hook')) {
         }
 
         public function printcart_admin_enqueue_scripts() {
-            wp_register_script('printcart-admin', PRINTCART_PLUGIN_URL . 'assets/js/pc-admin.js', array(), PRINTCART_VERSION);
+            wp_register_script('printcart-admin', PRINTCART_W2P_PLUGIN_URL . 'assets/js/pc-admin.js', array(), PRINTCART_VERSION);
 
             $args = array(
                 'url'   => admin_url('admin-ajax.php'),
@@ -567,7 +567,7 @@ if (!class_exists('Printcart_Product_Hook')) {
 
             wp_enqueue_script('printcart-admin');
 
-            wp_enqueue_style('printcart', PRINTCART_PLUGIN_URL . 'assets/css/pc-admin.css', array(), PRINTCART_VERSION);
+            wp_enqueue_style('printcart', PRINTCART_W2P_PLUGIN_URL . 'assets/css/pc-admin.css', array(), PRINTCART_VERSION);
         }
     }
 }

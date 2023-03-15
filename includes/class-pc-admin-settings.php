@@ -43,7 +43,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
                 'manage_options',
                 'pc-integration-web2print',
                 array($this, 'printcart_dashboard'),
-                PRINTCART_PLUGIN_URL . 'assets/images/logo.svg'
+                PRINTCART_W2P_PLUGIN_URL . 'assets/images/logo.svg'
             );
 
             add_submenu_page(
@@ -75,6 +75,15 @@ if (!class_exists('Printcart_Admin_Settings')) {
 
             add_submenu_page(
                 'pc-integration-web2print',
+                esc_html__('Printcart Cliparts', 'printcart-integration'),
+                esc_html__('Cliparts', 'printcart-integration'),
+                'manage_options',
+                'pc-integration-web2print/cliparts',
+                array($this, 'printcart_cliparts')
+            );
+
+            add_submenu_page(
+                'pc-integration-web2print',
                 esc_html__('Printcart Settings', 'printcart-integration'),
                 esc_html__('Settings', 'printcart-integration'),
                 'manage_options',
@@ -86,7 +95,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
 ?>
             <div id="printcart-design">
                 <a href="<?php echo esc_attr(PRINTCART_BACKOFFICE_URL); ?>">
-                    <img src="<?php echo esc_attr(PRINTCART_PLUGIN_URL . 'assets/images/logo-printcart.svg'); ?>" class="printcart-logo" />
+                    <img src="<?php echo esc_attr(PRINTCART_W2P_PLUGIN_URL . 'assets/images/logo-printcart.svg'); ?>" class="printcart-logo" />
                 </a>
                 <?php
                 $this->printcart_api_status();
@@ -96,7 +105,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
         <?php
         }
         public function printcart_products() {
-            require_once PRINTCART_PLUGIN_DIR . 'includes/class-pc-product-table.php';
+            require_once PRINTCART_W2P_PLUGIN_DIR . 'includes/class-pc-product-table.php';
             $pc_table = new Printcart_Options_List_Table(); ?>
 
             <div class="wrap">
@@ -127,7 +136,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
         <?php
         }
         public function printcart_orders() {
-            require_once PRINTCART_PLUGIN_DIR . 'includes/class-pc-order-table.php';
+            require_once PRINTCART_W2P_PLUGIN_DIR . 'includes/class-pc-order-table.php';
             $pc_table = new Printcart_Options_List_Table(); ?>
 
             <div class="wrap">
@@ -204,7 +213,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
         ?>
             <div id="printcart-design">
                 <a href="<?php echo esc_attr(PRINTCART_BACKOFFICE_URL); ?>">
-                    <img src="<?php echo esc_attr(PRINTCART_PLUGIN_URL . 'assets/images/logo-printcart.svg'); ?>" class="printcart-logo" />
+                    <img src="<?php echo esc_attr(PRINTCART_W2P_PLUGIN_URL . 'assets/images/logo-printcart.svg'); ?>" class="printcart-logo" />
                 </a>
                 <?php
                 $this->printcart_setting_button_design();
@@ -517,6 +526,45 @@ if (!class_exists('Printcart_Admin_Settings')) {
                 </form>
             </div>
 <?php
+        }
+
+        public function printcart_cliparts() {
+            $notice             = '';
+            $current_art_cat_id = 0;
+            $art_id             = 0;
+            $update             = false;
+            $cats               = array();
+            $limit              = 40;
+            $current_cat_id     = 0;
+            $current_cat_index  = 0;
+            $cursor             = isset($_GET['cursor']) ? wc_clean($_GET['cursor']) : '';
+            $prev_page          = false;
+            $next_page          = false;
+
+            $current_cat        = isset($_GET['cat_id']) ? wc_clean($_GET['cat_id']) : '';
+            if (isset($current_cat)) {
+                $current_cat_id = $current_cat;
+            }
+            $list_data      = PC_W2P_API::fetchClipartByStorageId($current_cat, $cursor);
+            $list           = isset($list_data['data']) ? $list_data['data'] : array();
+            $cat_data       = PC_W2P_API::fetchClipartStorage();
+            $cat            = isset($cat_data['data']) ? $cat_data['data'] : array();
+            $clipart_count  = PC_W2P_API::fetchClipartCount();
+            $total          = isset($clipart_count['data']) && isset($clipart_count['data']['count']) ? $clipart_count['data']['count'] : 0;
+            if (isset($list_data['links'])) {
+                if (isset($list_data['links']['next']) && $list_data['links']['next']) {
+                    $parts_url = parse_url($list_data['links']['next']);
+                    parse_str($parts_url['query'], $query_url);
+                    $next_page = $query_url['cursor'];
+                }
+                if (isset($list_data['links']['prev']) && $list_data['links']['prev']) {
+                    $parts_url = parse_url($list_data['links']['prev']);
+                    parse_str($parts_url['query'], $query_url);
+                    $prev_page = $query_url['cursor'];
+                }
+            }
+
+            include_once(PRINTCART_W2P_PLUGIN_DIR . 'views/cliparts.php');
         }
         public function admin_enqueue_scripts() {
             if (is_admin()) {
