@@ -87,6 +87,34 @@ if (!class_exists('PC_W2P_API')) {
 
             return self::fetchData($url);
         }
+        public static function fetchClipartByStorageId($cat_id = '', $cursor = '', $limit = 99) {
+            $url = self::$api_url . '/cliparts/?limit=' . $limit;
+            // $url = self::$api_url . '/cliparts/default?limit=' . $limit;
+
+            if ($cat_id) {
+                $url = self::$api_url . '/clipart-storages/' . $cat_id . '/cliparts?limit=' . $limit;
+                // $url = self::$api_url . '/clipart-storages/' . $cat_id . '/cliparts-default?limit=' . $limit;
+            }
+
+            if ($cursor) {
+                $url = self::$api_url . '/cliparts?cursor=' . $cursor . '&limit=' . $limit;
+                // $url = self::$api_url . '/cliparts/default?cursor=' . $cursor . '&limit=' . $limit;
+            }
+
+            return self::fetchData($url);
+        }
+        public static function fetchClipartStorage($limit = 99) {
+            $url = self::$api_url . '/clipart-storages?limit=' . $limit;
+            // $url = self::$api_url . '/clipart-storages/default?limit=' . $limit;
+
+            return self::fetchData($url);
+        }
+        public static function fetchClipartCount() {
+            $url = self::$api_url . '/cliparts/count';
+            // $url = self::$api_url . '/cliparts/default/count';
+
+            return self::fetchData($url);
+        }
         public static function fetchOrderCount() {
             $url = self::$api_url . '/projects/count';
 

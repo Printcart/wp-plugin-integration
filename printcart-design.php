@@ -17,13 +17,13 @@ PHP: >=7.0
 */
 
 define('PRINTCART_VERSION',            '2.1.0');
-define('PRINTCART_PLUGIN_URL',         plugin_dir_url(__FILE__));
-define('PRINTCART_PLUGIN_DIR',         plugin_dir_path(__FILE__));
+define('PRINTCART_W2P_PLUGIN_URL',         plugin_dir_url(__FILE__));
+define('PRINTCART_W2P_PLUGIN_DIR',         plugin_dir_path(__FILE__));
 
-require_once(PRINTCART_PLUGIN_DIR .    'includes/class-pc-api.php');
-require_once(PRINTCART_PLUGIN_DIR .    'includes/class-pc-admin-settings.php');
-require_once(PRINTCART_PLUGIN_DIR .    'includes/class-pc-hook.php');
-require_once(PRINTCART_PLUGIN_DIR .    'includes/class-pc-custom-api.php');
+require_once(PRINTCART_W2P_PLUGIN_DIR .    'includes/class-pc-api.php');
+require_once(PRINTCART_W2P_PLUGIN_DIR .    'includes/class-pc-admin-settings.php');
+require_once(PRINTCART_W2P_PLUGIN_DIR .    'includes/class-pc-hook.php');
+require_once(PRINTCART_W2P_PLUGIN_DIR .    'includes/class-pc-custom-api.php');
 
 register_activation_hook(__FILE__, 'printcart_w2p_plugin_activation');
 
@@ -69,7 +69,7 @@ define('PRINTCART_DESIGNTOOL',          'https://customizer.printcart.com');
 /**
  *  Designer SDK Url
  */
-define('PRINTCART_DESIGNER_SDK_URL',            PRINTCART_PLUGIN_URL . 'assets/js/printcart-designer.min.js');
+define('PRINTCART_DESIGNER_SDK_URL',            PRINTCART_W2P_PLUGIN_URL . 'assets/js/printcart-designer.min.js');
 // define('PRINTCART_DESIGNER_SDK_URL',            'http://localhost:3103/dist/main.js');
 
 /**
