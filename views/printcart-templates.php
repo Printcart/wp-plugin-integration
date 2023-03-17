@@ -1,4 +1,5 @@
-<?php if (!defined('ABSPATH')) exit; // Exit if accessed directly  
+<?php 
+if (!defined('ABSPATH')) exit; // Exit if accessed directly  
 ?>
 <h1><?php esc_html_e('Templates', 'printcart-integration'); ?></h1>
 <div class="pc-tabs-wrapper">

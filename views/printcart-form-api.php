@@ -1,4 +1,5 @@
-<?php if (!defined('ABSPATH')) exit; // Exit if accessed directly  
+<?php
+if (!defined('ABSPATH')) exit; // Exit if accessed directly  
 ?>
 <div class="printcart-box">
     <h3 class="manually-key"><?php esc_html_e('Manually enter an API key', 'printcart-integration'); ?></h3>
