@@ -7,6 +7,8 @@ if (!class_exists('Printcart_Admin_Settings')) {
 
         protected static $instance;
 
+        protected $limit = 100;
+
         private $basic_auth = array();
 
         public static function instance() {
@@ -84,6 +86,33 @@ if (!class_exists('Printcart_Admin_Settings')) {
 
             add_submenu_page(
                 'pc-integration-web2print',
+                esc_html__('Printcart Images', 'printcart-integration'),
+                esc_html__('Images', 'printcart-integration'),
+                'manage_options',
+                'pc-integration-web2print/images',
+                array($this, 'printcart_images')
+            );
+
+            add_submenu_page(
+                'pc-integration-web2print',
+                esc_html__('Printcart Fonts', 'printcart-integration'),
+                esc_html__('Fonts', 'printcart-integration'),
+                'manage_options',
+                'pc-integration-web2print/fonts',
+                array($this, 'printcart_fonts')
+            );
+
+            add_submenu_page(
+                'pc-integration-web2print',
+                esc_html__('Printcart Templates', 'printcart-integration'),
+                esc_html__('Templates', 'printcart-integration'),
+                'manage_options',
+                'pc-integration-web2print/templates',
+                array($this, 'printcart_templates')
+            );
+
+            add_submenu_page(
+                'pc-integration-web2print',
                 esc_html__('Printcart Settings', 'printcart-integration'),
                 esc_html__('Settings', 'printcart-integration'),
                 'manage_options',
@@ -92,78 +121,22 @@ if (!class_exists('Printcart_Admin_Settings')) {
             );
         }
         public function printcart_dashboard() {
-?>
-            <div id="printcart-design">
-                <a href="<?php echo esc_attr(PRINTCART_BACKOFFICE_URL); ?>">
-                    <img src="<?php echo esc_attr(PRINTCART_W2P_PLUGIN_URL . 'assets/images/logo-printcart.svg'); ?>" class="printcart-logo" />
-                </a>
-                <?php
-                $this->printcart_api_status();
-                $this->printcart_account_details();
-                ?>
-            </div>
-        <?php
+            echo '<div id="printcart-design">';
+            include_once(PRINTCART_W2P_PLUGIN_DIR . 'views/printcart-setting-header.php');
+            $this->printcart_api_status();
+            $this->printcart_account_details();
+            do_action('printcart_custom_settings');
+            echo '</div>';
         }
         public function printcart_products() {
             require_once PRINTCART_W2P_PLUGIN_DIR . 'includes/class-pc-product-table.php';
-            $pc_table = new Printcart_Options_List_Table(); ?>
-
-            <div class="wrap">
-                <h1>
-                    <?php esc_html_e('Products', 'printcart-integration'); ?>
-                </h1>
-                <div class="description">
-                    <?php esc_html_e("Below are all the products that you have entered on Printcart Dashboard, You can import more products into Printcart Dashboard ", "printcart-integration"); ?>
-                    <a href="<?php echo esc_url(PRINTCART_BACKOFFICE_URL . '/inventory'); ?>"><?php esc_html_e("here", "printcart-integration"); ?></a>
-                </div>
-                <div id="poststuff">
-                    <div id="post-body" class="metabox-holder">
-                        <div id="post-body-content">
-                            <div class="meta-box-sortables ui-sortable pc-product-table">
-                                <form method="post">
-                                    <?php
-                                    $pc_table->prepare_items();
-                                    $pc_table->display();
-                                    $pc_table->pc_display_pagination();
-                                    ?>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <br class="clear">
-                </div>
-            </div>
-        <?php
+            $pc_table = new Printcart_Options_List_Table();
+            include_once(PRINTCART_W2P_PLUGIN_DIR . 'views/printcart-products.php');
         }
         public function printcart_orders() {
             require_once PRINTCART_W2P_PLUGIN_DIR . 'includes/class-pc-order-table.php';
-            $pc_table = new Printcart_Options_List_Table(); ?>
-
-            <div class="wrap">
-                <h1>
-                    <?php esc_html_e('Order', 'printcart-integration'); ?>
-                </h1>
-                <div class="description">
-                    <?php esc_html_e("Below are all your orders on Printcart Dashboard", "printcart-integration"); ?>
-                </div>
-                <div id="poststuff">
-                    <div id="post-body" class="metabox-holder">
-                        <div id="post-body-content">
-                            <div class="meta-box-sortables ui-sortable pc-product-table">
-                                <form method="post">
-                                    <?php
-                                    $pc_table->prepare_items();
-                                    $pc_table->display();
-                                    $pc_table->pc_display_pagination();
-                                    ?>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <br class="clear">
-                </div>
-            </div>
-        <?php
+            $pc_table = new Printcart_Options_List_Table();
+            include_once(PRINTCART_W2P_PLUGIN_DIR . 'views/printcart-orders.php');
         }
         /**
          *  Create settings to setup API key in WP Dashboard
@@ -210,18 +183,12 @@ if (!class_exists('Printcart_Admin_Settings')) {
                 'message'       => $message,
                 'status'    => $status,
             );
-        ?>
-            <div id="printcart-design">
-                <a href="<?php echo esc_attr(PRINTCART_BACKOFFICE_URL); ?>">
-                    <img src="<?php echo esc_attr(PRINTCART_W2P_PLUGIN_URL . 'assets/images/logo-printcart.svg'); ?>" class="printcart-logo" />
-                </a>
-                <?php
-                $this->printcart_setting_button_design();
-                $this->printcart_api_form($printcart_account, $result);
-                do_action('printcart_custom_settings');
-                ?>
-            </div>
-        <?php
+            echo '<div id="printcart-design">';
+            include_once(PRINTCART_W2P_PLUGIN_DIR . 'views/printcart-setting-header.php');
+            $this->printcart_setting_button_design();
+            $this->printcart_api_form($printcart_account, $result);
+            do_action('printcart_custom_settings');
+            echo '</div>';
         }
         public function printcart_account_details() {
             $account = PC_W2P_API::fetchAccount();
@@ -229,42 +196,7 @@ if (!class_exists('Printcart_Admin_Settings')) {
             $email = isset($account['data']) && isset($account['data']['email']) ? $account['data']['email'] : 'N/A';
             $name = isset($account['data']) && isset($account['data']['name']) ? $account['data']['name'] : 'N/A';
 
-
-        ?>
-            <div class="printcart-box">
-                <div class="manually-key">
-                    <h3 class="manually-title">
-                        <?php esc_html_e('Store details', 'printcart-integration'); ?>
-                    </h3>
-                    <div>
-                        <a href="<?php echo esc_url(PRINTCART_BACKOFFICE_URL . '/settings'); ?>" target="_blank"><?php esc_html_e(' Store settings', 'printcart-integration'); ?></a>
-                    </div>
-                </div>
-                <hr>
-                <table class="form-table pc-table" role="presentation">
-                    <tbody>
-                        <tr>
-                            <th scope="row"><label><?php esc_html_e('Name:', 'printcart-integration'); ?></label></th>
-                            <td>
-                                <div class="printcart-account-info <?php echo $name == 'N/A' ? 'printcart-nan' : '';  ?>"><?php echo esc_html($name); ?></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label><?php esc_html_e('Email:', 'printcart-integration'); ?></label></th>
-                            <td>
-                                <div class="printcart-account-info <?php echo $email == 'N/A' ? 'printcart-nan' : '';  ?>"><?php echo esc_html($email); ?></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label><?php esc_html_e('Tier:', 'printcart-integration'); ?></label></th>
-                            <td>
-                                <div class="printcart-account-info <?php echo $tier == 'N/A' ? 'printcart-nan' : '';  ?>"><?php echo esc_html($tier); ?></div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        <?php
+            include_once(PRINTCART_W2P_PLUGIN_DIR . 'views/printcart-account-detail.php');
         }
         public function printcart_api_status() {
             $store_detail = PC_W2P_API::fetchStoreDetail();
@@ -299,119 +231,10 @@ if (!class_exists('Printcart_Admin_Settings')) {
             if ($site_title) {
                 $url .= '&site_title=' .  $site_title;
             }
-        ?>
-
-            <div class="printcart-box">
-                <?php
-                if ($unauth_token) {
-                ?>
-                    <div class="printcart-setup-instructions">
-                        <h1><?php esc_html_e('Congratulations!', 'printcart-integration'); ?></h1>
-                    </div>
-                    <div class="printcart-connected-wrap">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#008000" class="bi bi-check-circle" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                            <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
-                        </svg>
-                        <span class="printcart-connected-text" style="color: #008000"><b><?php esc_html_e('Your website has been successfully connected to the Printcart dashboard.', 'printcart-integration'); ?>
-                            </b></span>
-                    </div>
-                    <a href="<?php echo esc_attr(PRINTCART_BACKOFFICE_URL . '/inventory'); ?>" class="pc-button-dashboard pc-button-primary button-primary" target="_blank"><?php esc_html_e('Go to Dashboard to Import', 'printcart-integration'); ?></a>
-                <?php
-                } else {
-                ?>
-                    <div class="printcart-setup-instructions">
-                        <h1><?php esc_html_e('Connect the Printcart Dashboard to your site', 'printcart-integration'); ?></h1>
-                    </div>
-                    <div class="printcart-connected-wrap">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffa500" class="bi bi-x-circle" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                        </svg>
-                        <span class="printcart-connected-text" style="color: #ffa500"><b><?php esc_html_e('Your website has failed to connect to the Printcart dashboard!', 'printcart-integration'); ?></b></span>
-                    </div>
-                    <div class="pc-connect-dashboard pc-button-dashboard pc-button-primary button-primary" data-url="<?php echo esc_attr($url); ?>"><?php esc_html_e('Connect to Dashboard', 'printcart-integration'); ?></div>
-                <?php
-                }
-                ?>
-            </div>
-
-        <?php
+            include_once(PRINTCART_W2P_PLUGIN_DIR . 'views/printcart-store-detail.php');
         }
         public function printcart_api_form($printcart_account, $result) {
-        ?>
-            <div class="printcart-box">
-                <h3 class="manually-key"><?php esc_html_e('Manually enter an API key', 'printcart-integration'); ?></h3>
-                <hr>
-                <?php
-                if (isset($result['message']) && $result['message'] && isset($result['status']) && $result['status']) {
-                    echo '<div id="message" class="inline ' . esc_attr($result['status']) . '" style="margin-left: 0;"><p><strong>' . esc_html($result['message']) . '</strong></p></div>';
-                }
-                ?>
-                <form class="printcart-form" method="post" action="" enctype="multipart/form-data">
-                    <table class="form-table pc-table">
-                        <tbody>
-                            <tr valign="top">
-                                <th class="titledesc">
-                                    <label><?php esc_html_e('Sid: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
-                                </th>
-                                <td>
-                                    <p>
-                                        <input name="printcart_sid" value="<?php echo isset($printcart_account['sid']) ? esc_attr($printcart_account['sid']) : ''; ?>" type="text" style="width: 400px" class="">
-                                    </p>
-                                    <label class="description"><?php esc_html_e('Enter your Printcart sid API key.', 'printcart-integration'); ?></label>
-                                </td>
-                            </tr>
-                            <tr valign="top">
-                                <th class="titledesc">
-                                    <label><?php esc_html_e('Secret: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
-                                </th>
-                                <td>
-                                    <p>
-                                        <input name="printcart_secret" value="<?php echo isset($printcart_account['secret']) ? esc_attr($printcart_account['secret']) : ''; ?>" type="text" style="width: 400px" class="">
-                                    </p>
-                                    <label class="description"><?php esc_html_e('Enter your Printcart secret API key.', 'printcart-integration'); ?></label>
-                                </td>
-                            </tr>
-                            <tr valign="top">
-                                <th class="titledesc">
-                                    <label><?php esc_html_e('Unauth token: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
-                                </th>
-                                <td>
-                                    <p>
-                                        <input name="printcart_unauth_token" value="<?php echo isset($printcart_account['unauth_token']) ? esc_attr($printcart_account['unauth_token']) : ''; ?>" disabled type="text" style="width: 400px" class="">
-                                    </p>
-                                    <label class="description"><?php esc_html_e('Unauth token of store Printcart (Automatically generated when you enter valid sid and secret).', 'printcart-integration'); ?></label>
-                                </td>
-                            </tr>
-                            <tr valign="top">
-                                <th class="titledesc">
-                                    <label><?php esc_html_e('Check connection to Printcart Dashboard: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
-                                </th>
-                                <td>
-                                    <div>
-                                        <p class="button button-secondary printcart-w2p-button-check-connection" value="Test connection">
-                                            <?php esc_html_e('Test connection', 'printcart-integration'); ?>
-                                            <span>
-                                                <div class="printcart-w2p-result-check"></div>
-                                            </span>
-                                        </p>
-                                    </div>
-                                    <label class="description"><?php esc_html_e('Enter both Sid and Secret to check.', 'printcart-integration'); ?></label>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    </p>
-                    <p class="submit">
-                        <button name="save" class="pc-button-dashboard pc-button-primary button button-primary" type="submit" value="Save changes">
-                            <?php esc_html_e('Save changes', 'printcart-integration'); ?>
-                        </button>
-                        <input type="hidden" id="_action" name="_action" value="submit">
-                    </p>
-                </form>
-            </div>
-        <?php
+            include_once(PRINTCART_W2P_PLUGIN_DIR . 'views/printcart-form-api.php');
         }
         public function printcart_setting_button_design() {
             $message = '';
@@ -439,117 +262,28 @@ if (!class_exists('Printcart_Admin_Settings')) {
                 'message'       => $message,
                 'status'    => $status,
             );
-        ?>
-            <div class="printcart-box">
-                <h3 class="manually-key"><?php esc_html_e('Setting Button design', 'printcart-integration'); ?></h3>
-                <hr>
-                <?php
-                if (isset($result['message']) && $result['message'] && isset($result['status']) && $result['status']) {
-                    echo '<div id="message" class="inline ' . esc_attr($result['status']) . '" style="margin-left: 0;"><p><strong>' . esc_html($result['message']) . '</strong></p></div>';
-                }
-                ?>
-                <form class="printcart-form" method="post" action="" enctype="multipart/form-data">
-                    <table class="form-table pc-table">
-                        <tbody>
-                            <tr valign="top">
-                                <th class="titledesc">
-                                    <label><?php esc_html_e('Label for "Start design" button in product page: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
-                                </th>
-                                <td>
-                                    <p>
-                                        <input placeholder="<?php echo esc_html_e('Start design', 'printcart-integration'); ?>" name="printcart_w2p_label_design" value="<?php echo esc_attr($printcart_label_button_design); ?>" type="text" style="width: 400px" class="">
-                                    </p>
-                                    <label class="description"><?php esc_html_e('Enter your label to replace the default label "Start design".', 'printcart-integration'); ?></label>
-                                </td>
-                            </tr>
-                            <tr valign="top">
-                                <th class="titledesc">
-                                    <label><?php esc_html_e('Label for "Upload design" button in product page: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
-                                </th>
-                                <td>
-                                    <p>
-                                        <input placeholder="<?php echo esc_html_e('Upload design', 'printcart-integration'); ?>" name="printcart_w2p_label_upload" value="<?php echo esc_attr($printcart_label_button_upload); ?>" type="text" style="width: 400px" class="">
-                                    </p>
-                                    <label class="description"><?php esc_html_e('Enter your label to replace the default label "Upload design".', 'printcart-integration'); ?></label>
-                                </td>
-                            </tr>
-                            <tr valign="top">
-                                <th class="titledesc">
-                                    <label><?php esc_html_e('Class for "Button design" button in product page: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
-                                </th>
-                                <td>
-                                    <p>
-                                        <input placeholder="printcart-btn-design" name="printcart_class_button" value="<?php echo esc_attr($printcart_class_button); ?>" type="text" style="width: 400px" class="">
-                                    </p>
-                                    <label class="description"><?php esc_html_e('Enter your class to show "Start design" button with your style.', 'printcart-integration'); ?></label>
-                                </td>
-                            </tr>
-                            <tr valign="top">
-                                <th class="titledesc">
-                                    <label><?php esc_html_e('Separate artwork action buttons', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
-                                </th>
-                                <td>
-                                    <p class="row">
-                                        <input type="radio" name="printcart_separate_design_buttons" value="yes" <?php echo esc_attr($printcart_separate_design_buttons == 'yes' ? 'checked' : ''); ?> /><?php esc_html_e('Yes', 'printcart-integration'); ?>
-                                    </p>
-                                    <p class="row">
-                                        <input type="radio" name="printcart_separate_design_buttons" value="no" <?php echo esc_attr($printcart_separate_design_buttons == 'no' ? 'checked' : '');  ?> /><?php esc_html_e('No', 'printcart-integration'); ?>
-                                    </p>
-                                    <label class="description"><?php esc_html_e('Show artwork actions as buttons directly on the product page instead of wrap them on the popup.', 'printcart-integration'); ?></label>
-                                </td>
-                            </tr>
-                            <tr valign="top">
-                                <th class="titledesc">
-                                    <label><?php esc_html_e('Position of design button: ', 'printcart-integration'); ?><span class="printcart-help-tip"></span></label>
-                                </th>
-                                <td>
-                                    <p class="row">
-                                        <input type="radio" name="printcart_button_posititon" value="1" <?php echo esc_attr($printcart_button_posititon == 1 ? 'checked' : ''); ?> /><?php esc_html_e('Before add to cart button and after variantions option.', 'printcart-integration'); ?>
-                                    </p>
-                                    <p class="row">
-                                        <input type="radio" name="printcart_button_posititon" value="2" <?php echo esc_attr($printcart_button_posititon == 2 ? 'checked' : '');  ?> /><?php esc_html_e('Before variantions option.', 'printcart-integration'); ?>
-                                    </p>
-                                    <p class="row">
-                                        <input type="radio" name="printcart_button_posititon" value="3" <?php echo esc_attr($printcart_button_posititon == 3 ? 'checked' : '');  ?> /><?php esc_html_e('After add to cart button.', 'printcart-integration'); ?>
-                                    </p>
-                                    <p class="row">
-                                        <input type="radio" name="printcart_button_posititon" value="4" <?php echo esc_attr($printcart_button_posititon == 4 ? 'checked' : '');  ?> /><?php esc_html_e('Stick right side.', 'printcart-integration'); ?>
-                                    </p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="submit">
-                        <button name="save" class="pc-button-dashboard pc-button-primary button-primary" type="submit" value="Save changes"><?php esc_html_e('Save changes', 'printcart-integration'); ?></button>
-                        <input type="hidden" name="_action_button_design" value="submit">
-                    </p>
-                </form>
-            </div>
-<?php
+            include_once(PRINTCART_W2P_PLUGIN_DIR . 'views/printcart-form-settings.php');
         }
 
         public function printcart_cliparts() {
-            $notice             = '';
-            $current_art_cat_id = 0;
+            $args               = array('page' => 'pc-integration-web2print%2Fcliparts');
+            $pre_url            = add_query_arg($args, admin_url('admin.php'));
             $art_id             = 0;
-            $update             = false;
-            $cats               = array();
-            $limit              = 40;
+            $limit              = $this->limit;
             $current_cat_id     = 0;
-            $current_cat_index  = 0;
             $cursor             = isset($_GET['cursor']) ? wc_clean($_GET['cursor']) : '';
-            $prev_page          = false;
-            $next_page          = false;
-
+            $default            = isset($_GET['default']) && $_GET['default'] ? true : false;
+            $prev_page          = '';
+            $next_page          = '';
             $current_cat        = isset($_GET['cat_id']) ? wc_clean($_GET['cat_id']) : '';
             if (isset($current_cat)) {
                 $current_cat_id = $current_cat;
             }
-            $list_data      = PC_W2P_API::fetchClipartByStorageId($current_cat, $cursor);
+            $list_data      = PC_W2P_API::fetchClipartByStorageId($current_cat, $cursor, $limit, $default);
             $list           = isset($list_data['data']) ? $list_data['data'] : array();
-            $cat_data       = PC_W2P_API::fetchClipartStorage();
+            $cat_data       = PC_W2P_API::fetchClipartStorage($limit, $default);
             $cat            = isset($cat_data['data']) ? $cat_data['data'] : array();
-            $clipart_count  = PC_W2P_API::fetchClipartCount();
+            $clipart_count  = PC_W2P_API::fetchClipartCount($default);
             $total          = isset($clipart_count['data']) && isset($clipart_count['data']['count']) ? $clipart_count['data']['count'] : 0;
             if (isset($list_data['links'])) {
                 if (isset($list_data['links']['next']) && $list_data['links']['next']) {
@@ -564,7 +298,88 @@ if (!class_exists('Printcart_Admin_Settings')) {
                 }
             }
 
-            include_once(PRINTCART_W2P_PLUGIN_DIR . 'views/cliparts.php');
+            include_once(PRINTCART_W2P_PLUGIN_DIR . 'views/printcart-cliparts.php');
+        }
+        public function printcart_images() {
+            $args               = array('page' => 'pc-integration-web2print%2Fimages');
+            $pre_url            = add_query_arg($args, admin_url('admin.php'));
+            $limit              = $this->limit;
+            $cursor             = isset($_GET['cursor']) ? wc_clean($_GET['cursor']) : '';
+            $prev_page          = '';
+            $next_page          = '';
+            $list_data          = PC_W2P_API::fetchImages($cursor, $limit);
+            $list               = isset($list_data['data']) ? $list_data['data'] : array();
+            $image_count        = PC_W2P_API::fetchImageCount();
+            $total              = isset($image_count['data']) && isset($image_count['data']['count']) ? $image_count['data']['count'] : 0;
+            if (isset($list_data['links'])) {
+                if (isset($list_data['links']['next']) && $list_data['links']['next']) {
+                    $parts_url = parse_url($list_data['links']['next']);
+                    parse_str($parts_url['query'], $query_url);
+                    $next_page = $query_url['cursor'];
+                }
+                if (isset($list_data['links']['prev']) && $list_data['links']['prev']) {
+                    $parts_url = parse_url($list_data['links']['prev']);
+                    parse_str($parts_url['query'], $query_url);
+                    $prev_page = $query_url['cursor'];
+                }
+            }
+
+            include_once(PRINTCART_W2P_PLUGIN_DIR . 'views/printcart-images.php');
+        }
+        public function printcart_fonts() {
+            $args               = array('page' => 'pc-integration-web2print%2Ffonts');
+            $pre_url            = add_query_arg($args, admin_url('admin.php'));
+            $limit              = $this->limit;
+            $cursor             = isset($_GET['cursor']) ? wc_clean($_GET['cursor']) : '';
+            $default            = isset($_GET['default']) && $_GET['default'] ? true : false;
+            $prev_page          = '';
+            $next_page          = '';
+            $font_subsets       = PC_W2P_UTILITIES::get_font_subsets();
+            $list_data          = PC_W2P_API::fetchFonts($cursor, $limit, $default);
+            $list               = isset($list_data['data']) ? $list_data['data'] : array();
+            $image_count        = PC_W2P_API::fetchFontCount($default);
+            $total              = isset($image_count['data']) && isset($image_count['data']['count']) ? $image_count['data']['count'] : 0;
+            if (isset($list_data['links'])) {
+                if (isset($list_data['links']['next']) && $list_data['links']['next']) {
+                    $parts_url = parse_url($list_data['links']['next']);
+                    parse_str($parts_url['query'], $query_url);
+                    $next_page = $query_url['cursor'];
+                }
+                if (isset($list_data['links']['prev']) && $list_data['links']['prev']) {
+                    $parts_url = parse_url($list_data['links']['prev']);
+                    parse_str($parts_url['query'], $query_url);
+                    $prev_page = $query_url['cursor'];
+                }
+            }
+
+            include_once(PRINTCART_W2P_PLUGIN_DIR . 'views/printcart-fonts.php');
+        }
+        public function printcart_templates() {
+            $args               = array('page' => 'pc-integration-web2print%2Ftemplates');
+            $pre_url            = add_query_arg($args, admin_url('admin.php'));
+            $limit              = $this->limit;
+            $cursor             = isset($_GET['cursor']) ? wc_clean($_GET['cursor']) : '';
+            $default            = isset($_GET['default']) && $_GET['default'] ? true : false;
+            $prev_page          = '';
+            $next_page          = '';
+            $list_data          = PC_W2P_API::fetchTemplates($cursor, $limit, $default);
+            $list               = isset($list_data['data']) ? $list_data['data'] : array();
+            $image_count        = PC_W2P_API::fetchTemplateCount($default);
+            $total              = isset($image_count['data']) && isset($image_count['data']['count']) ? $image_count['data']['count'] : 0;
+            if (isset($list_data['links'])) {
+                if (isset($list_data['links']['next']) && $list_data['links']['next']) {
+                    $parts_url = parse_url($list_data['links']['next']);
+                    parse_str($parts_url['query'], $query_url);
+                    $next_page = $query_url['cursor'];
+                }
+                if (isset($list_data['links']['prev']) && $list_data['links']['prev']) {
+                    $parts_url = parse_url($list_data['links']['prev']);
+                    parse_str($parts_url['query'], $query_url);
+                    $prev_page = $query_url['cursor'];
+                }
+            }
+
+            include_once(PRINTCART_W2P_PLUGIN_DIR . 'views/printcart-templates.php');
         }
         public function admin_enqueue_scripts() {
             if (is_admin()) {

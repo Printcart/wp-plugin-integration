@@ -20,6 +20,7 @@ define('PRINTCART_VERSION',            '2.1.0');
 define('PRINTCART_W2P_PLUGIN_URL',         plugin_dir_url(__FILE__));
 define('PRINTCART_W2P_PLUGIN_DIR',         plugin_dir_path(__FILE__));
 
+require_once(PRINTCART_W2P_PLUGIN_DIR .    'includes/class-utilities.php');
 require_once(PRINTCART_W2P_PLUGIN_DIR .    'includes/class-pc-api.php');
 require_once(PRINTCART_W2P_PLUGIN_DIR .    'includes/class-pc-admin-settings.php');
 require_once(PRINTCART_W2P_PLUGIN_DIR .    'includes/class-pc-hook.php');
