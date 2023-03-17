@@ -5,7 +5,7 @@ msgstr ""
 "v1.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name "
 "<printcart@gmail.com>\n"
-"POT-Creation-Date: 2023-03-13 11:18+0700\n"
+"POT-Creation-Date: 2023-03-17 16:23+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Your Name <printcart@gmail."
 "com>\n"
@@ -29,271 +29,97 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: includes/class-pc-admin-settings.php:41
+#: includes/class-pc-admin-settings.php:43
 msgid "Printcart WebToPrint"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:42
+#: includes/class-pc-admin-settings.php:44
 msgid "PC Web2Print"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:51
+#: includes/class-pc-admin-settings.php:53
 msgid "Printcart Dashboard"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:52
+#: includes/class-pc-admin-settings.php:54
 msgid "Dashboard"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:60
+#: includes/class-pc-admin-settings.php:62
 msgid "Printcart Products"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:61
-#: includes/class-pc-admin-settings.php:104
+#: includes/class-pc-admin-settings.php:63
 #: includes/class-pc-product-table.php:8
 #: includes/class-pc-product-table.php:9
+#: views/printcart-products.php:6
 msgid "Products"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:69
+#: includes/class-pc-admin-settings.php:71
 msgid "Printcart Orders"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:70
+#: includes/class-pc-admin-settings.php:72
 #: includes/class-pc-order-table.php:8
 #: includes/class-pc-order-table.php:9
 msgid "Orders"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:78
-msgid "Printcart Settings"
+#: includes/class-pc-admin-settings.php:80
+msgid "Printcart Cliparts"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:79
-#: printcart-design.php:57
-msgid "Settings"
+#: includes/class-pc-admin-settings.php:81
+#: views/printcart-cliparts.php:4
+msgid "Cliparts"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:89
+msgid "Printcart Images"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:90
+#: views/printcart-images.php:4
+msgid "Images"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:98
+msgid "Printcart Fonts"
+msgstr ""
+
+#: includes/class-pc-admin-settings.php:99
+#: views/printcart-fonts.php:4
+msgid "Fonts"
 msgstr ""
 
 #: includes/class-pc-admin-settings.php:107
-msgid ""
-"Below are all the products that you have "
-"entered on Printcart Dashboard, You can "
-"import more products into Printcart "
-"Dashboard "
+msgid "Printcart Templates"
 msgstr ""
 
 #: includes/class-pc-admin-settings.php:108
-msgid "here"
+#: views/printcart-templates.php:4
+msgid "Templates"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:135
-#: includes/class-pc-order-table.php:43
-msgid "Order"
+#: includes/class-pc-admin-settings.php:116
+msgid "Printcart Settings"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:138
-msgid ""
-"Below are all your orders on Printcart "
-"Dashboard"
+#: includes/class-pc-admin-settings.php:117
+#: printcart-design.php:58
+msgid "Settings"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:181
-#: includes/class-pc-admin-settings.php:421
+#: includes/class-pc-admin-settings.php:163
+#: includes/class-pc-admin-settings.php:253
 msgid "Your settings have been saved."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:185
+#: includes/class-pc-admin-settings.php:167
 msgid ""
 "You have entered incorrect sid or secret. "
 "Please try again!"
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:228
-msgid "Store details"
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:231
-msgid " Store settings"
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:238
-msgid "Name:"
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:244
-msgid "Email:"
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:250
-msgid "Tier:"
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:300
-msgid "Congratulations!"
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:307
-msgid ""
-"Your website has been successfully "
-"connected to the Printcart dashboard."
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:310
-msgid "Go to Dashboard to Import"
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:315
-msgid ""
-"Connect the Printcart Dashboard to your site"
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:322
-msgid ""
-"Your website has failed to connect to the "
-"Printcart dashboard!"
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:324
-msgid "Connect to Dashboard"
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:335
-msgid "Manually enter an API key"
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:347
-msgid "Sid: "
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:353
-msgid "Enter your Printcart sid API key."
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:358
-msgid "Secret: "
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:364
-msgid "Enter your Printcart secret API key."
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:369
-msgid "Unauth token: "
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:375
-msgid ""
-"Unauth token of store Printcart "
-"(Automatically generated when you enter "
-"valid sid and secret)."
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:380
-msgid ""
-"Check connection to Printcart Dashboard: "
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:385
-msgid "Test connection"
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:391
-msgid "Enter both Sid and Secret to check."
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:399
-#: includes/class-pc-admin-settings.php:514
-msgid "Save changes"
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:435
-msgid "Setting Button design"
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:447
-msgid ""
-"Label for \"Start design\" button in "
-"product page: "
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:451
-msgid "Start design"
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:453
-msgid ""
-"Enter your label to replace the default "
-"label \"Start design\"."
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:458
-msgid ""
-"Label for \"Upload design\" button in "
-"product page: "
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:462
-msgid "Upload design"
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:464
-msgid ""
-"Enter your label to replace the default "
-"label \"Upload design\"."
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:469
-msgid ""
-"Class for \"Button design\" button in "
-"product page: "
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:475
-msgid ""
-"Enter your class to show \"Start design\" "
-"button with your style."
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:480
-msgid "Separate artwork action buttons"
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:484
-msgid "Yes"
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:487
-msgid "No"
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:489
-msgid ""
-"Show artwork actions as buttons directly on "
-"the product page instead of wrap them on "
-"the popup."
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:494
-msgid "Position of design button: "
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:498
-msgid ""
-"Before add to cart button and after "
-"variantions option."
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:501
-msgid "Before variantions option."
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:504
-msgid "After add to cart button."
-msgstr ""
-
-#: includes/class-pc-admin-settings.php:507
-msgid "Stick right side."
 msgstr ""
 
 #: includes/class-pc-hook.php:169
@@ -347,6 +173,11 @@ msgstr ""
 msgid ""
 "You do not have permission to assign API "
 "Keys to the selected user."
+msgstr ""
+
+#: includes/class-pc-order-table.php:43
+#: views/printcart-orders.php:6
+msgid "Order"
 msgstr ""
 
 #: includes/class-pc-order-table.php:44
@@ -403,52 +234,362 @@ msgstr ""
 msgid "View"
 msgstr ""
 
-#: printcart-design.php:37
+#: printcart-design.php:38
 msgid ""
 "WooCommerce is not active. Please activate "
 "WooCommerce before using"
 msgstr ""
 
-#: printcart-design.php:38
+#: printcart-design.php:39
 msgid "Printcart Integration"
 msgstr ""
 
-#: views/start-and-upload-design.php:3
+#: views/printcart-account-detail.php:7
+msgid "Store details"
+msgstr ""
+
+#: views/printcart-account-detail.php:10
+msgid " Store settings"
+msgstr ""
+
+#: views/printcart-account-detail.php:17
+msgid "Name:"
+msgstr ""
+
+#: views/printcart-account-detail.php:23
+msgid "Email:"
+msgstr ""
+
+#: views/printcart-account-detail.php:29
+msgid "Tier:"
+msgstr ""
+
+#: views/printcart-cliparts.php:8
+msgid "My cliparts"
+msgstr ""
+
+#: views/printcart-cliparts.php:11
+msgid "Default cliparts"
+msgstr ""
+
+#: views/printcart-cliparts.php:19
+msgid "List clipart "
+msgstr ""
+
+#: views/printcart-cliparts.php:22
+msgid "Select a category"
+msgstr ""
+
+#: views/printcart-cliparts.php:32
+msgid "All clipart"
+msgstr ""
+
+#: views/printcart-cliparts.php:33
+msgid "/cliparts"
+msgstr ""
+
+#: views/printcart-cliparts.php:33
+#: views/printcart-fonts.php:20
+#: views/printcart-images.php:10
+#: views/printcart-templates.php:20
+msgid "View on dashboard"
+msgstr ""
+
+#: views/printcart-cliparts.php:46
+msgid "You don't have any clipart."
+msgstr ""
+
+#: views/printcart-cliparts.php:51
+msgid "clipart"
+msgstr ""
+
+#: views/printcart-fonts.php:8
+msgid "My fonts"
+msgstr ""
+
+#: views/printcart-fonts.php:11
+msgid "Default fonts"
+msgstr ""
+
+#: views/printcart-fonts.php:18
+msgid "List fonts "
+msgstr ""
+
+#: views/printcart-fonts.php:19
+msgid "/fonts"
+msgstr ""
+
+#: views/printcart-fonts.php:43
+msgid "You don't have any custom font."
+msgstr ""
+
+#: views/printcart-fonts.php:48
+msgid "font"
+msgstr ""
+
+#: views/printcart-form-api.php:5
+msgid "Manually enter an API key"
+msgstr ""
+
+#: views/printcart-form-api.php:17
+msgid "Sid: "
+msgstr ""
+
+#: views/printcart-form-api.php:23
+msgid "Enter your Printcart sid API key."
+msgstr ""
+
+#: views/printcart-form-api.php:28
+msgid "Secret: "
+msgstr ""
+
+#: views/printcart-form-api.php:34
+msgid "Enter your Printcart secret API key."
+msgstr ""
+
+#: views/printcart-form-api.php:39
+msgid "Unauth token: "
+msgstr ""
+
+#: views/printcart-form-api.php:45
+msgid ""
+"Unauth token of store Printcart "
+"(Automatically generated when you enter "
+"valid sid and secret)."
+msgstr ""
+
+#: views/printcart-form-api.php:50
+msgid ""
+"Check connection to Printcart Dashboard: "
+msgstr ""
+
+#: views/printcart-form-api.php:54
+#: views/printcart-form-api.php:55
+msgid "Test connection"
+msgstr ""
+
+#: views/printcart-form-api.php:61
+msgid "Enter both Sid and Secret to check."
+msgstr ""
+
+#: views/printcart-form-api.php:67
+#: views/printcart-form-api.php:68
+#: views/printcart-form-settings.php:84
+msgid "Save changes"
+msgstr ""
+
+#: views/printcart-form-settings.php:5
+msgid "Setting Button design"
+msgstr ""
+
+#: views/printcart-form-settings.php:17
+msgid ""
+"Label for \"Start design\" button in "
+"product page: "
+msgstr ""
+
+#: views/printcart-form-settings.php:21
+msgid "Start design"
+msgstr ""
+
+#: views/printcart-form-settings.php:23
+msgid ""
+"Enter your label to replace the default "
+"label \"Start design\"."
+msgstr ""
+
+#: views/printcart-form-settings.php:28
+msgid ""
+"Label for \"Upload design\" button in "
+"product page: "
+msgstr ""
+
+#: views/printcart-form-settings.php:32
+msgid "Upload design"
+msgstr ""
+
+#: views/printcart-form-settings.php:34
+msgid ""
+"Enter your label to replace the default "
+"label \"Upload design\"."
+msgstr ""
+
+#: views/printcart-form-settings.php:39
+msgid ""
+"Class for \"Button design\" button in "
+"product page: "
+msgstr ""
+
+#: views/printcart-form-settings.php:45
+msgid ""
+"Enter your class to show \"Start design\" "
+"button with your style."
+msgstr ""
+
+#: views/printcart-form-settings.php:50
+msgid "Separate artwork action buttons"
+msgstr ""
+
+#: views/printcart-form-settings.php:54
+msgid "Yes"
+msgstr ""
+
+#: views/printcart-form-settings.php:57
+msgid "No"
+msgstr ""
+
+#: views/printcart-form-settings.php:59
+msgid ""
+"Show artwork actions as buttons directly on "
+"the product page instead of wrap them on "
+"the popup."
+msgstr ""
+
+#: views/printcart-form-settings.php:64
+msgid "Position of design button: "
+msgstr ""
+
+#: views/printcart-form-settings.php:68
+msgid ""
+"Before add to cart button and after "
+"variantions option."
+msgstr ""
+
+#: views/printcart-form-settings.php:71
+msgid "Before variantions option."
+msgstr ""
+
+#: views/printcart-form-settings.php:74
+msgid "After add to cart button."
+msgstr ""
+
+#: views/printcart-form-settings.php:77
+msgid "Stick right side."
+msgstr ""
+
+#: views/printcart-images.php:8
+msgid "List images "
+msgstr ""
+
+#: views/printcart-images.php:9
+msgid "/images"
+msgstr ""
+
+#: views/printcart-images.php:23
+msgid "You don't have any image."
+msgstr ""
+
+#: views/printcart-images.php:28
+msgid "images"
+msgstr ""
+
+#: views/printcart-orders.php:9
+msgid ""
+"Below are all your orders on Printcart "
+"Dashboard"
+msgstr ""
+
+#: views/printcart-products.php:9
+msgid ""
+"Below are all the products that you have "
+"entered on Printcart Dashboard, You can "
+"import more products into Printcart "
+"Dashboard "
+msgstr ""
+
+#: views/printcart-products.php:11
+msgid "here"
+msgstr ""
+
+#: views/printcart-store-detail.php:9
+msgid "Congratulations!"
+msgstr ""
+
+#: views/printcart-store-detail.php:18
+msgid ""
+"Your website has been successfully "
+"connected to the Printcart dashboard."
+msgstr ""
+
+#: views/printcart-store-detail.php:23
+msgid "Go to Dashboard to Import"
+msgstr ""
+
+#: views/printcart-store-detail.php:30
+msgid ""
+"Connect the Printcart Dashboard to your site"
+msgstr ""
+
+#: views/printcart-store-detail.php:40
+msgid ""
+"Your website has failed to connect to the "
+"Printcart dashboard!"
+msgstr ""
+
+#: views/printcart-store-detail.php:45
+msgid "Connect to Dashboard"
+msgstr ""
+
+#: views/printcart-templates.php:8
+msgid "My templates"
+msgstr ""
+
+#: views/printcart-templates.php:11
+msgid "Default templates"
+msgstr ""
+
+#: views/printcart-templates.php:18
+msgid "List templates "
+msgstr ""
+
+#: views/printcart-templates.php:19
+msgid "/templates"
+msgstr ""
+
+#: views/printcart-templates.php:33
+msgid "You don't have any template."
+msgstr ""
+
+#: views/printcart-templates.php:38
+msgid "template"
+msgstr ""
+
+#: views/start-and-upload-design.php:6
 msgid "Start and Upload Design"
 msgstr ""
 
-#: views/start-and-upload-design.php:28
+#: views/start-and-upload-design.php:31
 msgid "Choose a way to design this product"
 msgstr ""
 
-#: views/start-and-upload-design.php:34
+#: views/start-and-upload-design.php:37
 msgid "Printcart Uploader"
 msgstr ""
 
-#: views/start-and-upload-design.php:39
+#: views/start-and-upload-design.php:42
 msgid "Upload a full design"
 msgstr ""
 
-#: views/start-and-upload-design.php:41
+#: views/start-and-upload-design.php:44
 msgid "- Have a complete design"
 msgstr ""
 
-#: views/start-and-upload-design.php:42
+#: views/start-and-upload-design.php:45
 msgid "- Have your own designer"
 msgstr ""
 
-#: views/start-and-upload-design.php:52
+#: views/start-and-upload-design.php:55
 msgid "Printcart Designer"
 msgstr ""
 
-#: views/start-and-upload-design.php:57
+#: views/start-and-upload-design.php:60
 msgid "Design here online"
 msgstr ""
 
-#: views/start-and-upload-design.php:59
+#: views/start-and-upload-design.php:62
 msgid "- Already have your concept"
 msgstr ""
 
-#: views/start-and-upload-design.php:60
+#: views/start-and-upload-design.php:63
 msgid "- Customize every details"
 msgstr ""

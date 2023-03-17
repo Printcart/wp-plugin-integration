@@ -191,6 +191,12 @@ Yes, it’s compatible with any WooCommerce theme including Flatsome / OceanWP /
 10. Printcart integration
 
 == ChangeLog ==
+= Version 2.2.0 (2023, Mar 17) =
+* Update: Menu cliparts
+* Update: Menu images
+* Update: Menu fonts
+* Update: Menu Templates
+
 = Version 2.1.0 (2023, Mar 10) =
 * Update: Upload design
 * Update: Menu order
