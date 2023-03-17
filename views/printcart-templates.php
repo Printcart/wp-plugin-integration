@@ -1,4 +1,4 @@
-<?php 
+<?php
 if (!defined('ABSPATH')) exit; // Exit if accessed directly  
 ?>
 <h1><?php esc_html_e('Templates', 'printcart-integration'); ?></h1>
@@ -16,7 +16,9 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
     <div class="postbox" id="pc-list-arts">
         <h3 class="pc-admin-line-height">
             <?php esc_html_e('List templates ', 'printcart-integration'); ?>
-            <a class="button button-outline-primary" href="<?php esc_attr_e(PRINTCART_BACKOFFICE_URL . '/templates'); ?>"><?php esc_html_e('View on dashboard', 'printcart-integration'); ?></a>
+            <a class="button button-outline-primary" href="<?php esc_attr_e(PRINTCART_BACKOFFICE_URL . '/templates'); ?>">
+                <?php esc_html_e('View on dashboard', 'printcart-integration'); ?>
+            </a>
         </h3>
         <div class="printcart-list inside">
             <div class="printcart-list-arts-container">

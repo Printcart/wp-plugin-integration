@@ -6,7 +6,9 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
     <div class="postbox" id="pc-list-arts">
         <h3 class="pc-admin-line-height">
             <?php esc_html_e('List images ', 'printcart-integration'); ?>
-            <a class="button button-outline-primary" href="<?php esc_attr_e(PRINTCART_BACKOFFICE_URL . '/images'); ?>"><?php esc_html_e('View on dashboard', 'printcart-integration'); ?></a>
+            <a class="button button-outline-primary" href="<?php esc_attr_e(PRINTCART_BACKOFFICE_URL . '/images'); ?>">
+                <?php esc_html_e('View on dashboard', 'printcart-integration'); ?>
+            </a>
         </h3>
         <div class="printcart-list inside">
             <div class="printcart-list-arts-container">

@@ -16,19 +16,19 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
             <tr>
                 <th scope="row"><label><?php esc_html_e('Name:', 'printcart-integration'); ?></label></th>
                 <td>
-                    <div class="printcart-account-info <?php echo $name == 'N/A' ? 'printcart-nan' : '';  ?>"><?php echo esc_html($name); ?></div>
+                    <div class="printcart-account-info <?php echo esc_attr($name == 'N/A' ? 'printcart-nan' : '');  ?>"><?php echo esc_html($name); ?></div>
                 </td>
             </tr>
             <tr>
                 <th scope="row"><label><?php esc_html_e('Email:', 'printcart-integration'); ?></label></th>
                 <td>
-                    <div class="printcart-account-info <?php echo $email == 'N/A' ? 'printcart-nan' : '';  ?>"><?php echo esc_html($email); ?></div>
+                    <div class="printcart-account-info <?php echo esc_attr($email == 'N/A' ? 'printcart-nan' : '');  ?>"><?php echo esc_html($email); ?></div>
                 </td>
             </tr>
             <tr>
                 <th scope="row"><label><?php esc_html_e('Tier:', 'printcart-integration'); ?></label></th>
                 <td>
-                    <div class="printcart-account-info <?php echo $tier == 'N/A' ? 'printcart-nan' : '';  ?>"><?php echo esc_html($tier); ?></div>
+                    <div class="printcart-account-info <?php echo esc_attr($tier == 'N/A' ? 'printcart-nan' : '');  ?>"><?php echo esc_html($tier); ?></div>
                 </td>
             </tr>
         </tbody>
