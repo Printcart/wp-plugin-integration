@@ -87,31 +87,105 @@ if (!class_exists('PC_W2P_API')) {
 
             return self::fetchData($url);
         }
-        public static function fetchClipartByStorageId($cat_id = '', $cursor = '', $limit = 99) {
-            $url = self::$api_url . '/cliparts/?limit=' . $limit;
-            // $url = self::$api_url . '/cliparts/default?limit=' . $limit;
+        public static function fetchClipartByStorageId($cat_id = '', $cursor = '', $limit = 99, $is_default = false) {
+            $pre_api = '/cliparts';
+            $pre_storage_api = '/cliparts';
+            if ($is_default) {
+                $pre_api = '/cliparts/default';
+                $pre_storage_api = '/cliparts-default';
+            }
+
+            $url = self::$api_url . $pre_api .  '?limit=' . $limit;
 
             if ($cat_id) {
-                $url = self::$api_url . '/clipart-storages/' . $cat_id . '/cliparts?limit=' . $limit;
-                // $url = self::$api_url . '/clipart-storages/' . $cat_id . '/cliparts-default?limit=' . $limit;
+                $url = self::$api_url . '/clipart-storages/' . $cat_id . $pre_storage_api . '?limit=' . $limit;
             }
 
             if ($cursor) {
-                $url = self::$api_url . '/cliparts?cursor=' . $cursor . '&limit=' . $limit;
-                // $url = self::$api_url . '/cliparts/default?cursor=' . $cursor . '&limit=' . $limit;
+                $url = self::$api_url . $pre_api . '?cursor=' . $cursor . '&limit=' . $limit;
             }
 
             return self::fetchData($url);
         }
-        public static function fetchClipartStorage($limit = 99) {
-            $url = self::$api_url . '/clipart-storages?limit=' . $limit;
-            // $url = self::$api_url . '/clipart-storages/default?limit=' . $limit;
+        public static function fetchClipartStorage($limit = 99,  $is_default = false) {
+            $pre_api = '/clipart-storages';
+            if ($is_default) {
+                $pre_api = '/clipart-storages/default';
+            }
+
+            $url = self::$api_url .  $pre_api . '?limit=' . $limit;
 
             return self::fetchData($url);
         }
-        public static function fetchClipartCount() {
-            $url = self::$api_url . '/cliparts/count';
-            // $url = self::$api_url . '/cliparts/default/count';
+        public static function fetchClipartCount($is_default = false) {
+            $pre_api = '/cliparts';
+            if ($is_default) {
+                $pre_api = '/cliparts/default';
+            }
+
+            $url = self::$api_url . $pre_api . '/count';
+
+            return self::fetchData($url);
+        }
+        public static function fetchImages($cursor = '', $limit = 99) {
+            $url = self::$api_url . '/images?limit=' . $limit;
+
+            if ($cursor) {
+                $url = self::$api_url . '/images?cursor=' . $cursor . '&limit=' . $limit;
+            }
+
+            return self::fetchData($url);
+        }
+        public static function fetchImageCount() {
+            $url = self::$api_url . '/images/count';
+
+            return self::fetchData($url);
+        }
+        public static function fetchFonts($cursor = '', $limit = 99, $is_default = false) {
+            $pre_api = '/fonts';
+            if ($is_default) {
+                $pre_api = '/fonts/default';
+            }
+
+            $url = self::$api_url . $pre_api . '?limit=' . $limit . '&sort=asc&sortBy=name';
+
+            if ($cursor) {
+                $url = self::$api_url . $pre_api . '?cursor=' . $cursor . '&limit=' . $limit . '&sort=asc&sortBy=name';
+            }
+
+            return self::fetchData($url);
+        }
+        public static function fetchFontCount($is_default = false) {
+            $pre_api = '/fonts';
+            if ($is_default) {
+                $pre_api = '/fonts/default';
+            }
+
+            $url = self::$api_url . $pre_api . '/count';
+
+            return self::fetchData($url);
+        }
+        public static function fetchTemplates($cursor = '', $limit = 99, $is_default = false) {
+            $pre_api = '/templates';
+            if ($is_default) {
+                $pre_api = '/templates/template-default';
+            }
+
+            $url = self::$api_url . $pre_api . '?limit=' . $limit;
+
+            if ($cursor) {
+                $url = self::$api_url . $pre_api .  '?cursor=' . $cursor . '&limit=' . $limit;
+            }
+
+            return self::fetchData($url);
+        }
+        public static function fetchTemplateCount($is_default = false) {
+            $pre_api = '/templates';
+            if ($is_default) {
+                $pre_api = '/templates/default';
+            }
+
+            $url = self::$api_url . $pre_api . '/count';
 
             return self::fetchData($url);
         }

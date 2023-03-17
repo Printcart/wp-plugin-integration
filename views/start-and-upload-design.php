@@ -1,3 +1,6 @@
+<?php
+if (!defined('ABSPATH')) exit; // Exit if accessed directly  
+?>
 <div id="printcart-sdk-wrap" class="<?php esc_attr_e($class_stick); ?>">
     <?php
     $start_and_upload_design_button = esc_html__('Start and Upload Design', 'printcart-integration');
