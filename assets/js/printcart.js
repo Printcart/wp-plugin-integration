@@ -24,7 +24,7 @@
         },
       });
 
-      // designTool.render();
+      designTool.render();
 
       if (designTool) {
         if (buttonDesignDom) {
