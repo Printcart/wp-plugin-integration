@@ -3,7 +3,7 @@ Contributors: printcart-dev
 Tags: product customizer, product designer, web to print, printing, print-on-demand, ecommerce, api, code, source, sourcecode, php,
 Requires at least: 5.0
 Tested up to: 6.0
-Stable tag: 2.1.0
+Stable tag: 2.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -191,7 +191,7 @@ Yes, it’s compatible with any WooCommerce theme including Flatsome / OceanWP /
 10. Printcart integration
 
 == ChangeLog ==
-= Version 2.2.0 (2023, Mar 17) =
+= Version 2.2.0 (2023, Mar 29) =
 * Update: Menu cliparts
 * Update: Menu images
 * Update: Menu fonts
