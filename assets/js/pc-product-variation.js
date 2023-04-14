@@ -10,17 +10,14 @@
   function toggleLoading(loading = true) {
     if (loading) {
       buttonDesignDom.addClass("pc-disabled");
-      buttonDesignDom.html("Loading...");
+      buttonDesignDom.html("Loading..."); 
       buttonUploadDom.addClass("pc-disabled");
       buttonUploadDom.html("Loading...");
       buttonUploadAndDesignDom.addClass("pc-disabled");
       buttonUploadAndDesignDom.html("Loading...");
     } else {
-      buttonDesignDom.removeClass("pc-disabled");
       buttonDesignDom.html(buttonDesignLabel);
-      buttonUploadDom.removeClass("pc-disabled");
       buttonUploadDom.html(buttonUploadLabel);
-      buttonUploadAndDesignDom.removeClass("pc-disabled");
       buttonUploadAndDesignDom.html(buttonUploadAndDesignLabel);
     }
   }
@@ -31,7 +28,6 @@
     } else {
       buttonDesignDom.attr("data-productid", "");
       buttonUploadDom.attr("data-productid", "");
-      // toggleLoading(false);
       buttonDesignDom.addClass("pc-disabled");
       buttonUploadDom.addClass("pc-disabled");
       buttonUploadAndDesignDom.addClass("pc-disabled");
@@ -55,12 +51,16 @@
         if (response.success && response.data && response.data.product_id) {
           if (response.data.enable_design) {
             buttonDesignDom.attr("data-productid", response.data.product_id);
+            buttonDesignDom.removeClass("pc-disabled");
+            buttonUploadAndDesignDom.removeClass("pc-disabled");
           } else {
             buttonDesignDom.attr("data-productid", "");
             buttonDesignDom.addClass("pc-disabled");
           }
           if (response.data.enable_upload) {
             buttonUploadDom.attr("data-productid", response.data.product_id);
+            buttonUploadDom.removeClass("pc-disabled");
+            buttonUploadAndDesignDom.removeClass("pc-disabled");
           } else {
             buttonUploadDom.attr("data-productid", "");
             buttonUploadDom.addClass("pc-disabled");

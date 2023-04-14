@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
             <?php esc_html_e('Store details', 'printcart-integration'); ?>
         </h3>
         <div>
-            <a href="<?php echo esc_url(PRINTCART_BACKOFFICE_URL . '/settings'); ?>" target="_blank"><?php esc_html_e(' Store settings', 'printcart-integration'); ?></a>
+            <a href="<?php echo esc_url(PRINTCART_BACKOFFICE_URL . '/settings'); ?>" target="_blank"><?php esc_html_e('Store settings', 'printcart-integration'); ?></a>
         </div>
     </div>
     <hr>

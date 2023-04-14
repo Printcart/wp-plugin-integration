@@ -5,18 +5,18 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
     <?php
     $start_and_upload_design_button = esc_html__('Start and Upload Design', 'printcart-integration');
     if ($printcart_separate_design_buttons === 'yes') {
-        if ($product_id && !empty($product_variation)) {
-            echo '<button id="pc-select_btn_design" data-productid="' . esc_attr($product_id) . '" class="button printcart-button alt pc-disabled ' . $printcart_class_button . '">' . $printcart_label_button_design . '</button>';
-        } else if ($product_id && $enable_design) {
+        if ($product_id && $enable_design) {
             echo '<button id="pc-select_btn_design" data-productid="' . esc_attr($product_id) . '" class="button printcart-button alt ' . $printcart_class_button . '">' . $printcart_label_button_design . '</button>';
+        } else if (!empty($product_variation)) {
+            echo '<button id="pc-select_btn_design" data-productid="' . esc_attr($product_id) . '" class="button printcart-button alt pc-disabled ' . $printcart_class_button . '">' . $printcart_label_button_design . '</button>';
         }
-        if ($product_id && !empty($product_variation)) {
-            echo '<button id="pc-select_btn_upload" data-productid="' . esc_attr($product_id) . '" class="button printcart-button alt pc-disabled ' . $printcart_class_button  . '">' . $printcart_label_button_upload . '</button>';
-        } else if ($product_id && $enable_upload) {
+        if ($product_id && $enable_upload) {
             echo '<button id="pc-select_btn_upload" data-productid="' . esc_attr($product_id) . '" class="button printcart-button alt ' . $printcart_class_button  . '">' . $printcart_label_button_upload . '</button>';
+        } else if (!empty($product_variation)) {
+            echo '<button id="pc-select_btn_upload" data-productid="' . esc_attr($product_id) . '" class="button printcart-button alt pc-disabled ' . $printcart_class_button  . '">' . $printcart_label_button_upload . '</button>';
         }
     } else {
-        if ($product_id && !empty($product_variation)) {
+        if (!empty($product_variation)) {
             echo '<button id="pc-select_btn_upload-and-design" class="button printcart-button alt pc-disabled ' . $printcart_class_button . '"><i class="fa-light fa-loader"></i>' . $start_and_upload_design_button . '</button>';
         } else if ($product_id && ($enable_design || $enable_upload)) {
             echo '<button id="pc-select_btn_upload-and-design" class="button printcart-button alt ' . $printcart_class_button . '"><i class="fa-light fa-loader"></i>' . $start_and_upload_design_button . '</button>';
