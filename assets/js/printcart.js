@@ -102,8 +102,8 @@
     });
 
     $("#pc-select_btn_upload-and-design").on("click", function (e) {
-      if ($(this).hasClass("pc-disabled")) return;
       e.preventDefault();
+      if ($(this).hasClass("pc-disabled")) return;
       jQuery("#pc-select_wrap").addClass("is-visible");
     });
 
