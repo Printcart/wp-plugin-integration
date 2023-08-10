@@ -224,11 +224,12 @@ if (!class_exists('PC_W2P_API')) {
                 'connected' => false,
                 'unauth_token' => ''
             );
+
             if (!$sid || !$secret) {
-                return false;
+                return $result;
             }
             $url = self::$api_url . '/stores/store-details';
-            $response =  wp_remote_request($url,     array(
+            $response =  wp_remote_request($url, array(
                 'headers'   => array(
                     "Authorization" => 'Basic ' . base64_encode($sid . ':' . $secret)
                 ),

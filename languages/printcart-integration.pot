@@ -5,7 +5,7 @@ msgstr ""
 "v1.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name "
 "<printcart@gmail.com>\n"
-"POT-Creation-Date: 2023-03-29 09:35+0700\n"
+"POT-Creation-Date: 2023-08-10 11:18+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Your Name <printcart@gmail."
 "com>\n"
@@ -249,7 +249,7 @@ msgid "Store details"
 msgstr ""
 
 #: views/printcart-account-detail.php:10
-msgid " Store settings"
+msgid "Store settings"
 msgstr ""
 
 #: views/printcart-account-detail.php:17
