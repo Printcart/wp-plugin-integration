@@ -5,7 +5,7 @@ if (!class_exists('PC_W2P_API')) {
 
     class PC_W2P_API {
         public static $api_url = 'https://api.printcart.com/v1';
-        // public static $api_url = 'http://localhost:8001/v1';
+
         public function __construct() {
         }
 
@@ -51,7 +51,8 @@ if (!class_exists('PC_W2P_API')) {
 
             $response =  wp_remote_post($url, array(
                 'headers'    => $headers,
-                'body'  => $object
+                'body'  => $object,
+                'timeout' => 60,
             ));
 
             return self::response($response);

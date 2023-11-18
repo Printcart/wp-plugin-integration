@@ -1,8 +1,11 @@
 <?php
 
+use Automattic\WooCommerce\Internal\DataStores\Orders\CustomOrdersTableController;
+
 if (!defined('ABSPATH')) exit;
 
 if (!class_exists('Printcart_Product_Hook')) {
+
 
     class Printcart_Product_Hook {
 
@@ -62,6 +65,7 @@ if (!class_exists('Printcart_Product_Hook')) {
 
             // Add options design in Order WC
             add_action('add_meta_boxes', array($this, 'printcart_add_design_box'), 35);
+
 
             // Hidden item name in order
             add_filter('woocommerce_hidden_order_itemmeta', array($this, 'printcart_add_hidden_order_items'), 10, 1);
@@ -185,20 +189,25 @@ if (!class_exists('Printcart_Product_Hook')) {
         }
 
         public function printcart_add_design_box() {
+
+            $screen = wc_get_container()->get( CustomOrdersTableController::class )->custom_orders_table_usage_is_enabled()
+            ? wc_get_page_screen_id( 'shop-order' )
+            : 'shop_order';
+
             add_meta_box(
                 'printcart_order_design',
                 esc_html__('Printcart Customer Design', 'printcart-integration'),
                 array($this, 'printcart_order_design'),
-                'shop_order',
+                $screen,
                 'side',
                 'default'
             );
         }
 
-        public function printcart_order_design($post) {
-            $order_id       = $post->ID;
-            $order          = wc_get_order($order_id);
-            $project_id     = get_post_meta($order_id, '_printcart_project_id', true);
+        public function printcart_order_design($post_or_order_object ) {
+            $order = ( $post_or_order_object instanceof WP_Post ) ? wc_get_order( $post_or_order_object->ID ) : $post_or_order_object;
+            $order_id = $order->get_id();
+            $project_id     = PC_W2P_UTILITIES::get_post_meta($order_id, '_printcart_project_id', true);
             $order_items    = $order->get_items();
 
             if (is_array($order_items)) {
@@ -300,7 +309,7 @@ if (!class_exists('Printcart_Product_Hook')) {
          */
         public function printcart_create_project($order_id) {
             $order = wc_get_order($order_id);
-            $project_id = get_post_meta($order_id, '_printcart_project_id', true);
+            $project_id = PC_W2P_UTILITIES::get_post_meta($order_id, '_printcart_project_id', true);
 
             if ($order && !$project_id) {
                 $name           = '#' . $order_id;
@@ -341,7 +350,7 @@ if (!class_exists('Printcart_Product_Hook')) {
 
                             $projectSave  = PC_W2P_API::createOrder($project);
                             if (isset($projectSave['data']) && isset($projectSave['data']['id'])) {
-                                update_post_meta($order_id, '_printcart_project_id', $projectSave['data']['id']);
+                                PC_W2P_UTILITIES::update_post_meta($order_id, '_printcart_project_id', $projectSave['data']['id']);
                             }
                         } catch (Exception $e) {
                             return;

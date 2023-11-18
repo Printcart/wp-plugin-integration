@@ -1,5 +1,6 @@
 (function () {
   "use strict";
+
   var printcartDesigner = new PrintcartDesigner();
   var designTool;
   var orderUpload;

@@ -7,16 +7,16 @@
 Plugin Name: Printcart Integration
 Plugin URI: https://printcart.com
 Description: Create design buttons for WC products
-Version: 2.2.1
+Version: 2.2.2
 Author: Printcart Team
 Author URI: https://printcart.com
 Text Domain: printcart-integration
 WC requires at least: 6.0.0
-WC tested up to: 8.0.1
+WC tested up to: 8.3.0
 PHP: >=7.0
 */
 
-define('PRINTCART_VERSION',            '2.2.1');
+define('PRINTCART_VERSION',            '2.2.2');
 define('PRINTCART_W2P_PLUGIN_URL',         plugin_dir_url(__FILE__));
 define('PRINTCART_W2P_PLUGIN_DIR',         plugin_dir_path(__FILE__));
 
@@ -60,21 +60,25 @@ function printcart_w2p_plugin_settings_link($links) {
     return $links;
 }
 
+add_action( 'before_woocommerce_init', function() {
+    if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+        \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+    }
+} );
+
 
 /**
  *  Designtool Url
  */
-define('PRINTCART_DESIGNTOOL',          'https://customizer.printcart.com');
-// define('PRINTCART_DESIGNTOOL',          'http://designtool.loc');
+define('PRINTCART_DESIGNTOOL', 'https://customizer.printcart.com');
 
 /**
  *  Designer SDK Url
  */
-define('PRINTCART_DESIGNER_SDK_URL',            PRINTCART_W2P_PLUGIN_URL . 'assets/js/printcart-designer.min.js');
-// define('PRINTCART_DESIGNER_SDK_URL',            'http://localhost:3103/dist/main.js');
+define('PRINTCART_DESIGNER_SDK_URL', PRINTCART_W2P_PLUGIN_URL . 'assets/js/printcart-designer.min.js');
 
 /**
  *  backoffice Url
  */
-define('PRINTCART_BACKOFFICE_URL',         'https://dashboard.printcart.com');
-// define('PRINTCART_BACKOFFICE_URL',         'http://localhost:3000');
+define('PRINTCART_BACKOFFICE_URL', 'https://dashboard.printcart.com');
+
