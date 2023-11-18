@@ -137,4 +137,57 @@ class PC_W2P_UTILITIES {
             )
         );
     }
+    public static function check_hpos_enabled() {
+        return get_option( 'woocommerce_custom_orders_table_enabled' ) === 'yes';
+    }
+    public static function update_post_meta( $post_id, $meta_key, $meta_value, $need_save = true ) {
+        if(self::check_hpos_enabled()) {
+            $order = wc_get_order($post_id);
+
+            if($order) {
+                $order->update_meta_data( $meta_key, $meta_value );
+
+                if($need_save) $order->save();
+                return;
+            }
+        }
+        update_post_meta( $post_id, $meta_key, $meta_value );
+    }
+    public static function get_post_meta( $post_id, $meta_key, $single ) {
+        if(self::check_hpos_enabled()) {
+            $order = wc_get_order($post_id);
+
+            if($order) {
+                return $order->get_meta( $meta_key );
+            }
+        }
+        return get_post_meta( $post_id, $meta_key, $single );
+    }
+    public static function add_post_meta( $post_id, $meta_key, $meta_value, $need_save = true  ) {
+        if(self::check_hpos_enabled()) {
+            $order = wc_get_order($post_id);
+
+            if($order) {
+                $order->add_meta_data( $meta_key, $meta_value );
+
+                if($need_save) $order->save();
+                return;
+            }
+        }
+      
+        add_post_meta( $post_id, $meta_key, $meta_value );
+    }
+    public static function delete_post_meta( $post_id, $meta_key, $meta_value, $need_save = true  ) {
+        if(self::check_hpos_enabled()) {
+            $order = wc_get_order($post_id);
+
+            if($order) {
+                $order->delete_meta_data( $meta_key, $meta_value );
+
+                if($need_save) $order->save();
+                return;
+            }
+        } 
+        delete_post_meta( $post_id, $meta_key, $meta_value );
+    }
 }
