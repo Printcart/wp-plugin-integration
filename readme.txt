@@ -194,11 +194,9 @@ Yes, it’s compatible with any WooCommerce theme including Flatsome / OceanWP /
 = Version 2.2.2 (2023, Nov 17) =
 * Compatible with 'High Performance Order Storage' Woocommerce
 
-== ChangeLog ==
 = Version 2.2.1 (2023, Aug 10) =
 * Compatible with Woocommerce 8.0.1 and Wordpress 6.3
 
-== ChangeLog ==
 = Version 2.2.0 (2023, Mar 29) =
 * Update: Menu cliparts
 * Update: Menu images
