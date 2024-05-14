@@ -247,5 +247,10 @@ if (!class_exists('PC_W2P_API')) {
             }
             return $result;
         }
+        public static function fetJwt() {
+            $url = self::$api_url . '/account/render-jwt';
+
+            return self::fetchData($url);
+        }
     }
 }

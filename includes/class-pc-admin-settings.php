@@ -44,17 +44,17 @@ if (!class_exists('Printcart_Admin_Settings')) {
                 esc_html__('PC Web2Print', 'printcart-integration'),
                 'manage_options',
                 'pc-integration-web2print',
-                array($this, 'printcart_dashboard'),
+                array($this, 'printcart_overview'),
                 PRINTCART_W2P_PLUGIN_URL . 'assets/images/logo.svg'
             );
 
             add_submenu_page(
                 'pc-integration-web2print',
-                esc_html__('Printcart Dashboard', 'printcart-integration'),
-                esc_html__('Dashboard', 'printcart-integration'),
+                esc_html__('Printcart Overview', 'printcart-integration'),
+                esc_html__('Overview', 'printcart-integration'),
                 'manage_options',
                 'pc-integration-web2print',
-                array($this, 'printcart_dashboard')
+                array($this, 'printcart_overview')
             );
 
             add_submenu_page(
@@ -120,13 +120,24 @@ if (!class_exists('Printcart_Admin_Settings')) {
                 array($this, 'printcart_settings')
             );
         }
-        public function printcart_dashboard() {
-            echo '<div id="printcart-design">';
-            include_once(PRINTCART_W2P_PLUGIN_DIR . 'views/printcart-setting-header.php');
-            $this->printcart_api_status();
-            $this->printcart_account_details();
-            do_action('printcart_custom_settings');
-            echo '</div>';
+        public function printcart_overview() {
+            $printcart_account = get_option('printcart_w2p_account');
+            
+            $printcart_sid  = !empty($printcart_account['sid']) ? $printcart_account['sid'] : '';
+            $jwtData        =  PC_W2P_API::fetJwt();
+            $jwt            = !empty($jwtData['data']['access_token']) ? $jwtData['data']['access_token'] : '';
+
+            if(!$jwt || !$printcart_sid) {
+                 echo '<div id="printcart-design">';
+                include_once(PRINTCART_W2P_PLUGIN_DIR . 'views/printcart-setting-header.php');
+                $this->printcart_api_status();
+                echo '</div>';
+                return;
+            }
+
+            $iframe_src = PRINTCART_BACKOFFICE_URL . '/setup-wizard?pc-sid=' . $printcart_sid . '&pc-token=' . $jwt;
+
+            include_once(PRINTCART_W2P_PLUGIN_DIR . 'views/printcart-overview.php');
         }
         public function printcart_products() {
             require_once PRINTCART_W2P_PLUGIN_DIR . 'includes/class-pc-product-table.php';
@@ -185,6 +196,8 @@ if (!class_exists('Printcart_Admin_Settings')) {
             );
             echo '<div id="printcart-design">';
             include_once(PRINTCART_W2P_PLUGIN_DIR . 'views/printcart-setting-header.php');
+            $this->printcart_api_status();
+            $this->printcart_account_details();
             $this->printcart_setting_button_design();
             $this->printcart_api_form($printcart_account, $result);
             do_action('printcart_custom_settings');
@@ -381,9 +394,11 @@ if (!class_exists('Printcart_Admin_Settings')) {
 
             include_once(PRINTCART_W2P_PLUGIN_DIR . 'views/printcart-templates.php');
         }
-        public function admin_enqueue_scripts() {
+        public function admin_enqueue_scripts($hook) {
             if (is_admin()) {
-                //Todo
+                if($hook === 'toplevel_page_pc-integration-web2print') {
+                    wp_enqueue_style('printcart-overview', PRINTCART_W2P_PLUGIN_URL . 'assets/css/pc-admin-overview.css', array(), PRINTCART_VERSION);
+                }
             }
         }
     }

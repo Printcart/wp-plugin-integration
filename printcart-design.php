@@ -7,7 +7,7 @@
 Plugin Name: Printcart Integration
 Plugin URI: https://printcart.com
 Description: Create design buttons for WC products
-Version: 2.2.2
+Version: 2.2.3
 Author: Printcart Team
 Author URI: https://printcart.com
 Text Domain: printcart-integration
@@ -16,7 +16,7 @@ WC tested up to: 8.3.0
 PHP: >=7.0
 */
 
-define('PRINTCART_VERSION',            '2.2.2');
+define('PRINTCART_VERSION',            '2.2.3');
 define('PRINTCART_W2P_PLUGIN_URL',         plugin_dir_url(__FILE__));
 define('PRINTCART_W2P_PLUGIN_DIR',         plugin_dir_path(__FILE__));
 
@@ -81,4 +81,3 @@ define('PRINTCART_DESIGNER_SDK_URL', PRINTCART_W2P_PLUGIN_URL . 'assets/js/print
  *  backoffice Url
  */
 define('PRINTCART_BACKOFFICE_URL', 'https://dashboard.printcart.com');
-

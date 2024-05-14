@@ -19,8 +19,8 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
                 </b>
             </span>
         </div>
-        <a href="<?php echo esc_attr(PRINTCART_BACKOFFICE_URL . '/inventory'); ?>" class="pc-button-dashboard pc-button-primary button-primary" target="_blank">
-            <?php esc_html_e('Go to Dashboard to Import', 'printcart-integration'); ?>
+        <a href="<?php echo esc_attr(PRINTCART_BACKOFFICE_URL . '/setup-wizard'); ?>" class="pc-button-dashboard pc-button-primary button-primary" target="_blank">
+            <?php esc_html_e('Go to Setup Wizard', 'printcart-integration'); ?>
         </a>
     <?php
     } else {
