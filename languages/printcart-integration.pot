@@ -5,7 +5,7 @@ msgstr ""
 "v1.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name "
 "<printcart@gmail.com>\n"
-"POT-Creation-Date: 2023-11-18 09:56+0700\n"
+"POT-Creation-Date: 2024-05-13 15:38+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Your Name <printcart@gmail."
 "com>\n"
@@ -38,11 +38,11 @@ msgid "PC Web2Print"
 msgstr ""
 
 #: includes/class-pc-admin-settings.php:53
-msgid "Printcart Dashboard"
+msgid "Printcart Overview"
 msgstr ""
 
 #: includes/class-pc-admin-settings.php:54
-msgid "Dashboard"
+msgid "Overview"
 msgstr ""
 
 #: includes/class-pc-admin-settings.php:62
@@ -111,12 +111,12 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:163
-#: includes/class-pc-admin-settings.php:253
+#: includes/class-pc-admin-settings.php:174
+#: includes/class-pc-admin-settings.php:266
 msgid "Your settings have been saved."
 msgstr ""
 
-#: includes/class-pc-admin-settings.php:167
+#: includes/class-pc-admin-settings.php:178
 msgid ""
 "You have entered incorrect sid or secret. "
 "Please try again!"
@@ -130,46 +130,46 @@ msgstr ""
 msgid "Upload Design"
 msgstr ""
 
-#: includes/class-pc-hook.php:199
+#: includes/class-pc-hook.php:198
 msgid "Printcart Customer Design"
 msgstr ""
 
-#: includes/class-pc-hook.php:217
+#: includes/class-pc-hook.php:216
 msgid "Product:"
 msgstr ""
 
-#: includes/class-pc-hook.php:235
-#: includes/class-pc-hook.php:253
+#: includes/class-pc-hook.php:234
+#: includes/class-pc-hook.php:252
 msgid "View design"
 msgstr ""
 
-#: includes/class-pc-hook.php:262
+#: includes/class-pc-hook.php:261
 msgid "No design in this order"
 msgstr ""
 
-#: includes/class-pc-hook.php:264
+#: includes/class-pc-hook.php:263
 msgid "Invalid Api Token"
 msgstr ""
 
-#: includes/class-pc-hook.php:283
+#: includes/class-pc-hook.php:282
 msgid "View project"
 msgstr ""
 
-#: includes/class-pc-hook.php:368
-#: includes/class-pc-hook.php:406
+#: includes/class-pc-hook.php:367
+#: includes/class-pc-hook.php:405
 msgid "Preview designs"
 msgstr ""
 
-#: includes/class-pc-hook.php:378
-#: includes/class-pc-hook.php:417
+#: includes/class-pc-hook.php:377
+#: includes/class-pc-hook.php:416
 msgid "Preview design upload"
 msgstr ""
 
-#: includes/class-pc-hook.php:459
+#: includes/class-pc-hook.php:458
 msgid "Printcart integration"
 msgstr ""
 
-#: includes/class-pc-hook.php:467
+#: includes/class-pc-hook.php:466
 msgid ""
 "You do not have permission to assign API "
 "Keys to the selected user."
@@ -512,7 +512,7 @@ msgid ""
 msgstr ""
 
 #: views/printcart-store-detail.php:23
-msgid "Go to Dashboard to Import"
+msgid "Go to Setup Wizard"
 msgstr ""
 
 #: views/printcart-store-detail.php:30

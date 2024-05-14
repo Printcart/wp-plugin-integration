@@ -1,0 +1,22 @@
+.toplevel_page_pc-integration-web2print #wpwrap #wpcontent {
+	position: absolute;
+	height: 100%;
+	width: calc(100% - 180px);
+}
+
+.toplevel_page_pc-integration-web2print #wpwrap #wpcontent #wpbody {
+	height: 100%;
+}
+.toplevel_page_pc-integration-web2print #wpwrap #wpcontent #wpbody #wpbody-content {
+	height: 100%;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+.toplevel_page_pc-integration-web2print #printcart-setup-wizard {
+	height: 100%;
+	padding: 8px;
+}
